@@ -12,9 +12,9 @@ function App() {
   //Navigateur
   const [textNav, setTextNav] = useState([
     {id : "#Home", content : "Home"},
-    {id : "#Competence", content :"Competence"},
-    {id : "#Experience", content :"Experience"},
-    {id : "#Projet", content : "Projet"}
+    {id : "#Competence", content :"Competences"},
+    {id : "#Experience", content :"Experiences"},
+    {id : "#Projet", content : "Projets"}
   ]);
 
   const [logo, setLogo] = useState(
@@ -72,14 +72,14 @@ function App() {
 
   //Experience
   const [experience, setExperience] = useState([
-    {id : "Stage développement Back-end Symfony", content:"Le stage consistait dans un premier temps à réaliser une étude des différents cms prestashop, wordpress... puis à réaliser un site de clic&collect. Pour cela, j'ai dans un premier temps modélisé la base de données avec la méthode merise. Ensuite, j'ai réalisé le site avec le Framework Symfony.", lieux:"Troyes", entreprise : "LeBidibul",date:"mai 2021 - juillet 2021", langage : "Php Symfony Tailwind CSS"}
+    {id : "Stage développement Back-end Symfony", content:"Le stage consistait dans un premier temps à réaliser une étude des différents cms prestashop, wordpress... puis à réaliser un site de click&collect. Pour cela, j'ai dans un premier temps modélisé la base de données avec la méthode merise. Ensuite, j'ai réalisé le site avec le Framework Symfony.", lieux:"Troyes", entreprise : "LeBidibul",date:"mai 2021 - juillet 2021", langage : "Php Symfony Tailwind CSS"}
   ])
 
   //Projet
   const [projet, setProjet] = useState([
     {id: "Pass O Lan : Back-end", content:"C'est un projet universitaire qui consistait à réaliser et à mettre en oeuvre un site permettant de gérer des évènements irl ou en ligne.", langage:"Php Laravel Bootstrap", github:""},
     {id :"Pass O Camping : BDD", content:"C'est un projet universitaire de base de données qui consistait à réaliser et à mettre en oeuvre une base de données permettant de gérer un camping.", langage:"Looping PhpMyAdmin MySQL", github:""},
-    {id :"Bot discord Meteo", content:"c'est un projet personnel. C'est un projet qui permet d'afficher la météo d'une ville en entrant une commande directement sur un serveur discord.",langage:"Python Json API", github:"https://github.com/RaphHuynh/BotDiscordMeteo"},
+    {id :"Bot Discord Meteo", content:"C'est un projet personnel. C'est un projet qui permet d'afficher la météo d'une ville en entrant une commande directement sur un serveur discord.",langage:"Python Json API", github:"https://github.com/RaphHuynh/BotDiscordMeteo"},
     {id :"Portefolio", content:"Mon portefolio est actuellement celui-ci. Je l'ai réalisé avec ReactJS et Tailwind CSS", langage:"Javascript ReactJs Tailwind CSS", github:""},
   ])
 

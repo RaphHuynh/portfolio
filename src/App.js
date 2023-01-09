@@ -80,7 +80,7 @@ function App() {
     {id: "Pass O Lan : Back-end", content:"C'est un projet universitaire qui consistait à réaliser et à mettre en oeuvre un site permettant de gérer des évènements irl ou en ligne.", langage:"Php Laravel Bootstrap", github:""},
     {id :"Pass O Camping : BDD", content:"C'est un projet universitaire de base de données qui consistait à réaliser et à mettre en oeuvre une base de données permettant de gérer un camping.", langage:"Looping PhpMyAdmin MySQL", github:""},
     {id :"Bot Discord Meteo", content:"C'est un projet personnel. C'est un projet qui permet d'afficher la météo d'une ville en entrant une commande directement sur un serveur discord.",langage:"Python Json API", github:"https://github.com/RaphHuynh/BotDiscordMeteo"},
-    {id :"Portefolio", content:"Mon portefolio est actuellement celui-ci. Je l'ai réalisé avec ReactJS et Tailwind CSS", langage:"Javascript ReactJs Tailwind CSS", github:""},
+    {id :"Portfolio", content:"Mon portfolio est actuellement celui-ci. Je l'ai réalisé avec ReactJS et Tailwind CSS", langage:"Javascript ReactJs Tailwind CSS", github:""},
   ])
 
   //comportement

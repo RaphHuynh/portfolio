@@ -1,3 +1,6 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default Experience;
 
 function Experience(props){
@@ -7,13 +10,13 @@ function Experience(props){
 
     //Affichage
     return[
-        <div id="Experience" className="flex items-center w-full h-screen justify-center mb-96 md:m-auto">
+        <div id="Experience" className="flex items-center max-w-full min-h-screen justify-center my-auto">
             <div className="">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center" data-aos="fade-left" data-aos-duration="2000">
                     <span className="bg-white/30 h-0.5 w-40 md:w-80 mr-7"></span>
                     <h1 className="text-sky-200 text-xl text-center">Expériences</h1>
                 </div>
-                <div className="flex justify-center text-white/70">
+                <div className="flex justify-center text-white/70" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
                     <div className="container w-96 my-5">
                         {props.experience.map((exp) => (
                             <div className="mt-10 mx-10 md:mx-auto">

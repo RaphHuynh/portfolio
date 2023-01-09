@@ -84,7 +84,7 @@ function App() {
   ])
 
   //comportement
-
+ 
   //Affichage
   return (
     <div className='w-full'>
@@ -109,7 +109,7 @@ function App() {
         devBack={devBack}
         devAutre={devAutre}
       />
-      <Experience
+      <Experience 
         experience={experience}
       />
       <Work

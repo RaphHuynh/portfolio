@@ -1,13 +1,19 @@
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default Work;
 
 function Work(props){
     //State
 
     //Comportement
-
+    useEffect(()=> {
+        AOS.init({duration:2000});
+      },[])
     //Affichage
     return [
-        <div id="Projet" className="flex items-center w-full h-screen justify-center">
+        <div id="Projet" className="flex items-center w-full min-h-screen justify-center" data-aos="fade" data-aos-duration="2000">
             <div className="container m-5">
                 <div className="container flex items-center justify-center">
                     <h1 className="text-sky-200 text-xl text-center">Projets</h1>
@@ -17,7 +23,7 @@ function Work(props){
                 <div className="flex justify-center">
                     <div className="flex flex-wrap justify-center 2xl:justify-start mt-10 w-4/6">
                         {props.projet.map((proj) =>(
-                            <div className="bg-black/10 w-72 m-5">
+                            <div className="bg-black/10 w-72 sm:mx-5 my-5" data-aos="fade">
                                 <div className="flex">
                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="35" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder m-5"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" className="stroke-cyan-300/70"></path></svg></span>
                                     <span className="flex mr-5 ml-auto items-center">

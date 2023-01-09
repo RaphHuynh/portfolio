@@ -1,4 +1,5 @@
-import { useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default Competence;
 
@@ -9,14 +10,14 @@ function Competence(props){
 
     //Affichage
     return [
-        <div id="Competence" className="flex items-center w-full h-screen justify-center">
+        <div id="Competence" className="flex items-center w-full min-h-screen justify-center">
             <div className="container">
-                <div className="container flex items-center justify-center">
+                <div className="container flex items-center justify-center" data-aos="fade-right" data-aos-duration="2000">
                     <h1 className="text-sky-200 text-xl text-center">Compétences</h1>
                     <span className="bg-white/30 h-0.5 w-40 md:w-80 ml-7"></span>
                 </div>
                 <div className="lg:flex w-4/6 m-auto">
-                    <div className="w-80 items-center text-center mx-auto my-5 p-5 ">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="0">
                         <h2 className="text-indigo-300/60 text-2xl my-5">Front-end</h2>
                         <div className="text-white/70 text-left">
                             {props.devFront.map((skill) => (
@@ -31,7 +32,7 @@ function Competence(props){
                             ))}
                         </div>
                     </div>
-                    <div className="w-80 items-center text-center mx-auto my-5 p-5">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
                         <h2 className="text-indigo-300/60 text-2xl my-5">Back-end</h2>
                         <div className="text-white/70 text-left">
                             {props.devBack.map((skill) => (
@@ -46,7 +47,7 @@ function Competence(props){
                             ))}
                         </div>
                     </div>
-                    <div className="w-80 items-center text-center mx-auto my-5 p-5">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
                         <h2 className="text-indigo-300/60 text-2xl my-5">Autre</h2>
                         <div className="text-white/70 text-left">
                             {props.devAutre.map((skill) => (

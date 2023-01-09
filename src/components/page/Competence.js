@@ -12,9 +12,9 @@ function Competence(props){
     return [
         <div id="Competence" className="flex items-center w-full min-h-screen justify-center">
             <div className="container">
-                <div className="container flex items-center justify-center" data-aos="fade-right" data-aos-duration="2000">
+                <div className="container flex items-center justify-center" data-aos="fade-down" data-aos-duration="2000">
                     <h1 className="text-sky-200 text-xl text-center">Compétences</h1>
-                    <span className="bg-white/30 h-0.5 w-40 md:w-80 ml-7"></span>
+                    <span className="sm:bg-white/30 sm:h-0.5 sm:w-40 md:w-80 sm:ml-7"></span>
                 </div>
                 <div className="lg:flex w-4/6 m-auto">
                     <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="0">

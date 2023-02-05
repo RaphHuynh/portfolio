@@ -79,7 +79,7 @@ function App() {
   const [projet, setProjet] = useState([
     {id: "Pass O Lan : Back-end", content:"C'est un projet universitaire qui consistait à réaliser et à mettre en oeuvre un site permettant de gérer des évènements irl ou en ligne.", langage:"Php Laravel Bootstrap", github:""},
     {id :"Pass O Camping : BDD", content:"C'est un projet universitaire de base de données qui consistait à réaliser et à mettre en oeuvre une base de données permettant de gérer un camping.", langage:"Looping PhpMyAdmin MySQL", github:""},
-    {id :"Bot Discord Meteo", content:"C'est un projet personnel. C'est un projet qui permet d'afficher la météo d'une ville en entrant une commande directement sur un serveur discord.",langage:"Python Json API", github:"https://github.com/RaphHuynh/BotDiscordMeteo"},
+    {id :"Bot Discord Meteo", content:"C'est un projet personnel qui permet d'afficher la météo d'une ville en entrant une commande directement sur un serveur discord.",langage:"Python Json API", github:"https://github.com/RaphHuynh/BotDiscordMeteo"},
     {id :"Portfolio", content:"Mon portfolio est actuellement celui-ci. Je l'ai réalisé avec ReactJS et Tailwind CSS", langage:"Javascript ReactJs Tailwind CSS", github:""},
     {id :"Bot Discord Choix de Poop", content:"C'est un projet personnel basé sur un système de Quizz. Il a pour but principale de récuperer des données afin de permettre une visualisation des données en fonction des question.",langage:"Python MySQL", github:"https://github.com/RaphHuynh/Bot-Choix-de-Poop"},
   ])

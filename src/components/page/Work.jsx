@@ -21,9 +21,9 @@ function Work(props){
                 </div>
                 <p className="text-center text-yellow-500 mt-5">projets réalisés</p>
                 <div className="flex justify-center">
-                    <div className="flex flex-wrap justify-center 2xl:justify-start mt-10 w-4/6">
+                    <div className="flex flex-wrap justify-center 2xl:justify-start mt-10 w-9/12 sm:w-4/6">
                         {props.projet.map((proj) =>(
-                            <div className="bg-black/10 w-72 sm:mx-5 my-5" data-aos="fade">
+                            <div className="bg-white/5 w-72 sm:mx-5 my-5 rounded-md" data-aos="fade">
                                 <div className="flex">
                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="35" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder m-5"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" className="stroke-yellow-500"></path></svg></span>
                                     <span className="flex mr-5 ml-auto items-center">
@@ -38,10 +38,10 @@ function Work(props){
                                 </div>
                                 <div className="mx-5 mt-5">
                                     <h1 className="text-yellow-500 text-lg font-bold">{proj.id}</h1>
-                                    <p className="text-justify text-white/80 my-3">{proj.content}</p>
+                                    <p className="text-justify text-white/80 my-3 text-sm md:text-base">{proj.content}</p>
                                 </div>
                                 <div className="flex mx-5 text-sm">
-                                    <p className="my-5 text-yellow-300/90">{proj.langage}</p>
+                                    <h2 className="my-5 text-yellow-300/90">{proj.langage}</h2>
                                 </div>
                             </div>
                         ))}

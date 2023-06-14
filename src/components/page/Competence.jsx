@@ -17,13 +17,13 @@ function Competence(props){
                     <span className="sm:bg-white/30 sm:h-0.5 sm:w-40 md:w-80 sm:ml-7"></span>
                 </div>
                 <div className="lg:flex w-4/6 m-auto">
-                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="0">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto lg:mx-2 my-5 p-5 bg-white/5 rounded-md" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="0">
                         <h2 className="text-yellow-500 text-2xl my-5">Front-end</h2>
                         <div className="text-white/80 text-left">
                             {props.devFront.map((skill) => (
                                 <div>
                                     <span key={skill.id} className="mb-3 flex items-center"> 
-                                        <svg viewBox="0 0 128 128" height="20px" className="mr-3">
+                                        <svg viewBox="0 0 128 128" height="30px" className="mr-3">
                                             <path fill="#E44D26" d={skill.content} className="fill-amber-400"></path>
                                         </svg>
                                         {skill.id}
@@ -32,13 +32,13 @@ function Competence(props){
                             ))}
                         </div>
                     </div>
-                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto lg:mx-2 my-5 p-5 bg-white/5 rounded-md" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
                         <h2 className="text-yellow-500 text-2xl my-5">Back-end</h2>
                         <div className="text-white/80 text-left">
                             {props.devBack.map((skill) => (
                                 <div>
                                     <span key={skill.id} className="mb-3 flex items-center"> 
-                                        <svg viewBox="0 0 128 128" height="20px" className="mr-3">
+                                        <svg viewBox="0 0 128 128" height="30px" className="mr-3">
                                             <path fill="#E44D26" d={skill.content} className="fill-amber-400"></path>
                                         </svg>
                                         {skill.id}
@@ -47,13 +47,13 @@ function Competence(props){
                             ))}
                         </div>
                     </div>
-                    <div className="w-content sm:w-80 items-center text-center mx-auto my-5 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
+                    <div className="w-content sm:w-80 items-center text-center mx-auto md:mx-2 my-5 p-5 bg-white/5 rounded-md" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
                         <h2 className="text-yellow-500 text-2xl my-5">Autre</h2>
                         <div className="text-white/80 text-left">
                             {props.devAutre.map((skill) => (
                                 <div>
                                     <span key={skill.id} className="mb-3 flex items-center">
-                                        <svg viewBox="0 0 128 128" height="20px" className="mr-3">
+                                        <svg viewBox="0 0 128 128" height="30px" className="mr-3">
                                             <path fill="#E44D26" d={skill.content} className="fill-amber-400"></path>
                                         </svg>
                                         {skill.id}

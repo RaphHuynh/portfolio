@@ -1,6 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import resume from "../../assets/cv/CV_Raphaelle_huynh.pdf";
+import resume from "../../assets/cv/cv_raphaelle_huynh.pdf";
 
 export default Home;
 
@@ -12,8 +12,8 @@ function Home(props){
     //Affichage
     return [
         <div id="Home" className="flex items-center w-full min-h-screen justify-center p-5">
-            <div className="container max-w-4xl m-20 lg:m-auto">
-                <h1 className="text-5xl sm:text-7xl mb-4 text-transparent bg-clip-text bg-gradient-to-t from-yellow-500 to-orange-700" data-aos="fade" data-aos-duration="2000" data-aos-delay="500">{props.titre.content}</h1>
+            <div className="container max-w-5xl lg:m-auto">
+                <h1 className="text-5xl sm:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-t from-yellow-500 to-orange-700" data-aos="fade" data-aos-duration="2000" data-aos-delay="500">{props.titre.content}</h1>
                 <h2 className="text-4xl sm:text-5xl text-yellow-500 mb-4" data-aos="fade" data-aos-duration="2000" data-aos-delay="1000">{props.sousTitre.content}</h2>
                 <p className="text-gray-200 sm:text-justify sm:text-xl text-sm my-8" data-aos="fade" data-aos-duration="2000" data-aos-delay="1500">{props.text.content}</p>
                 <div>

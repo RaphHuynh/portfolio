@@ -75,6 +75,7 @@ function App() {
 
   //Projet
   const [projet, setProjet] = useState([
+    {id :"Personnel - API Françaises des développeuses : Back-end", content:"Cette API REST permet de gérer la partie Back-end de mon projet Françaises des développeuses.", langage:["Python","MySQL","FAST API"], github:"https://github.com/RaphHuynh/api-francaises-des-dev"},
     {id :"Personnel - Bot discord CV developper : Back-end", content:"C'est un bot discord qui permet de mettre en ligne son CV sur discord afin de faciliter le partage de celui-ci. Il permet aussi de génerer un CV au format PDF.", langage:["Python", "NoSQL", "Json"], github:"https://github.com/RaphHuynh/bot-cv-developer-v1"},
     {id :"Personnel - Site bot discord : Front-end", content:"C'est un site en ThreeJS pour mettre en ligne mes différents bots discord. Ce projet m'est venu à l'esprit car je voulais découvrir la bibliothèque ThreeJS.", langage: ["Javascript","ThreeJS","ViteJS"], github:"https://github.com/RaphHuynh/threejs-raynhcoding"},
     {id :"Personnel - Bot Discord Choix de Poop : Back-end", content:"C'est un projet personnel basé sur un système de Quizz. Il a pour but principal de récuperer des données afin de permettre une visualisation des données en fonction des questions.",langage: ["Python", "MySQL"], github:"https://github.com/RaphHuynh/Bot-Choix-de-Poop"},

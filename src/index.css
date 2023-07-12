@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "kalam";
+    src: url(./fonts/Telma-Bold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "satochi-title";
+    src: url(./fonts/Satoshi-Bold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "satochi-text";
+    src: url(./fonts/Satoshi-Regular.otf) format("opentype");
+}
+
+h1 {
+    font-family: "satochi-title";
+}
+
+h2 {
+    font-family: "satochi-title";
+}
+
+p {
+    font-family: "satochi-text";
+}
+
+span {
+    font-family: "kalam";
+}
+
+html {
+    background-color: #eee;
+    color: #333;
+}
+
+.menu-hover{
+    height: 150px;
+    position: relative;
+}
+
+.menu-hover:hover{
+    color: #eee;
+}
+
+.menu-hover > a::after{ 
+    content: '';
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    transition: height 0.3s ease-in-out;
+}
+
+.menu-hover:hover > a::after {
+    height: 150px;
+}
+
+.text-apparition > h1{
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    left: 0;
+    opacity: 0;
+    transition: opacity .3s ease-in;
+}
+
+.text-apparition:hover > h1{
+    opacity: 1;
+}

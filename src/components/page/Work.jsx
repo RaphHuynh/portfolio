@@ -15,7 +15,7 @@ function Work(props){
     return [
         <div id="Projet" className="flex items-center w-full min-h-screen justify-center" data-aos="fade" data-aos-duration="2000">
             <div className="container m-5">
-                <div className="container flex items-center justify-center">
+                <div className="flex items-center justify-center">
                     <h1 className="text-amber-200 text-xl text-center">Projets</h1>
                     <span className="sm:bg-white/30 sm:h-0.5 sm:w-40 md:w-80 sm:ml-7"></span>
                 </div>

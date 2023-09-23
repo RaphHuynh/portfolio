@@ -19,10 +19,10 @@ function Experience(){
                     <h1 className="text-amber-200 text-xl text-center">Expériences</h1>
                 </div>
                 <div className="flex justify-center text-white/70 mx-auto" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
-                    <div className="container my-auto md:my-5">
+                    <div className="my-auto md:my-5">
                         {experience.map((exp) => (
-                            <div className="mt-10 mx-auto">
-                                <h1 key={exp.id} className="text-yellow-500 text-xl sm:text-2xl text-justify mb-5">
+                            <div className="mt-10">
+                                <h1 key={exp.id} className="text-yellow-500 text-xl sm:text-2xl mb-5">
                                     {exp.id}
                                 </h1>
                                 <h1 key={exp.id} className="mb-5 text-yellow-300/90 sm:text-lg text-sm">
@@ -33,7 +33,7 @@ function Experience(){
                                 </p>
                                 <details className='mb-5'>
                                     <summary className='list-none'>
-                                        <a className="text-sm md:text-base text-amber-500 hover:text-amber-200 hover:cursor-pointer mr-auto list-none">Lire plus ...</a>
+                                        <a className="text-sm md:text-base text-amber-500 hover:text-amber-200 hover:cursor-pointer  list-none">Lire plus ...</a>
                                     </summary>
                                     <p key={exp.id} className="text-sm md:text-base text-justify mb-5">
                                             {exp.more}

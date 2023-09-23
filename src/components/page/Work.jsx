@@ -26,7 +26,13 @@ function Work(props){
                             <div className="bg-white/5 w-72 sm:mx-5 my-5 rounded-md h-auto" data-aos="fade">
                                 <div className="flex">
                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="35" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder m-5"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" className="stroke-yellow-500"></path></svg></span>
-                                    <span className="flex mr-5 ml-auto items-center">
+                                    <span className="flex mr-5 ml-auto items-center gap-2">
+                                        {proj.link !== "" && <a href={proj.link} target="_blank" rel="noreferrer">
+                                                <svg viewBox="0 0 14 15" className="transition delay-75 w-7 fill-white/70 hover:fill-yellow-500" width="50" height="50">
+                                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                                </svg>
+                                            </a>}
                                         {proj.github !== "" && 
                                             <a href={proj.github} target="_blank" rel="noreferrer">
                                                 <svg viewBox="0 0 128 128" className="transition delay-75 w-7 fill-white/70 hover:fill-yellow-500">

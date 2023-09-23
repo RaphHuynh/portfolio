@@ -43,11 +43,11 @@ function Experience(){
                                     {exp.entreprise} - {exp.lieux}
                                 </h1>
                                 {exp.langage.map((lang) =>(
-                                    <span key={exp.id} className="mb-5 mr-2 border rounded-full px-3 py-1 border-amber-400 text-amber-400">
+                                    <span key={exp.id} className="mb-1 mr-2 border rounded-full px-3 py-1 border-amber-400 text-amber-400 inline-block">
                                     {lang}
                                 </span>
                                 ))}
-                                <div className="bg-white/30 h-1 mt-10"></div>
+                                <div className="bg-white/30 h-1 mt-5"></div>
                             </div>
                         ))}
                     </div>

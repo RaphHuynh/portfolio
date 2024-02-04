@@ -12,7 +12,7 @@ function Experience(){
 
     //Affichage
     return[
-        <div id="Experience" className="flex items-center max-w-[63%] lg:max-w-[49%] mx-auto min-h-screen justify-center my-auto">
+        <div id="Experience" className="flex items-center max-w-[63%] lg:max-w-[50%] mx-auto min-h-screen justify-center my-auto">
             <div className="">
                 <div className="flex justify-center items-center" data-aos="fade-down" data-aos-duration="2000">
                     <span className="sm:bg-white/30 sm:h-0.5 sm:w-40 md:w-80 sm:mr-7"></span>

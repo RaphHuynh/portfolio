@@ -44,7 +44,7 @@ function Work(props){
                                 </div>
                                 <div className="mx-5 mt-5">
                                     <h1 className="text-yellow-500 text-lg font-bold">{proj.id}</h1>
-                                    <p className="text-justify text-white/80 my-3 text-sm md:text-base">{proj.content}</p>
+                                    <p className="text-white/80 my-3 text-sm md:text-base">{proj.content}</p>
                                 </div>
                                 <div className="mx-5 text-sm mb-2">
                                     {proj.langage.map((lang) =>(

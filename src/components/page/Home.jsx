@@ -30,13 +30,13 @@ function Home(){
                     En dehors de mes études, j'aime réaliser divers projets informatique afin de découvrir, tester de nouvelle technologies.
                 </p>
                 <div className='flex gap-4'>
-                    <a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                    <a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='bg-amber-400 text-white dark:text-[#0f1628] px-2 py-1 hover:bg-amber-500 transition delay-75 text-lg'>
                         LinkedIn
                     </a>
-                    <a href={'https://github.com/RaphHuynh'} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                    <a href={'https://github.com/RaphHuynh'} className='bg-amber-400 text-white dark:text-[#0f1628] px-2 py-1 hover:bg-amber-500 transition delay-75 text-lg'>
                         Github
                     </a>
-                    <a href={resume} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                    <a href={resume} className='bg-amber-400 text-white dark:text-[#0f1628] px-2 py-1 hover:bg-amber-500 transition delay-75 text-lg'>
                         CV
                     </a>
                 </div>

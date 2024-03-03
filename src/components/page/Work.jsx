@@ -17,37 +17,37 @@ function Work(props) {
     ];
 
     return (
-        <section className="flex flex-col min-h-screen w-full px-32 pb-10 justify-center" id="Projet">
-            <h1 className='text-6xl text-yellow-400 border-b h-fit py-2 w-fit mb-10'>
+        <section className="flex flex-col min-h-screen w-full px-32 pb-20 justify-center" id="Projet">
+            <h1 className='text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
                 📂 Projets
             </h1>
             <p className="pb-10 text-lg">Cette section présente les divers projets que j'ai réalisé et que j'ai choisi de mettre en avant. <br />
                 Pour trouver mes autres projets personnels il faut se rendre sur github.</p>
-            <h2 className="text-4xl mb-4 text-amber-500">Freelance</h2>
+            <h2 className="text-4xl mb-4 text-amber-500">🏢 Freelance</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {freelance.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🏢" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">Data Science</h2>
+            <h2 className="text-4xl my-4 text-amber-500">📊 Data Science</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {dataScience.map((project, index) => (
-                    <ProjectCard key={index} project={project} emoji="🔬" />
+                    <ProjectCard key={index} project={project} emoji="📊" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">Web</h2>
+            <h2 className="text-4xl my-4 text-amber-500">🌐 Web</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {web.map((project, index) => (
-                    <ProjectCard key={index} project={project} emoji="💻" />
+                    <ProjectCard key={index} project={project} emoji="🌐" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">Back-end</h2>
+            <h2 className="text-4xl my-4 text-amber-500">🛠️ Back-end</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {back.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🛠️" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">Universitaire</h2>
+            <h2 className="text-4xl my-4 text-amber-500">🎓 Universitaire</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {universitaire.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🎓" />
@@ -61,7 +61,7 @@ function ProjectCard({ project, emoji }) {
     return (
         <div className="flex h-full">
             {project.link ? (
-                <a href={project.link} className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg hover:shadow hover:cursor-pointer hover:bg-blue-50">
+                <a href={project.link} className="flex flex-col justify-between bg-slate-50 dark:bg-white/10 p-6 rounded-lg hover:shadow hover:cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-200/10">
                     <div className="flex flex-col justify-between h-full">
                         <div>
                             <div className="flex items-center mb-4">
@@ -73,27 +73,22 @@ function ProjectCard({ project, emoji }) {
                         <div className="flex gap-4 items-center mt-auto">
                             {project.github && (
                                 <a href={project.github} className="" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://simpleicons.org/icons/github.svg" alt="GitHub Logo" className="w-6 h-6" />
-                                </a>
-                            )}
-                            {project.discord && (
-                                <a href={project.discord} className="" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 hover:fill-yellow-400">
-                                        <path d="M11.998 0c-6.628 0-12 5.373-12 11.998 0 5.415 3.564 9.989 8.459 11.569.619.137 1.019-.248 1.019-.617v-2.479c-4.507-1.23-7.707-4.872-7.707-9.473 0-5.279 4.305-9.584 9.584-9.584s9.584 4.305 9.584 9.584c0 4.601-3.2 8.243-7.707 9.473v2.479c0 .369.4.754 1.019.617 4.896-1.58 8.459-6.154 8.459-11.569 0-6.625-5.373-11.998-12-11.998zm-2.423 15.858l-.027.019c-.219.14-.548.106-.732-.08-.768-.745-1.49-1.267-2.42-1.514-.93-.247-1.918-.055-2.636.524-.219.139-.494.169-.732.08l-.025-.016c-.35-.217-.482-.664-.325-1.028.151-.365.514-.589.935-.589h.035c.304.001.587.138.77.374.518.715 1.25 1.209 2.027 1.447.777.238 1.6.119 2.285-.358.352-.239.771-.353 1.19-.353s.839.114 1.191.353c.685.477 1.508.596 2.285.358.777-.238 1.509-.731 2.027-1.447.183-.236.467-.373.771-.374h.035c.422 0 .784.224.936.589.157.364.025.811-.324 1.028zm-4.575-4.109c-.828-.001-1.523-.613-1.61-1.431h.346c.114.617.642 1.07 1.264 1.07h.364c.61 0 1.152-.431 1.268-1.043-.097.008-.191.015-.285.015zm1.98 0c-.095 0-.189-.007-.284-.015.116.611.659 1.043 1.269 1.043h.364c.622 0 1.15-.453 1.265-1.07h.346c-.087.818-.783 1.429-1.61 1.43zm4.282-1.431c-.088.818-.783 1.43-1.611 1.431-.094 0-.188-.007-.283-.015.115.611.657 1.043 1.267 1.043h.364c.622 0 1.15-.453 1.264-1.07h.346zm1.566-2.874c-.014 0-.028.002-.042.003-.472-.874-1.226-1.438-2.123-1.55-.266-.037-.532-.055-.793-.055-.79 0-1.559.19-2.273.555-.248.129-.507.194-.785.194-.625 0-1.222-.322-1.65-.907-.074-.11-.182-.173-.297-.173h-.025c-.116.002-.224.063-.298.174-.429.585-1.026.906-1.65.907-.278 0-.537-.065-.785-.194-.714-.365-1.483-.555-2.274-.555-.261 0-.527.018-.793.055-.897.112-1.651.676-2.123 1.55-.012-.001-.028-.003-.04-.003-.692 0-1.253.561-1.253 1.253 0 .69.563 1.252 1.253 1.252.012 0 .028-.001.04-.003.472.874 1.226 1.438 2.123 1.55.266.037.532.055.793.055.79 0 1.559-.19 2.273-.555.248-.129.507-.194.785-.194.625 0 1.222.322 1.65.907.074.11.182.173.297.173h.025c.116-.002.224-.063.298-.174.429-.585 1.026-.906 1.65-.907.278 0 .537.065.785.194.714.365 1.483.555 2.274.555.261 0 .527-.018.793-.055.897-.112 1.651-.676 2.123-1.55.012.001.028.003.042.003.69 0 1.253-.561 1.253-1.253s-.563-1.253-1.253-1.253zm-6.255 1.253c0 .691.562 1.253 1.253 1.253s1.253-.562 1.253-1.253c0-.691-.562-1.253-1.253-1.253s-1.253.562-1.253 1.253z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 fill-current hover:fill-yellow-400">
+                                        <path d="M12 .3C5.37 .3 0 5.67 0 12.3c0 5.39 3.48 9.96 8.32 11.57.61.11.83-.27.83-.6 0-.3-.01-1.3-.02-2.37-3.39.73-4.1-1.63-4.1-1.63-.55-1.4-1.35-1.78-1.35-1.78-1.11-.77.08-.75.08-.75 1.23.09 1.88 1.26 1.88 1.26 1.1 1.88 2.89 1.34 3.6 1.02.11-.8.43-1.34.78-1.65-2.73-.31-5.6-1.36-5.6-6.05 0-1.34.48-2.44 1.26-3.3-.13-.32-.55-1.56.12-3.25 0 0 1.02-.33 3.35 1.26a11.78 11.78 0 0 1 3.25-.45c1.1.01 2.22.15 3.25.45 2.32-1.6 3.34-1.26 3.34-1.26.68 1.69.26 2.93.13 3.25.78.86 1.26 1.96 1.26 3.3 0 4.7-2.88 5.73-5.62 6.04.44.38.83 1.13.83 2.28 0 1.65-.01 2.98-.01 3.39 0 .34.22.73.84.6A12.12 12.12 0 0 0 24 12.3c0-6.63-5.37-12-12-12z"/>
                                     </svg>
                                 </a>
                             )}
                         </div>
                         <div className="flex flex-wrap mt-4">
                             {project.langage.map((lang, index) => (
-                                <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2">{lang}</span>
+                                <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
                             ))}
                         </div>
                     </div>
                 </a>
 
             ) : (
-                <div className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg">
+                <div className="flex flex-col justify-between bg-slate-50 dark:bg-white/10 p-6 rounded-lg">
                     <div>
                         <div className="flex items-center mb-4">
                             <span className="text-2xl mr-2">{emoji}</span>
@@ -104,20 +99,15 @@ function ProjectCard({ project, emoji }) {
                     <div className="flex gap-4 items-center mt-auto">
                         {project.github && (
                             <a href={project.github} className="" target="_blank" rel="noopener noreferrer">
-                                <img src="https://simpleicons.org/icons/github.svg" alt="GitHub Logo" className="w-6 h-6 hover:fill-yellow-400" />
-                            </a>
-                        )}
-                        {project.discord && (
-                            <a href={project.discord} className="" target="_blank" rel="noopener noreferrer">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 hover:fill-yellow-400">
-                                    <path d="M11.998 0c-6.628 0-12 5.373-12 11.998 0 5.415 3.564 9.989 8.459 11.569.619.137 1.019-.248 1.019-.617v-2.479c-4.507-1.23-7.707-4.872-7.707-9.473 0-5.279 4.305-9.584 9.584-9.584s9.584 4.305 9.584 9.584c0 4.601-3.2 8.243-7.707 9.473v2.479c0 .369.4.754 1.019.617 4.896-1.58 8.459-6.154 8.459-11.569 0-6.625-5.373-11.998-12-11.998zm-2.423 15.858l-.027.019c-.219.14-.548.106-.732-.08-.768-.745-1.49-1.267-2.42-1.514-.93-.247-1.918-.055-2.636.524-.219.139-.494.169-.732.08l-.025-.016c-.35-.217-.482-.664-.325-1.028.151-.365.514-.589.935-.589h.035c.304.001.587.138.77.374.518.715 1.25 1.209 2.027 1.447.777.238 1.6.119 2.285-.358.352-.239.771-.353 1.19-.353s.839.114 1.191.353c.685.477 1.508.596 2.285.358.777-.238 1.509-.731 2.027-1.447.183-.236.467-.373.771-.374h.035c.422 0 .784.224.936.589.157.364.025.811-.324 1.028zm-4.575-4.109c-.828-.001-1.523-.613-1.61-1.431h.346c.114.617.642 1.07 1.264 1.07h.364c.61 0 1.152-.431 1.268-1.043-.097.008-.191.015-.285.015zm1.98 0c-.095 0-.189-.007-.284-.015.116.611.659 1.043 1.269 1.043h.364c.622 0 1.15-.453 1.265-1.07h.346zm4.282-1.431c-.088.818-.783 1.43-1.611 1.431-.094 0-.188-.007-.283-.015.115.611.657 1.043 1.267 1.043h.364c.622 0 1.15-.453 1.264-1.07h.346zm1.566-2.874c-.014 0-.028.002-.042.003-.472-.874-1.226-1.438-2.123-1.55-.266-.037-.532-.055-.793-.055-.79 0-1.559.19-2.273.555-.248.129-.507.194-.785.194-.625 0-1.222-.322-1.65-.907-.074-.11-.182-.173-.297-.173h-.025c-.116.002-.224.063-.298.174-.429.585-1.026.906-1.65.907-.278 0-.537-.065-.785-.194-.714-.365-1.483-.555-2.274-.555-.261 0-.527.018-.793.055-.897.112-1.651.676-2.123 1.55-.012-.001-.028-.003-.04-.003-.692 0-1.253.561-1.253 1.253 0 .69.563 1.252 1.253 1.252.012 0 .028-.001.04-.003.472.874 1.226 1.438 2.123 1.55.266.037.532.055.793.055.79 0 1.559-.19 2.273-.555.248-.129.507-.194.785-.194.625 0 1.222.322 1.65.907.074.11.182.173.297.173h.025c.116-.002.224-.063.298-.174.429-.585 1.026-.906 1.65-.907.278 0 .537.065.785.194.714.365 1.483.555 2.274.555.261 0 .527-.018.793-.055.897-.112 1.651-.676 2.123-1.55.012.001.028.003.042.003.69 0 1.253-.561 1.253-1.253s-.563-1.253-1.253-1.253zm-6.255 1.253c0 .691.562 1.253 1.253 1.253s1.253-.562 1.253-1.253c0-.691-.562-1.253-1.253-1.253s-1.253.562-1.253 1.253z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 fill-current hover:fill-yellow-400">
+                                    <path d="M12 .3C5.37 .3 0 5.67 0 12.3c0 5.39 3.48 9.96 8.32 11.57.61.11.83-.27.83-.6 0-.3-.01-1.3-.02-2.37-3.39.73-4.1-1.63-4.1-1.63-.55-1.4-1.35-1.78-1.35-1.78-1.11-.77.08-.75.08-.75 1.23.09 1.88 1.26 1.88 1.26 1.1 1.88 2.89 1.34 3.6 1.02.11-.8.43-1.34.78-1.65-2.73-.31-5.6-1.36-5.6-6.05 0-1.34.48-2.44 1.26-3.3-.13-.32-.55-1.56.12-3.25 0 0 1.02-.33 3.35 1.26a11.78 11.78 0 0 1 3.25-.45c1.1.01 2.22.15 3.25.45 2.32-1.6 3.34-1.26 3.34-1.26.68 1.69.26 2.93.13 3.25.78.86 1.26 1.96 1.26 3.3 0 4.7-2.88 5.73-5.62 6.04.44.38.83 1.13.83 2.28 0 1.65-.01 2.98-.01 3.39 0 .34.22.73.84.6A12.12 12.12 0 0 0 24 12.3c0-6.63-5.37-12-12-12z"/>
                                 </svg>
                             </a>
                         )}
                     </div>
                     <div className="flex flex-wrap mt-4">
                         {project.langage.map((lang, index) => (
-                            <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2">{lang}</span>
+                            <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
                         ))}
                     </div>
                 </div>
@@ -125,4 +115,3 @@ function ProjectCard({ project, emoji }) {
         </div>
     );
 }
-

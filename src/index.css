@@ -2,3 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "satochi";
+  src: url(./assets/fonts/Satoshi-Black.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "supreme";
+  src: url("./assets/fonts/Supreme-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "text-footer";
+  src: url("./fonts/DancingScript-Regular.otf") format("opentype");
+}
+
+p, a, li, span{
+  font-family: "supreme";
+}
+
+h1, h2{
+  font-family: "satochi";
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+      background-color: #0f1628;
+    }
+
+    a{
+      color: white;
+    }
+
+    p{
+      color: white;
+    }
+
+    li{
+      color: white;
+    }
+    
+  }

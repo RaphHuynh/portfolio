@@ -36,25 +36,25 @@ function Experience() {
 
     return (
         <section className='flex flex-col min-h-screen w-full px-32 justify-center' id="Experience">
-            <h1 className='text-6xl text-yellow-400 border-b h-fit py-2 w-fit mb-10'>
+            <h1 className='text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
                 💼 Experiences professionnelles
             </h1>
             <div className="w-full text-lg">
                 {experience.map((exp, index) => (
                     <div key={index} className="flex items-center py-4">
                         <div className="w-2/5 px-4">
-                            <h2 className="text-xl font-bold">{exp.id}</h2>
+                            <h2 className="text-xl font-bold text-amber-500">{exp.id}</h2>
                             <p className="">🗓️ {exp.date}</p>
                             <p className=" font-bold">🏢 {exp.entreprise}</p>
                             <p className="">📍 {exp.lieux}</p>
                         </div>
-                        <div className="w-3/5 bg-slate-50 p-4 rounded-md ">
+                        <div className="w-3/5 bg-slate-50 dark:bg-white/10 p-4 rounded-md ">
                             <p className="text-justify">{exp.content}</p>
                             <p className="text-justify">{exp.more}</p>
                             {Array.isArray(exp.langage) && (
                                 <div className="flex flex-wrap gap-2 mt-2">
                                     {exp.langage.map((lang, langIndex) => (
-                                        <span key={langIndex} className="bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded">{lang}</span>
+                                        <span key={langIndex} className="bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
                                     ))}
                                 </div>
                             )}

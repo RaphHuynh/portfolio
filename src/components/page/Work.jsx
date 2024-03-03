@@ -1,63 +1,128 @@
-import { useEffect } from "react";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 export default Work;
 
-function Work(props){
-    //State
+function Work(props) {
+    const freelance = [{ id: "Association - Site HSR : Front-end", content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la réjoin Grand-Est.", langage: ["ReactJS", "ViteJS", "JavaScript", "TailwindCSS"], github: "https://github.com/RaphHuynh/HackSecuR", link: "https://storied-rolypoly-36ef5a.netlify.app" },
+    { id: "Freelance - Portfolio pour boulanger : Front-end", content: "C'est un portfolio réaliser pour un client dans le domaine de la boulangerie. Le design a été réflechis avec le client.", langage: ["ReactJS", "JavaScript", "Tailwind CSS"], github: "https://github.com/RaphHuynh/portfolio-boulanger", link: "http://loicthierry.netlify.app/" }];
 
-    //Comportement
-    useEffect(()=> {
-        AOS.init({duration:2000});
-      },[])
-    //Affichage
-    return [
-        <div id="Projet" className="flex items-center w-full min-h-screen justify-center" data-aos="fade" data-aos-duration="2000">
-            <div className="container m-5">
-                <div className="flex items-center justify-center">
-                    <h1 className="text-amber-200 text-xl text-center">Projets</h1>
-                    <span className="sm:bg-white/30 sm:h-0.5 sm:w-40 md:w-80 sm:ml-7"></span>
-                </div>
-                <p className="text-center text-yellow-500 mt-5">projets réalisés</p>
-                <div className="flex justify-center">
-                    <div className="flex flex-wrap justify-center 2xl:justify-start mt-10 w-9/12 sm:w-4/6">
-                        {props.projet.map((proj) =>(
-                            <div className="bg-white/5 w-72 sm:mx-5 my-5 rounded-md h-auto" data-aos="fade">
-                                <div className="flex">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="35" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder m-5"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" className="stroke-yellow-500"></path></svg></span>
-                                    <span className="flex mr-5 ml-auto items-center gap-2">
-                                        {proj.link !== "" && <a href={proj.link} target="_blank" rel="noreferrer">
-                                                <svg viewBox="0 0 14 15" className="transition delay-75 w-7 fill-white/70 hover:fill-yellow-500" width="50" height="50">
-                                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                                                </svg>
-                                            </a>}
-                                        {proj.github !== "" && 
-                                            <a href={proj.github} target="_blank" rel="noreferrer">
-                                                <svg viewBox="0 0 128 128" className="transition delay-75 w-7 fill-white/70 hover:fill-yellow-500">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M64 5.103c-33.347 0-60.388 27.035-60.388 60.388 0 26.682 17.303 49.317 41.297 57.303 3.017.56 4.125-1.31 4.125-2.905 0-1.44-.056-6.197-.082-11.243-16.8 3.653-20.345-7.125-20.345-7.125-2.747-6.98-6.705-8.836-6.705-8.836-5.48-3.748.413-3.67.413-3.67 6.063.425 9.257 6.223 9.257 6.223 5.386 9.23 14.127 6.562 17.573 5.02.542-3.903 2.107-6.568 3.834-8.076-13.413-1.525-27.514-6.704-27.514-29.843 0-6.593 2.36-11.98 6.223-16.21-.628-1.52-2.695-7.662.584-15.98 0 0 5.07-1.623 16.61 6.19C53.7 35 58.867 34.327 64 34.304c5.13.023 10.3.694 15.127 2.033 11.526-7.813 16.59-6.19 16.59-6.19 3.287 8.317 1.22 14.46.593 15.98 3.872 4.23 6.215 9.617 6.215 16.21 0 23.194-14.127 28.3-27.574 29.796 2.167 1.874 4.097 5.55 4.097 11.183 0 8.08-.07 14.583-.07 16.572 0 1.607 1.088 3.49 4.148 2.897 23.98-7.994 41.263-30.622 41.263-57.294C124.388 32.14 97.35 5.104 64 5.104z"></path><path d="M26.484 91.806c-.133.3-.605.39-1.035.185-.44-.196-.685-.605-.543-.906.13-.31.603-.395 1.04-.188.44.197.69.61.537.91zm2.446 2.729c-.287.267-.85.143-1.232-.28-.396-.42-.47-.983-.177-1.254.298-.266.844-.14 1.24.28.394.426.472.984.17 1.255zM31.312 98.012c-.37.258-.976.017-1.35-.52-.37-.538-.37-1.183.01-1.44.373-.258.97-.025 1.35.507.368.545.368 1.19-.01 1.452zm3.261 3.361c-.33.365-1.036.267-1.552-.23-.527-.487-.674-1.18-.343-1.544.336-.366 1.045-.264 1.564.23.527.486.686 1.18.333 1.543zm4.5 1.951c-.147.473-.825.688-1.51.486-.683-.207-1.13-.76-.99-1.238.14-.477.823-.7 1.512-.485.683.206 1.13.756.988 1.237zm4.943.361c.017.498-.563.91-1.28.92-.723.017-1.308-.387-1.315-.877 0-.503.568-.91 1.29-.924.717-.013 1.306.387 1.306.88zm4.598-.782c.086.485-.413.984-1.126 1.117-.7.13-1.35-.172-1.44-.653-.086-.498.422-.997 1.122-1.126.714-.123 1.354.17 1.444.663zm0 0"></path>
-                                                </svg>
-                                            </a>
-                                        }
-                                </span>
-                                </div>
-                                <div className="mx-5 mt-5">
-                                    <h1 className="text-yellow-500 text-lg font-bold">{proj.id}</h1>
-                                    <p className="text-white/80 my-3 text-sm md:text-base">{proj.content}</p>
-                                </div>
-                                <div className="mx-5 text-sm mb-2">
-                                    {proj.langage.map((lang) =>(
-                                        <span className="inline-block mr-2 border rounded-full px-2 py-1 my-1 border-amber-400 text-amber-400">
-                                            {lang}
-                                        </span>
-                                    ))}
-                                </div>
+    const dataScience = [{ id: "Personnel - Résolution problème N-Reines", content: "Le but de cette intelligence est de trouver à l'aide l'algorithme du minimax et d'autres solutions les solutions du problèmes des n-reines. Le jeu consiste à remplir le plus de case possible sur le plateau avec O voici les contraintes : Quand O est posé on ne peut plus poser de O sur la même ligne / colonne et diagonales.", langage: ["Python", "Numpy", "Multi-thread"], github: "https://github.com/RaphHuynh/ia_renforcement_minimax/blob/main/jeuPlateauTP2.ipynb", link: "https://github.com/RaphHuynh/ia_renforcement_minimax/blob/main/jeuPlateauTP2.ipynb" },
+    { id: "Personnel - Clustering avec K-Means", content: "Ce projet illustre l'utilisation de l'algorithme de clustering K-Means pour regrouper des données en clusters. Le code est écrit en Python et utilise la bibliothèque scikit-learn pour l'implémentation de K-Means et pour la génération de données aléatoires.", langage: ["Python", "Numpy", "Matplotlib", "Scikit-learn"], github: "https://github.com/RaphHuynh/Clustering-avec-K-Means/blob/main/clustering_kmeans.ipynb", link: "https://github.com/RaphHuynh/Clustering-avec-K-Means/blob/main/clustering_kmeans.ipynb" }];
+
+    const web = [{ id: "Personnel - Site Françaises des développeuses : Front-end", content: "Site web de françaises des developpeuses. Ce site permet aux femmes dans le domaine de l'informatique de partager leur profil, portfolio afin de mettre leur profil en avant.", langage: ["JavaScript", "ViteJS", "ReactJS", "TailwindCSS"], github: "https://github.com/RaphHuynh/francaise-des-developpeuses", link: "" }];
+
+    const back = [{ id: "Personnel - API Françaises des développeuses : Back-end", content: "Cette API REST permet de gérer la partie Back-end de mon projet Françaises des développeuses.", langage: ["Python", "MySQL", "FAST API"], github: "https://github.com/RaphHuynh/api-francaises-des-dev", link: "" },
+    { id: "Personnel - Bot discord CV developper : Back-end", content: "C'est un bot discord qui permet de mettre en ligne son CV sur discord afin de faciliter le partage de celui-ci. Il permet aussi de génerer un CV au format PDF.", langage: ["Python", "NoSQL", "Json"], github: "https://github.com/RaphHuynh/bot-cv-developer-v1", link: "" }];
+
+    const universitaire = [{ id: "Universitaire - Gestion de plateforme de vente de bois et de cuisine", content: "Le projet consiste à créer un site site de vente de cuisine. Un client peut acheter une cuisine. La commande est validé par le site uniquement si les revendeurs travaillant avec le site possèdent les pièces ou le bois suffisant pour réaliser les pièces. Le lien entre le site web php et le revendeur qui est un serveur java a été réalisé en HTTP. Le revendeur peut acheter du bois sur un marché de bois où chaque entreprise vendant des planches de bois peuvent mettre en vente leurs planches. La mise en vente des planches de bois doit être vérifié et certifié par une instance internationale. Etc ...", langage: ["PHP", "Java", "NoSQL", "Json", "UDP", "TCP", "HTTP"], github: "", link: "" },
+    { id: "Universitaire - Pass O Camping : BDD", content: "C'est un projet universitaire de base de données qui consistait à réaliser et à mettre en oeuvre une base de données permettant de gérer un camping.", langage: ["Looping", "phpMyAdmin", "MySQL"], github: "", link: "" }
+    ];
+
+    return (
+        <section className="flex flex-col min-h-screen w-full px-32 pb-10 justify-center" id="Projet">
+            <h1 className='text-6xl text-yellow-400 border-b h-fit py-2 w-fit mb-10'>
+                📂 Projets
+            </h1>
+            <p className="pb-10 text-lg">Cette section présente les divers projets que j'ai réalisé et que j'ai choisi de mettre en avant. <br />
+                Pour trouver mes autres projets personnels il faut se rendre sur github.</p>
+            <h2 className="text-4xl mb-4 text-amber-500">Freelance</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {freelance.map((project, index) => (
+                    <ProjectCard key={index} project={project} emoji="🏢" />
+                ))}
+            </div>
+            <h2 className="text-4xl my-4 text-amber-500">Data Science</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {dataScience.map((project, index) => (
+                    <ProjectCard key={index} project={project} emoji="🔬" />
+                ))}
+            </div>
+            <h2 className="text-4xl my-4 text-amber-500">Web</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {web.map((project, index) => (
+                    <ProjectCard key={index} project={project} emoji="💻" />
+                ))}
+            </div>
+            <h2 className="text-4xl my-4 text-amber-500">Back-end</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {back.map((project, index) => (
+                    <ProjectCard key={index} project={project} emoji="🛠️" />
+                ))}
+            </div>
+            <h2 className="text-4xl my-4 text-amber-500">Universitaire</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {universitaire.map((project, index) => (
+                    <ProjectCard key={index} project={project} emoji="🎓" />
+                ))}
+            </div>
+        </section>
+    );
+}
+
+function ProjectCard({ project, emoji }) {
+    return (
+        <div className="flex h-full">
+            {project.link ? (
+                <a href={project.link} className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg hover:shadow hover:cursor-pointer hover:bg-blue-50">
+                    <div className="flex flex-col justify-between h-full">
+                        <div>
+                            <div className="flex items-center mb-4">
+                                <span className="text-2xl mr-2">{emoji}</span>
+                                <h2 className="text-xl text-yellow-400 font-bold">{project.id}</h2>
                             </div>
+                            <p className="text-lg mb-4">{project.content}</p>
+                        </div>
+                        <div className="flex gap-4 items-center mt-auto">
+                            {project.github && (
+                                <a href={project.github} className="" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://simpleicons.org/icons/github.svg" alt="GitHub Logo" className="w-6 h-6" />
+                                </a>
+                            )}
+                            {project.discord && (
+                                <a href={project.discord} className="" target="_blank" rel="noopener noreferrer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 hover:fill-yellow-400">
+                                        <path d="M11.998 0c-6.628 0-12 5.373-12 11.998 0 5.415 3.564 9.989 8.459 11.569.619.137 1.019-.248 1.019-.617v-2.479c-4.507-1.23-7.707-4.872-7.707-9.473 0-5.279 4.305-9.584 9.584-9.584s9.584 4.305 9.584 9.584c0 4.601-3.2 8.243-7.707 9.473v2.479c0 .369.4.754 1.019.617 4.896-1.58 8.459-6.154 8.459-11.569 0-6.625-5.373-11.998-12-11.998zm-2.423 15.858l-.027.019c-.219.14-.548.106-.732-.08-.768-.745-1.49-1.267-2.42-1.514-.93-.247-1.918-.055-2.636.524-.219.139-.494.169-.732.08l-.025-.016c-.35-.217-.482-.664-.325-1.028.151-.365.514-.589.935-.589h.035c.304.001.587.138.77.374.518.715 1.25 1.209 2.027 1.447.777.238 1.6.119 2.285-.358.352-.239.771-.353 1.19-.353s.839.114 1.191.353c.685.477 1.508.596 2.285.358.777-.238 1.509-.731 2.027-1.447.183-.236.467-.373.771-.374h.035c.422 0 .784.224.936.589.157.364.025.811-.324 1.028zm-4.575-4.109c-.828-.001-1.523-.613-1.61-1.431h.346c.114.617.642 1.07 1.264 1.07h.364c.61 0 1.152-.431 1.268-1.043-.097.008-.191.015-.285.015zm1.98 0c-.095 0-.189-.007-.284-.015.116.611.659 1.043 1.269 1.043h.364c.622 0 1.15-.453 1.265-1.07h.346c-.087.818-.783 1.429-1.61 1.43zm4.282-1.431c-.088.818-.783 1.43-1.611 1.431-.094 0-.188-.007-.283-.015.115.611.657 1.043 1.267 1.043h.364c.622 0 1.15-.453 1.264-1.07h.346zm1.566-2.874c-.014 0-.028.002-.042.003-.472-.874-1.226-1.438-2.123-1.55-.266-.037-.532-.055-.793-.055-.79 0-1.559.19-2.273.555-.248.129-.507.194-.785.194-.625 0-1.222-.322-1.65-.907-.074-.11-.182-.173-.297-.173h-.025c-.116.002-.224.063-.298.174-.429.585-1.026.906-1.65.907-.278 0-.537-.065-.785-.194-.714-.365-1.483-.555-2.274-.555-.261 0-.527.018-.793.055-.897.112-1.651.676-2.123 1.55-.012-.001-.028-.003-.04-.003-.692 0-1.253.561-1.253 1.253 0 .69.563 1.252 1.253 1.252.012 0 .028-.001.04-.003.472.874 1.226 1.438 2.123 1.55.266.037.532.055.793.055.79 0 1.559-.19 2.273-.555.248-.129.507-.194.785-.194.625 0 1.222.322 1.65.907.074.11.182.173.297.173h.025c.116-.002.224-.063.298-.174.429-.585 1.026-.906 1.65-.907.278 0 .537.065.785.194.714.365 1.483.555 2.274.555.261 0 .527-.018.793-.055.897-.112 1.651-.676 2.123-1.55.012.001.028.003.042.003.69 0 1.253-.561 1.253-1.253s-.563-1.253-1.253-1.253zm-6.255 1.253c0 .691.562 1.253 1.253 1.253s1.253-.562 1.253-1.253c0-.691-.562-1.253-1.253-1.253s-1.253.562-1.253 1.253z" />
+                                    </svg>
+                                </a>
+                            )}
+                        </div>
+                        <div className="flex flex-wrap mt-4">
+                            {project.langage.map((lang, index) => (
+                                <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2">{lang}</span>
+                            ))}
+                        </div>
+                    </div>
+                </a>
+
+            ) : (
+                <div className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg">
+                    <div>
+                        <div className="flex items-center mb-4">
+                            <span className="text-2xl mr-2">{emoji}</span>
+                            <h2 className="text-xl text-yellow-400 font-bold">{project.id}</h2>
+                        </div>
+                        <p className="text-lg mb-4">{project.content}</p>
+                    </div>
+                    <div className="flex gap-4 items-center mt-auto">
+                        {project.github && (
+                            <a href={project.github} className="" target="_blank" rel="noopener noreferrer">
+                                <img src="https://simpleicons.org/icons/github.svg" alt="GitHub Logo" className="w-6 h-6 hover:fill-yellow-400" />
+                            </a>
+                        )}
+                        {project.discord && (
+                            <a href={project.discord} className="" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 hover:fill-yellow-400">
+                                    <path d="M11.998 0c-6.628 0-12 5.373-12 11.998 0 5.415 3.564 9.989 8.459 11.569.619.137 1.019-.248 1.019-.617v-2.479c-4.507-1.23-7.707-4.872-7.707-9.473 0-5.279 4.305-9.584 9.584-9.584s9.584 4.305 9.584 9.584c0 4.601-3.2 8.243-7.707 9.473v2.479c0 .369.4.754 1.019.617 4.896-1.58 8.459-6.154 8.459-11.569 0-6.625-5.373-11.998-12-11.998zm-2.423 15.858l-.027.019c-.219.14-.548.106-.732-.08-.768-.745-1.49-1.267-2.42-1.514-.93-.247-1.918-.055-2.636.524-.219.139-.494.169-.732.08l-.025-.016c-.35-.217-.482-.664-.325-1.028.151-.365.514-.589.935-.589h.035c.304.001.587.138.77.374.518.715 1.25 1.209 2.027 1.447.777.238 1.6.119 2.285-.358.352-.239.771-.353 1.19-.353s.839.114 1.191.353c.685.477 1.508.596 2.285.358.777-.238 1.509-.731 2.027-1.447.183-.236.467-.373.771-.374h.035c.422 0 .784.224.936.589.157.364.025.811-.324 1.028zm-4.575-4.109c-.828-.001-1.523-.613-1.61-1.431h.346c.114.617.642 1.07 1.264 1.07h.364c.61 0 1.152-.431 1.268-1.043-.097.008-.191.015-.285.015zm1.98 0c-.095 0-.189-.007-.284-.015.116.611.659 1.043 1.269 1.043h.364c.622 0 1.15-.453 1.265-1.07h.346zm4.282-1.431c-.088.818-.783 1.43-1.611 1.431-.094 0-.188-.007-.283-.015.115.611.657 1.043 1.267 1.043h.364c.622 0 1.15-.453 1.264-1.07h.346zm1.566-2.874c-.014 0-.028.002-.042.003-.472-.874-1.226-1.438-2.123-1.55-.266-.037-.532-.055-.793-.055-.79 0-1.559.19-2.273.555-.248.129-.507.194-.785.194-.625 0-1.222-.322-1.65-.907-.074-.11-.182-.173-.297-.173h-.025c-.116.002-.224.063-.298.174-.429.585-1.026.906-1.65.907-.278 0-.537-.065-.785-.194-.714-.365-1.483-.555-2.274-.555-.261 0-.527.018-.793.055-.897.112-1.651.676-2.123 1.55-.012-.001-.028-.003-.04-.003-.692 0-1.253.561-1.253 1.253 0 .69.563 1.252 1.253 1.252.012 0 .028-.001.04-.003.472.874 1.226 1.438 2.123 1.55.266.037.532.055.793.055.79 0 1.559-.19 2.273-.555.248-.129.507-.194.785-.194.625 0 1.222.322 1.65.907.074.11.182.173.297.173h.025c.116-.002.224-.063.298-.174.429-.585 1.026-.906 1.65-.907.278 0 .537.065.785.194.714.365 1.483.555 2.274.555.261 0 .527-.018.793-.055.897-.112 1.651-.676 2.123-1.55.012.001.028.003.042.003.69 0 1.253-.561 1.253-1.253s-.563-1.253-1.253-1.253zm-6.255 1.253c0 .691.562 1.253 1.253 1.253s1.253-.562 1.253-1.253c0-.691-.562-1.253-1.253-1.253s-1.253.562-1.253 1.253z" />
+                                </svg>
+                            </a>
+                        )}
+                    </div>
+                    <div className="flex flex-wrap mt-4">
+                        {project.langage.map((lang, index) => (
+                            <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2">{lang}</span>
                         ))}
                     </div>
                 </div>
-            </div>
+            )}
         </div>
-    ]
+    );
 }
+

@@ -1,26 +1,49 @@
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 import resume from "../../assets/cv/cv_raphaelle_huynh.pdf";
 
 export default Home;
 
-function Home(props){
-    //State
-
-    //Comportement
-
-    //Affichage
+function Home(){
     return [
-        <div id="Home" className="flex items-center w-full min-h-screen justify-center p-5">
-            <div className="container max-w-5xl lg:m-auto">
-                <h1 className="text-5xl sm:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-t from-yellow-500 to-orange-700" data-aos="fade" data-aos-duration="2000" data-aos-delay="500">{props.titre.content}</h1>
-                <h2 className="text-4xl sm:text-5xl text-yellow-500 mb-4" data-aos="fade" data-aos-duration="2000" data-aos-delay="1000">{props.sousTitre.content}</h2>
-                <p className="text-gray-200 sm:text-justify sm:text-xl text-sm my-8" data-aos="fade" data-aos-duration="2000" data-aos-delay="1500">{props.text.content}</p>
-                <div>
-                    <a href={props.github.content} rel="noreferrer" className=" transition delay-150 box-border px-5 py-2 mt-5 mr-5 border-2 rounded-full border-amber-500 text-center text-amber-500 text-xl hover:bg-amber-500 hover:text-white/100" data-aos="fade" data-aos-duration="2000" data-aos-delay="2000" target="_blank">{props.github.id}</a>
-                    <a href={resume} download="resume_raphaelle_huynh" rel="noreferrer" className=" transition delay-150 box-border px-5 py-2 mt-5 border-2 rounded-full border-amber-500 text-center text-amber-500 text-xl hover:bg-amber-500 hover:text-white/100" data-aos="fade" data-aos-duration="2000" data-aos-delay="2000" target="_blank">CV</a>
+        <section  className='flex min-h-screen w-full px-32 gap-4 items-center' id='Home'>
+            <article className='w-2/3'>
+                <h1 className='text-6xl pb-10 text-amber-400'>
+                    Bonjour 👋, je suis Raphaëlle Huynh
+                </h1>
+                <p className='flex text-lg pb-10 gap-4'>
+                    <span>
+                        📍France, Reims
+                    </span>
+                    <span>
+                        🚗 Ouvert à la mobilité
+                    </span></p>
+                <p className='text-lg pb-10'>
+                    Etudiante en dernière année de licence informatique à l'université de Reims Champagne Ardenne, je m'oriente vers un master en intelligence artificielle et data.
+                </p>
+                <p className='text-lg pb-10'>
+                    Actuellement, je suis à la recherche d'une alternance pour mon master dans le domaine de la data science. Effectivement, passionnée par les mathématiques et la science en générale, ce domaine de l'informatique me permet de réunir mes divers passions.
+                </p>
+                <p className='text-lg pb-10'>
+                    A la suite de mon master je souhaite poursuivre mes études en réalisant un doctorat en intelligence artificielle / data pour approfondir au maximun mes connaissances sur le sujet.
+                </p>
+                <p className='text-lg pb-10'>
+                    En dehors de mes études, j'aime réaliser divers projets informatique afin de découvrir, tester de nouvelle technologies.
+                </p>
+                <div className='flex gap-4'>
+                    <a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                        LinkedIn
+                    </a>
+                    <a href={'https://github.com/RaphHuynh'} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                        Github
+                    </a>
+                    <a href={resume} className='bg-black text-white px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg'>
+                        CV
+                    </a>
                 </div>
-            </div>
-        </div>
+            </article>
+            <aside className='w-1/3'>
+                <img src={"https://media.licdn.com/dms/image/D4E03AQE2qM_v5UQuAA/profile-displayphoto-shrink_800_800/0/1694529792449?e=2147483647&v=beta&t=n_5ZZft0O3O5HSOItCmqFyJRblehOuNuZTeAZBPvrpI"} className='rounded-full bg-amber-400 p-1'></img>
+            </aside>
+        </section>
     ]
 }

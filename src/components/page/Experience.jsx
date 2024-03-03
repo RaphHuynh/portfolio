@@ -35,20 +35,20 @@ function Experience() {
     ];
 
     return (
-        <section className='flex flex-col min-h-screen w-full px-32 justify-center' id="Experience">
-            <h1 className='text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
-                💼 Experiences professionnelles
+        <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Experience">
+            <h1 className='text-2xl md:text-4xl lg:text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
+                💼 Experiences
             </h1>
-            <div className="w-full text-lg">
+            <div className="w-full text-sm md:text-lg">
                 {experience.map((exp, index) => (
-                    <div key={index} className="flex items-center py-4">
-                        <div className="w-2/5 px-4">
-                            <h2 className="text-xl font-bold text-amber-500">{exp.id}</h2>
+                    <div key={index} className="flex items-center pb-5 md:py-4 flex-col md:flex-row">
+                        <div className="md:w-2/5 md:px-4 pb-4 md:pb-auto">
+                            <h2 className="pb-4 md:text-xl font-bold text-amber-500">{exp.id}</h2>
                             <p className="">🗓️ {exp.date}</p>
-                            <p className=" font-bold">🏢 {exp.entreprise}</p>
+                            <p className="font-bold">🏢 {exp.entreprise}</p>
                             <p className="">📍 {exp.lieux}</p>
                         </div>
-                        <div className="w-3/5 bg-slate-50 dark:bg-white/10 p-4 rounded-md ">
+                        <div className="md:w-3/5 bg-slate-50 dark:bg-white/10 p-4 rounded-md ">
                             <p className="text-justify">{exp.content}</p>
                             <p className="text-justify">{exp.more}</p>
                             {Array.isArray(exp.langage) && (

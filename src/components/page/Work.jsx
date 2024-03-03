@@ -17,38 +17,38 @@ function Work(props) {
     ];
 
     return (
-        <section className="flex flex-col min-h-screen w-full px-32 pb-20 justify-center" id="Projet">
-            <h1 className='text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
+        <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center" id="Projet">
+            <h1 className='text-2xl md:text-4xl lg:text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
                 📂 Projets
             </h1>
-            <p className="pb-10 text-lg">Cette section présente les divers projets que j'ai réalisé et que j'ai choisi de mettre en avant. <br />
+            <p className="pb-10 text-sm md:text-lg">Cette section présente les divers projets que j'ai réalisé et que j'ai choisi de mettre en avant. <br />
                 Pour trouver mes autres projets personnels il faut se rendre sur github.</p>
-            <h2 className="text-4xl mb-4 text-amber-500">🏢 Freelance</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-xl md:text-4xl mb-4 text-amber-500">🏢 Freelance</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {freelance.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🏢" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">📊 Data Science</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-xl md:text-4xl my-4 text-amber-500">📊 Data Science</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {dataScience.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="📊" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">🌐 Web</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-xl md:text-4xl my-4 text-amber-500">🌐 Web</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {web.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🌐" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">🛠️ Back-end</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-xl md:text-4xl my-4 text-amber-500">🛠️ Back-end</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {back.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🛠️" />
                 ))}
             </div>
-            <h2 className="text-4xl my-4 text-amber-500">🎓 Universitaire</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-xl md:text-4xl my-4 text-amber-500">🎓 Universitaire</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {universitaire.map((project, index) => (
                     <ProjectCard key={index} project={project} emoji="🎓" />
                 ))}
@@ -65,10 +65,10 @@ function ProjectCard({ project, emoji }) {
                     <div className="flex flex-col justify-between h-full">
                         <div>
                             <div className="flex items-center mb-4">
-                                <span className="text-2xl mr-2">{emoji}</span>
-                                <h2 className="text-xl text-yellow-400 font-bold">{project.id}</h2>
+                                <span className="hidden md:block text-2xl mr-2">{emoji}</span>
+                                <h2 className="md:text-xl text-yellow-400 font-bold">{project.id}</h2>
                             </div>
-                            <p className="text-lg mb-4">{project.content}</p>
+                            <p className="text-sm md:text-lg mb-4">{project.content}</p>
                         </div>
                         <div className="flex gap-4 items-center mt-auto">
                             {project.github && (
@@ -81,7 +81,7 @@ function ProjectCard({ project, emoji }) {
                         </div>
                         <div className="flex flex-wrap mt-4">
                             {project.langage.map((lang, index) => (
-                                <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
+                                <span key={index} className="text-sm md:text-lg inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
                             ))}
                         </div>
                     </div>
@@ -91,10 +91,10 @@ function ProjectCard({ project, emoji }) {
                 <div className="flex flex-col justify-between bg-slate-50 dark:bg-white/10 p-6 rounded-lg">
                     <div>
                         <div className="flex items-center mb-4">
-                            <span className="text-2xl mr-2">{emoji}</span>
-                            <h2 className="text-xl text-yellow-400 font-bold">{project.id}</h2>
+                            <span className="hidden md:block text-2xl mr-2">{emoji}</span>
+                            <h2 className="md:text-xl text-yellow-400 font-bold">{project.id}</h2>
                         </div>
-                        <p className="text-lg mb-4">{project.content}</p>
+                        <p className="text-sm md:text-lg mb-4">{project.content}</p>
                     </div>
                     <div className="flex gap-4 items-center mt-auto">
                         {project.github && (
@@ -107,7 +107,7 @@ function ProjectCard({ project, emoji }) {
                     </div>
                     <div className="flex flex-wrap mt-4">
                         {project.langage.map((lang, index) => (
-                            <span key={index} className="inline-block bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
+                            <span key={index} className="inline-block text-sm md:text-lg bg-yellow-50 border border-yellow-400 text-yellow-400 px-2 py-1 rounded mr-2 mb-2 dark:bg-yellow-500 dark:border-yellow-200 dark:text-yellow-200">{lang}</span>
                         ))}
                     </div>
                 </div>

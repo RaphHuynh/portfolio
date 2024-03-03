@@ -1,5 +1,5 @@
 import 'aos/dist/aos.css';
-import resume from "../../assets/cv/cv_raphaelle_huynh.pdf";
+import resume from "../../assets/cv/CV_raphaelle_Huynh.pdf";
 
 export default Home;
 

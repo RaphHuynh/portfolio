@@ -1,6 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import image from "../../assets/illustration.svg"
 export default Competence;
 
 function Competence(){
@@ -9,11 +9,9 @@ function Competence(){
 
     const dataScience = [{id:"Anaconda"},{id:"Pandas"},{id:"Numpy"},{id:"Matplotlib"},{id:"Scikit-learn"},{id:"Tensorflow"},{id:"Pytorch"}]
 
-    const data = [{id:"MySQL"},{id:"PL/SQL - Oracle"},{id:"NoSQL"}]
-
     const web = [{id:"Fast Api"},{id:"ReactJS"},{id:"Laravel"},{id:"Wordpress"},{id:"Tailwind CSS"},{id:"Bootstrap"}]
 
-    const autre = [{id:"Git"},{id:"Bash"},{id:"UML"},{id:"Merise"}]
+    const autre = [{id:"MySQL"},{id:"PL/SQL - Oracle"},{id:"NoSQL"},{id:"Git"},{id:"Bash"},{id:"UML"},{id:"Merise"}]
 
     //comportement
 
@@ -28,46 +26,60 @@ function Competence(){
                     Voici les différentes technologies que j'utilise au quotidien dans mon travail, à l'université ou pour mes projets personnels.
                 </p>
             </aside>
-            <article className='grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 text-sm md:text-lg'>
-                <div className="w-full p-6 bg-slate-50 dark:bg-white/10 rounded-lg">
-                    <h2 className='text-xl md:text-2xl lg:text-3xl text-yellow-400 text-center pb-4'>🛠️ Langages</h2>
-                    <ul className=''>
-                        {langage.map(item => (
-                            <li className="my-1" key={item.id}>{item.id}</li>
-                        ))}
-                    </ul>
+            <article className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 text-sm md:text-lg'>
+                <div className='grid gap-6 grid-rows-2'>
+                    <div className="w-full  rounded-lg border border-amber-400">
+                        <h2 className='flex text-xl md:text-xl lg:text-2xl text-yellow-400 text-center py-4 justify-center items-center border-b border-amber-400 bg-amber-200/20'>Langages</h2>
+                        <div className='p-6'>
+                            <p className='text-white/80 mb-2'>Les différents langages de programmation que j'utilise régulièrement</p>
+                            <div className='flex  flex-wrap'>
+                                {langage.map(item => (
+                                    <span className="text-white mr-2" key={item.id}>{item.id}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full rounded-lg border border-amber-400">
+                        <h2 className='flex text-xl md:text-xl lg:text-2xl text-yellow-400 text-center py-4 justify-center items-center border-b border-amber-400 bg-amber-200/20'>Data Science</h2>
+                        <div className='p-6'>
+                            <p className='text-white/80 mb-2'>Librairie python que j'utilise dans le domaine de la data science</p>
+                            <div className='flex  flex-wrap'>
+                                {dataScience.map(item => (
+                                    <span className="text-white mr-2" key={item.id}>{item.id}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="w-full p-6 bg-slate-50 dark:bg-white/10 rounded-lg">
-                    <h2 className='text-xl md:text-2xl lg:text-3xl text-yellow-400 text-center pb-4'>📊 Data science</h2>
-                    <ul>
-                        {dataScience.map(item => (
-                            <li className="my-1" key={item.id}>{item.id}</li>
-                        ))}
-                    </ul>
+
+                <div className='h-full flex items-center'>
+                    <img src={image}>
+                    </img>
                 </div>
-                <div className="w-full p-6 bg-slate-50 dark:bg-white/10 rounded-lg">
-                    <h2 className='text-xl md:text-2xl lg:text-3xl text-yellow-400 text-center pb-4'>🗃️ Database</h2>
-                    <ul>
-                        {data.map(item => (
-                            <li className="my-1" key={item.id}>{item.id}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="w-full p-6 bg-slate-50 dark:bg-white/10 rounded-lg">
-                    <h2 className='text-xl md:text-2xl lg:text-3xl text-yellow-400 text-center pb-4'>🌐 Web</h2>
-                    <ul>
-                        {web.map(item => (
-                            <li className="my-1" key={item.id}>{item.id}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="w-full p-6 bg-slate-50 dark:bg-white/10 rounded-lg">
-                    <h2 className='text-xl md:text-2xl lg:text-3xl text-yellow-400 text-center pb-4'>⚙️ Autres</h2>
-                    <ul>
-                        {autre.map(item => (
-                            <li className="my-1" key={item.id}>{item.id}</li>
-                        ))}
-                    </ul>
+
+                <div className='grid gap-6 grid-rows-2'>
+                    <div className="w-full  rounded-lg border border-amber-400">
+                        <h2 className='flex text-xl md:text-xl lg:text-2xl text-yellow-400 text-center py-4 justify-center items-center border-b border-amber-400 bg-amber-200/20'>Web</h2>
+                        <div className='p-6'>
+                            <p className='text-white/80 mb-2'>Framework et CMS web que j'utilise pour developper des applications web</p>
+                            <div className='flex  flex-wrap'>
+                                {web.map(item => (
+                                    <span className="text-white mr-2" key={item.id}>{item.id}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full  rounded-lg border border-amber-400">
+                        <h2 className='flex text-xl md:text-xl lg:text-2xl text-yellow-400 text-center py-4 justify-center items-center border-b border-amber-400 bg-amber-200/20'>Autres</h2>
+                        <div className='p-6'>
+                            <p className='text-white/80 mb-2'>Base de données et méthodes que j'utilise pour réaliser mes différents projets</p>
+                            <div className='flex  flex-wrap'>
+                                {autre.map(item => (
+                                    <span className="text-white mr-2" key={item.id}>{item.id}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </article>
         </section>

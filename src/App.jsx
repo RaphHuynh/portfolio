@@ -1,8 +1,6 @@
 import './App.css';
 import { useState } from "react";
 
-import AnimatedCursor from "react-animated-cursor";
-
 import Nav from "./components/navigation/Nav"
 import Home from "./components/page/Home"
 import NavReseaux from './components/navigation/NavReseaux';

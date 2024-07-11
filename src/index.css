@@ -25,6 +25,14 @@ h1, h2{
   font-family: "satochi";
 }
 
+body{
+  background-color: #f9f9f9;
+}
+
+nav{
+  background-color: #f9f9f9;
+}
+
 @media (prefers-color-scheme: dark) {
 
     body {

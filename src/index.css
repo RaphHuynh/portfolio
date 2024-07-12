@@ -12,11 +12,6 @@
   src: url("./assets/fonts/Supreme-Regular.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "text-footer";
-  src: url("./fonts/DancingScript-Regular.otf") format("opentype");
-}
-
 p, a, li, span{
   font-family: "supreme";
 }
@@ -26,11 +21,11 @@ h1, h2{
 }
 
 body{
-  background-color: #f9f9f9;
+  background-color: #dee4fe;
 }
 
 nav{
-  background-color: #f9f9f9;
+  background-color: #dee4fe;
 }
 
 @media (prefers-color-scheme: dark) {

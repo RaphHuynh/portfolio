@@ -89,7 +89,7 @@ function Experience() {
 
     return (
         <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Experience">
-            <h1 className='text-2xl md:text-4xl lg:text-6xl text-yellow-400 border-b border-yellow-400 h-fit py-2 w-fit mb-10'>
+            <h1 className='text-2xl md:text-4xl lg:text-6xl text-yellow-400 h-fit py-2 w-fit mb-10'>
                 💼 Experiences & 🎓 Formations
             </h1>
             <article className='dark:text-white pb-10 text-lg'>
@@ -113,25 +113,29 @@ function Experience() {
                         <div className={`timeline-content cursor-pointer my-2 hover:bg-amber-200/10 border border-amber-400 rounded-lg ${index % 2 === 0 ? 'timeline-start' : 'timeline-end'}`} onClick={() => openModal(exp)}>
                             <h2 className="text-2xl font-black text-yellow-400 border-b border-amber-400 p-6 bg-amber-200/20 text-center">{exp.id}</h2>
                             <div className='p-6'>
-                                <p className="mt-2">🗓️ {exp.date}</p>
                                 <p className="font-bold mt-1">🏢 {exp.entreprise}</p>
                                 <p className="mt-1">📍 {exp.lieux}</p>
                                 {exp.content && <p className="mt-1 italic text-white/80">{exp.content}</p>}
                             </div>
                         </div>
+                        <div className={`cursor-pointer my-2 hover:bg-amber-200/10 ${index % 2 === 0 ? 'timeline-end' : 'timeline-start'}`} onClick={() => openModal(exp)}>
+                            
+                                <p className="mt-2">🗓️ {exp.date}</p>
+
+                        </div>
                         <hr class="bg-amber-400/50" />
                         {modalOpen && selectedExperience && selectedExperience.id === exp.id && (
-                            <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black/40">
-                                <div className="relative mx-auto max-w-lg md:max-w-2xl bg-[#0f1628] border border-amber-400 rounded-lg shadow-lg p-6 md:p-8">
+                            <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black/60">
+                                <div className="relative mx-auto max-w-lg md:max-w-2xl bg-[#0f1628] rounded-lg shadow-lg p-6 md:p-8">
                                     <button onClick={closeModal} className="absolute top-0 right-0 m-4 text-gray-200 hover:text-gray-500 focus:outline-none">
                                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                         </svg>
                                     </button>
-                                    <h2 className="text-2xl md:text-3xl font-bold text-amber-500 mb-4">{selectedExperience.id}</h2>
-                                    <p className="font-bold mb-2">🏢 {selectedExperience.entreprise}</p>
-                                    <p className="text-lg mb-4">🗓️ {selectedExperience.date}</p>
-                                    <p className="mb-2">📍 {selectedExperience.lieux}</p>
+                                    <h2 className="text-2xl md:text-3xl font-bold text-amber-500 mb-4 text-center">{selectedExperience.id}</h2>
+                                    <p className="font-bold mb-1 text-center text-white/80"> {selectedExperience.entreprise}</p>
+                                    <p className="text-lg mb-1 text-center text-white/80">{selectedExperience.date}</p>
+                                    <p className="mb-4 text-center text-white/80">{selectedExperience.lieux}</p>
                                     <p className="mb-4">{selectedExperience.content}</p>
                                     {selectedExperience.more && <p className="italic mb-4">{selectedExperience.more}</p>}
                                     {Array.isArray(selectedExperience.langage) && (

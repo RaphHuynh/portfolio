@@ -18,7 +18,7 @@ function Home() {
                         🚗 Ouvert à la mobilité
                     </span>
                     <span>
-                        🖥️ Télévrail possible
+                        🖥️ Télétravail possible
                     </span>
                 </p>
                 <div className='grid grid-cols-3 gap-4 pb-6 lg:pb-10'>
@@ -53,13 +53,13 @@ function Home() {
                     Passionnée par les mathématiques, l'informatique et la science en générale, je souhaite réaliser un doctorat dans le domaine de l'intelligence artificielle afin d'approfondir au maximum mes connaissances dans ce domaine.
                 </p>
                 <div className='flex grid grid-cols-3 gap-4 text-center w-1/2'>
-                    <a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='border border-amber-400 text-amber-400 hover:text-[#0f1628] px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg rounded'>
+                    <a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='border border-amber-400 hover:text-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-[#0f1628] transition delay-75 text-lg rounded'>
                         LinkedIn
                     </a>
-                    <a href={'https://github.com/RaphHuynh'} className='border border-amber-400 text-amber-400 hover:text-[#0f1628] px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg rounded'>
+                    <a href={'https://github.com/RaphHuynh'} className='border border-amber-400 hover:text-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-[#0f1628] transition delay-75 text-lg rounded'>
                         Github
                     </a>
-                    <a href={resume} className='border border-amber-400 text-amber-400 hover:text-[#0f1628] px-2 py-1 hover:bg-amber-400 transition delay-75 text-lg rounded'>
+                    <a href={resume} className='border border-amber-400 hover:text-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-[#0f1628] transition delay-75 text-lg rounded'>
                         CV
                     </a>
                 </div>

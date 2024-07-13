@@ -28,7 +28,7 @@ nav{
   background-color: #dee4fe;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
 
     body {
       background-color: #0f1628;
@@ -46,4 +46,4 @@ nav{
       color: white;
     }
     
-  }
+  }*/

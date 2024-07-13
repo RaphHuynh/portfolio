@@ -75,7 +75,7 @@ function Work() {
 
     return (
         <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center" id="Projet">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 dark:text-yellow-400 h-fit py-2 w-fit mb-10'>
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'>
                 📂 Projets
             </h1>
             <p className="pb-10 text-sm md:text-lg text-slate-600">
@@ -86,8 +86,8 @@ function Work() {
                 {projets.map((projet, index) => (
                     <div key={index} className="cursor-pointer" onClick={() => openModal(projet)}>
                         <div className="relative">
-                            <img src={projet.img} alt={projet.id} className="w-full h-56 object-cover rounded brightness-90 hover:brightness-100 dark:opacity-80 dark:hover:opacity-100 transition duration-300 dark:border-2 dark:border-amber-400 delay-75"/>
-                            <h2 className="text-indigo-500 dark:text-amber-400 mt-2 text-xl">{projet.id}</h2>
+                            <img src={projet.img} alt={projet.id} className="w-full h-56 object-cover rounded brightness-90 hover:brightness-100 transition duration-300"/>
+                            <h2 className="text-indigo-500 mt-2 text-xl">{projet.id}</h2>
                         </div>
                     </div>
                 ))}
@@ -95,20 +95,20 @@ function Work() {
 
             {modalOpen && selectedProjet && (
                 <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black bg-opacity-60">
-                    <div className="relative mx-auto max-w-3xl bg-[#dee4fe] dark:bg-[#0f1628] rounded-lg shadow-lg p-6 md:p-8 ">
-                        <button onClick={closeModal} className="absolute top-0 right-0 m-4 ext-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-500 focus:outline-none">
+                    <div className="relative mx-auto max-w-3xl bg-[#dee4fe] rounded-lg shadow-lg p-6 md:p-8 ">
+                        <button onClick={closeModal} className="absolute top-0 right-0 m-4 text-gray-800 hover:text-gray-500 focus:outline-none">
                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <h2 className="text-2xl md:text-3xl font-bold text-indigo-500 dark:text-amber-500 mb-4 text-center">{selectedProjet.id}</h2>
+                        <h2 className="text-2xl md:text-3xl font-bold text-indigo-500 mb-4 text-center">{selectedProjet.id}</h2>
                         <img src={selectedProjet.img} alt={selectedProjet.id} className="mb-4 w-full h-96 object-cover rounded" />
-                        <p className="text-slate-600 dark:text-white/80 mb-4">
+                        <p className="text-slate-600 mb-4">
                             {selectedProjet.content}
                         </p>
                         <div className='flex flex-wrap'>
                             {selectedProjet.lang.map((language, index) => (
-                                <span key={index} className='bg-indigo-300 text-indigo-700 px-2 py-1 m-1 rounded dark:bg-amber-500 dark:text-[#0f1628]'>
+                                <span key={index} className='bg-indigo-300 text-indigo-700 px-2 py-1 m-1 rounded'>
                                     {language}
                                 </span>
                             ))}
@@ -144,3 +144,4 @@ function Work() {
 }
 
 export default Work;
+

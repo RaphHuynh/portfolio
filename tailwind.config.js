@@ -4,11 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'media',
+  darkMode: false, // Désactiver le mode sombre dans Tailwind CSS
   theme: {
     extend: {},
   },
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: false,
+  },
 }

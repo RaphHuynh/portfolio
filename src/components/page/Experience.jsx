@@ -98,7 +98,7 @@ function Experience() {
                 {experience.map((exp, index) => (
                     <li key={index} className="">
                         <hr className="bg-yellow-400/70" />
-                        <div className="timeline-middle px-2">
+                        <div className="hidden md:block md:timeline-middle px-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -109,17 +109,18 @@ function Experience() {
                                 clipRule="evenodd" />
                             </svg>
                         </div>
-                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white/70 hover:bg-white/30 rounded-lg ${index % 2 === 0 ? 'timeline-start' : 'timeline-end'}`} onClick={() => openModal(exp)}>
-                            <h2 className="flex md:text-lg lg:text-xl text-indigo-600 p-6 bg-indigo-300 justify-center rounded-t-lg">{exp.id}</h2>
+                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white/70 hover:bg-white/30 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)}>
+                            <h2 className="flex text-sm md:text-lg lg:text-xl text-indigo-600 p-6 bg-indigo-300 justify-center rounded-t-lg">{exp.id}</h2>
                             <div className='p-6'>
-                                <p className="font-bold mt-1 text-slate-600">🏢 {exp.entreprise}</p>
-                                <p className="mt-1 text-slate-600">📍 {exp.lieux}</p>
-                                {exp.content && <p className="mt-1 italic text-slate-500">{exp.content}</p>}
+                                <p className='md:hidden text-sm text-slate-600'>🗓️ {exp.date}</p>
+                                <p className="font-bold mt-1 text-slate-600 text-sm md:text-base">🏢 {exp.entreprise}</p>
+                                <p className="mt-1 text-slate-600 text-sm md:text-base">📍 {exp.lieux}</p>
+                                {exp.content && <p className="mt-1 italic text-slate-500 text-sm md:text-base">{exp.content}</p>}
                             </div>
                         </div>
-                        <div className={`cursor-pointer my-2 ${index % 2 === 0 ? 'timeline-end' : 'timeline-start'}`} onClick={() => openModal(exp)}>
+                        <div className={`cursor-pointer my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`} onClick={() => openModal(exp)}>
                             
-                                <p className="p-4 text-slate-600 bg-white/70 rounded shadow">🗓️ {exp.date}</p>
+                                <p className="p-4 text-slate-600 bg-white/70 rounded shadow text-sm md:text-base">🗓️ {exp.date}</p>
 
                         </div>
                         <hr className="bg-yellow-400/70" />
@@ -153,9 +154,9 @@ function Experience() {
             <article className='text-slate-600 py-10 text-lg lg:text-xl'>
                 <p>Mes formations réalisées ou en cours.</p>
             </article>
-            <div className="w-full text-sm md:text-lg flex grid grid-cols-3 gap-4">
+            <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3">
                 {formations.map((formation, index) => (
-                    <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg">
+                    <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg my-4 md:m-0">
                         <div className="pb-4 md:pb-auto h-full">
                             <div className='flex w-full items-center justify-center px-10'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" className='fill-indigo-500 my-2  bg-indigo-200 rounded-full p-4'viewBox="0 0 16 16">

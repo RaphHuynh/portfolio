@@ -50,7 +50,7 @@ function Competence(){
                     </div>
                 </div>
 
-                <div className='h-full flex items-center'>
+                <div className='h-full md:flex items-center hidden'>
                     <img src={image} alt="Illustration">
                     </img>
                 </div>

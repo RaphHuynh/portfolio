@@ -25,7 +25,7 @@ function Work() {
         { 
             id: 'Bot Discord : Méteo', 
             img: ImgBotDisMeteo, 
-            content: "Bot discord affichant la météo de différentse villes à l'aide d'une API météo (OpenWeatherMap).",
+            content: "Bot discord affichant la météo de différentes villes à l'aide d'une API météo (OpenWeatherMap).",
             lang:["Python"]
         },
         { 
@@ -49,7 +49,7 @@ function Work() {
         { 
             id: 'Site Web : HS\'R', 
             img: ImgHSR, 
-            content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la réjoin Grand-Est.",
+            content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la région Grand-Est.",
             lang:["JavaScript","ReactJS"] 
         },
         { 

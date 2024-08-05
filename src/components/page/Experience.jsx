@@ -28,7 +28,7 @@ function Experience() {
             date:"Septembre 2019 - Juin 2024",
             lieux : "Reims",
             entreprise : "Université de Reims",
-            more : "Pause d'un ans après la 1 er année de licence - Rang : Dans le top 10 chaque années"
+            more : "Pause d'un an après la 1 er année de licence - Rang : Dans le top 10 chaque année"
         },
         {
             id:"Licence  Electronique, Energie Electrique, Automatique",
@@ -49,11 +49,11 @@ function Experience() {
             entreprise: "CHU - IIAS (institut d'intelligence artificielle en santé)"
         },
         {
-            id: "Freelance - Developpeuse Web",
-            content: "Developpement d'un outils en ReactJS.",
+            id: "Freelance - Chef de projet",
+            content: "Developpement d'outils web pour générer des base de données, gestion de projet et management d'équipes..",
             langage: ["JavaScript", "ReactJS", "TailwindCSS"],
             date: "Juillet 2024 - Actuellement",
-            lieux: "Lille",
+            lieux: "Paris",
             entreprise: "Freaks United",
             more: "(Contrat de confidentialité)"
         },
@@ -154,7 +154,7 @@ function Experience() {
             <article className='text-slate-600 py-10 text-lg lg:text-xl'>
                 <p>Mes formations réalisées ou en cours.</p>
             </article>
-            <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3">
+            <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3 md:gap-4">
                 {formations.map((formation, index) => (
                     <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg my-4 md:m-0">
                         <div className="pb-4 md:pb-auto h-full">

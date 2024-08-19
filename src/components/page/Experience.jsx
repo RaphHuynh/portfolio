@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import CV from "../../assets/cv/CV_raphaelle_Huynh.pdf"
+import AOS from 'aos';
+
+AOS.init();
 
 function Experience() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -88,17 +91,26 @@ function Experience() {
 
     return (
         <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Experience">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'>
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'
+                data-aos="fade-up"
+            >
                 💼 Experiences & 🎓 Formations
             </h1>
-            <article className='text-slate-600 pb-10 text-lg lg:text-xl'>
+            <article className='text-slate-600 pb-10 text-lg lg:text-xl'
+                data-aos="fade-up"
+                data-aos-delay="200"
+            >
                 <p>Mes expériences professionnelles réalisées ou en cours.</p>
             </article>
             <ul className="timeline timeline-vertical">
                 {experience.map((exp, index) => (
                     <li key={index} className="">
-                        <hr className="bg-yellow-400/70" />
-                        <div className="hidden md:block md:timeline-middle px-2">
+                        <hr className="bg-yellow-400/70" 
+                            data-aos="zoom-in"
+                        />
+                        <div className="hidden md:block md:timeline-middle px-2"
+                            data-aos="zoom-in"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -109,7 +121,10 @@ function Experience() {
                                 clipRule="evenodd" />
                             </svg>
                         </div>
-                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white/70 hover:bg-white/30 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)}>
+                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white/70 hover:bg-white/30 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)} 
+                            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+                            data-aos-delay="200"
+                        >
                             <h2 className="flex text-sm md:text-lg lg:text-xl text-indigo-600 p-6 bg-indigo-300 justify-center rounded-t-lg">{exp.id}</h2>
                             <div className='p-6'>
                                 <p className='md:hidden text-sm text-slate-600'>🗓️ {exp.date}</p>
@@ -118,12 +133,17 @@ function Experience() {
                                 {exp.content && <p className="mt-1 italic text-slate-500 text-sm md:text-base">{exp.content}</p>}
                             </div>
                         </div>
-                        <div className={`cursor-pointer my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`} onClick={() => openModal(exp)}>
+                        <div className={`cursor-pointer my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`} onClick={() => openModal(exp)}
+                            data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
+                            data-aos-delay="200"
+                            >
                             
                                 <p className="p-4 text-slate-600 bg-white/70 rounded shadow text-sm md:text-base">🗓️ {exp.date}</p>
 
                         </div>
-                        <hr className="bg-yellow-400/70" />
+                        <hr className="bg-yellow-400/70" 
+                            data-aos="zoom-in"
+                        />
                         {modalOpen && selectedExperience && selectedExperience.id === exp.id && (
                             <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black/60">
                                 <div className="relative mx-auto max-w-lg md:max-w-2xl bg-[#dee4fe] rounded-lg shadow-lg p-6 md:p-8">
@@ -151,12 +171,17 @@ function Experience() {
                     </li>
                 ))}
             </ul>
-            <article className='text-slate-600 py-10 text-lg lg:text-xl'>
+            <article className='text-slate-600 py-10 text-lg lg:text-xl'
+                data-aos="fade-up"
+            >
                 <p>Mes formations réalisées ou en cours.</p>
             </article>
             <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3 md:gap-4">
                 {formations.map((formation, index) => (
-                    <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg my-4 md:m-0">
+                    <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg my-4 md:m-0"
+                        data-aos="fade-up"
+                        data-aos-delay={index*200}
+                    >
                         <div className="pb-4 md:pb-auto h-full">
                             <div className='flex w-full items-center justify-center px-10'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" className='fill-indigo-500 my-2  bg-indigo-200 rounded-full p-4'viewBox="0 0 16 16">
@@ -175,7 +200,9 @@ function Experience() {
                     </div>
                 ))}
             </div>
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center mt-10"
+                data-aos="zoom-in"
+            >
                 <a
                     href={CV}
                     download

@@ -7,16 +7,15 @@ import NavReseaux from './components/navigation/NavReseaux';
 import Competence from './components/page/Competence'
 import Experience from './components/page/Experience';
 import Work from './components/page/Work';
+import AOS from 'aos';
+
+AOS.init({
+  once: true,
+});
 
 function App() {
   //state
-  //Navigateur
-  const [textNav, setTextNav] = useState([
-    {id : "#Home", content : "Accueil"},
-    {id : "#Competence", content :"Compétences"},
-    {id : "#Experience", content :"Expériences"},
-    {id : "#Projet", content : "Projets"}
-  ]);
+
   //reseaux
   const [github, setGithub] = useState(
     {id: "GitHub", content : "https://github.com/RaphHuynh"}
@@ -46,10 +45,7 @@ function App() {
   //Affichage
   return (
     <div className='w-full'>
-      <Nav
-        textNav={textNav}
-        key={textNav.id}
-      />
+      <Nav/>
       <NavReseaux
         github={github}
         linkedln={linkedln}

@@ -7,6 +7,9 @@ import ImgChatBotCovid from '../../assets/img_projet/chatbot_covid.png';
 import ImgCoursIA from '../../assets/img_projet/cours_ia.png';
 import ImgFRDesDev from '../../assets/img_projet/frdesdev.png';
 import ImgHSR from '../../assets/img_projet/hsr.png';
+import AOS from 'aos';
+
+AOS.init();
 
 function Work() {
     const projets = [
@@ -75,16 +78,23 @@ function Work() {
 
     return (
         <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center" id="Projet">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'>
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'
+                data-aos="fade-up"
+            >
                 📂 Projets
             </h1>
-            <p className="pb-10 text-sm md:text-lg text-slate-600">
+            <p className="pb-10 text-sm md:text-lg text-slate-600"
+                data-aos="fade-up"
+                data-aos-delay="200"
+            >
                 Cette section présente les divers projets que j'ai réalisés et que j'ai choisi de mettre en avant. <br />
                 Pour trouver mes autres projets personnels, il faut se rendre sur GitHub.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projets.map((projet, index) => (
-                    <div key={index} className="cursor-pointer" onClick={() => openModal(projet)}>
+                    <div key={index} className="cursor-pointer" onClick={() => openModal(projet)}
+                        data-aos="fade-up"
+                    >
                         <div className="relative">
                             <img src={projet.img} alt={projet.id} className="w-full h-56 object-cover rounded brightness-90 hover:brightness-100 transition duration-300"/>
                             <h2 className="text-indigo-500 mt-2 text-xl">{projet.id}</h2>
@@ -116,7 +126,10 @@ function Work() {
                     </div>
                 </div>
             )}
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center mt-10" 
+                data-aos="zoom-in"
+                data-aos-delay="200"
+            >
                 <a
                     href={"https://github.com/RaphHuynh"}
                     download

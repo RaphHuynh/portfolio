@@ -7,12 +7,19 @@ import ImgChatBotCovid from '../../assets/img_projet/chatbot_covid.png';
 import ImgCoursIA from '../../assets/img_projet/cours_ia.png';
 import ImgFRDesDev from '../../assets/img_projet/frdesdev.png';
 import ImgHSR from '../../assets/img_projet/hsr.png';
+import ImgPortRaphDem from '../../assets/img_projet/portfolio_raph_demets.png';
 import AOS from 'aos';
 
 AOS.init();
 
 function Work() {
     const projets = [
+        {
+            id: 'Portfolio Raphël Demets - Freelance',
+            img: ImgPortRaphDem,
+            content: "Portfolio réalisé pour un client dans le domaine de la vfx et du montage vidéo.",
+            lang:["ReactJS","JavaScript","TailwindCSS"]
+        },
         {
             id: 'Site web Française des developpeuse',
             img: ImgFRDesDev,
@@ -50,7 +57,7 @@ function Work() {
             lang:["Python","JSON"]
         },
         { 
-            id: 'Site Web : HS\'R', 
+            id: 'Site Web : HS\'R - Freelance', 
             img: ImgHSR, 
             content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la région Grand-Est.",
             lang:["JavaScript","ReactJS"] 
@@ -78,7 +85,7 @@ function Work() {
 
     return (
         <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center" id="Projet">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
                 data-aos="fade-up"
             >
                 📂 Projets

@@ -8,6 +8,7 @@ import Competence from './components/page/Competence'
 import Experience from './components/page/Experience';
 import Work from './components/page/Work';
 import AOS from 'aos';
+import Tarif from './components/page/Tarif';
 
 AOS.init({
   once: true,
@@ -57,6 +58,7 @@ function App() {
         projet={projet}
         key={projet.id}
       />
+      <Tarif/>
     </div>
   );
 }

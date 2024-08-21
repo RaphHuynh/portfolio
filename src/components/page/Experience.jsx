@@ -54,11 +54,11 @@ function Experience() {
         {
             id: "Freelance - Chef de projet",
             content: "Developpement d'outils web pour générer des base de données, gestion de projet et management d'équipes..",
-            langage: ["JavaScript", "ReactJS", "TailwindCSS"],
+            langage: ["JavaScript", "ReactJS", "TailwindCSS","TypeScript", "NextJS", "React Flow"],
             date: "Juillet 2024 - Actuellement",
             lieux: "Paris",
             entreprise: "Freaks United",
-            more: "(Contrat de confidentialité)"
+            more: "Commencé en tant que développeuse web, j'ai évolué en chef de projet pour gérer une équipe de développeurs et d'alternants."
         },
         {
             id: "Stage - Assistante de recherche en traitement d'image médicale",
@@ -67,7 +67,7 @@ function Experience() {
             date: "Avril 2024 - juin 2024",
             lieux: "Reims",
             entreprise: "Université de Reims Champagne-Ardenne",
-            more: "Traitement sur des echographies pulmonaires afin de détecter les lignes B à l'aide d'algorithmes utilisant les flux optiques."
+            more: "Traitement d'image sur des echographies pulmonaires afin de détecter les lignes B à l'aide d'algorithmes utilisant les flux optiques."
         },
         {
             id: "Stage - Developpeuse WordPress",
@@ -91,7 +91,7 @@ function Experience() {
 
     return (
         <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Experience">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10'
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
                 data-aos="fade-up"
             >
                 💼 Experiences & 🎓 Formations
@@ -105,7 +105,7 @@ function Experience() {
             <ul className="timeline timeline-vertical">
                 {experience.map((exp, index) => (
                     <li key={index} className="">
-                        <hr className="bg-yellow-400/70" 
+                        <hr className="bg-amber-400" 
                             data-aos="zoom-in"
                         />
                         <div className="hidden md:block md:timeline-middle px-2"
@@ -114,18 +114,18 @@ function Experience() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
-                                className="h-5 w-5 fill-yellow-500">
+                                className="h-5 w-5 fill-amber-500">
                                 <path
                                 fillRule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                                 clipRule="evenodd" />
                             </svg>
                         </div>
-                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white/70 hover:bg-white/30 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)} 
+                        <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white hover:bg-indigo-100 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)} 
                             data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
                             data-aos-delay="200"
                         >
-                            <h2 className="flex text-sm md:text-lg lg:text-xl text-indigo-600 p-6 bg-indigo-300 justify-center rounded-t-lg">{exp.id}</h2>
+                            <h2 className="flex text-sm md:text-lg lg:text-xl text-white p-6 bg-indigo-500 justify-center rounded-t-lg">{exp.id}</h2>
                             <div className='p-6'>
                                 <p className='md:hidden text-sm text-slate-600'>🗓️ {exp.date}</p>
                                 <p className="font-bold mt-1 text-slate-600 text-sm md:text-base">🏢 {exp.entreprise}</p>
@@ -133,15 +133,15 @@ function Experience() {
                                 {exp.content && <p className="mt-1 italic text-slate-500 text-sm md:text-base">{exp.content}</p>}
                             </div>
                         </div>
-                        <div className={`cursor-pointer my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`} onClick={() => openModal(exp)}
+                        <div className={`bg-white my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`}
                             data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
                             data-aos-delay="200"
                             >
                             
-                                <p className="p-4 text-slate-600 bg-white/70 rounded shadow text-sm md:text-base">🗓️ {exp.date}</p>
+                                <p className="p-4 text-slate-600 rounded shadow text-sm md:text-base">🗓️ {exp.date}</p>
 
                         </div>
-                        <hr className="bg-yellow-400/70" 
+                        <hr className="bg-amber-400" 
                             data-aos="zoom-in"
                         />
                         {modalOpen && selectedExperience && selectedExperience.id === exp.id && (
@@ -178,7 +178,7 @@ function Experience() {
             </article>
             <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3 md:gap-4">
                 {formations.map((formation, index) => (
-                    <div key={index} className="bg-white/80 py-6 rounded-lg shadow-lg my-4 md:m-0"
+                    <div key={index} className="bg-white py-6 rounded-lg shadow-lg my-4 md:m-0"
                         data-aos="fade-up"
                         data-aos-delay={index*200}
                     >

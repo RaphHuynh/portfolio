@@ -44,7 +44,7 @@ function Home() {
             exit='exit'
         >
             <motion.article className='w-full lg:w-2/3'>
-                <motion.h1 className='text-xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-indigo-500'
+                <motion.h1 className='text-xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700'
                     variants={itemVariants(0)}
                 >
                     Bonjour 👋, je suis Raphaëlle Huynh

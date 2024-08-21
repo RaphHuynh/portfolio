@@ -1,4 +1,4 @@
-import {FaHome, FaLaptop, FaBriefcase, FaProjectDiagram} from 'react-icons/fa';
+import {FaHome, FaLaptop, FaBriefcase, FaProjectDiagram, FaMoneyBillWave} from 'react-icons/fa';
 
 export default Nav;
 
@@ -8,11 +8,12 @@ function Nav() {
         {id : "#Competence", content :"Compétences", icon: <FaLaptop/>},
         {id : "#Experience", content :"Expériences", icon: <FaBriefcase/>},
         {id : "#Projet", content : "Projets", icon: <FaProjectDiagram/>},
+        {id : "#Prix", content : "Tarifs", icon: <FaMoneyBillWave/>},
       ];
 
     return (
         <div>
-            <nav className="fixed w-full h-10 lg:h-20 z-10 bg-[#dee4fe] px-10 lg:px-32 border-b border-gray-300 flex justify-between">
+            <nav className="fixed w-full h-10 lg:h-20 z-10 px-10 lg:px-32 border-b border-gray-300 flex justify-between">
                 <div className='flex items-center w-full justify-between'>
                     <h3 className='text-indigo-500 text-lg md:text-2xl'>Raphaëlle Huynh</h3>
                     <div className='flex'>

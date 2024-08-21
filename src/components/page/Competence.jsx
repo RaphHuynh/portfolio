@@ -18,7 +18,7 @@ function Competence(){
     //Affichage
     return (
         <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Competence">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-indigo-500 h-fit py-2 w-fit mb-10' data-aos="fade-up">
+            <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10' data-aos="fade-up">
                 💻 Compétences
             </h1>
             <aside className="text-sm md:text-lg pb-10">
@@ -29,7 +29,7 @@ function Competence(){
             <article className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 text-sm md:text-lg'>
                 <div className='grid gap-6 grid-rows-2 h-full'>
                     <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-right" data-aos-delay="400">
-                        <h2 className='flex md:text-lg lg:text-xl text-indigo-600 text-center py-4 justify-center items-center border-b bg-indigo-300 rounded-t-lg'>Langages</h2>
+                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Langages</h2>
                         <div className='px-6 pt-4'>
                             <p className='text-slate-600 mb-2'>Les différents langages de programmation que j'utilise régulièrement</p>
                         </div>
@@ -40,7 +40,7 @@ function Competence(){
                         </div>
                     </div>
                     <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-right" data-aos-delay="500">
-                        <h2 className='flex md:text-lg lg:text-xl text-indigo-600 text-center py-4 justify-center items-center border-b bg-indigo-300 rounded-t-lg'>Data Science</h2>
+                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Data Science</h2>
                         <div className='px-6 pt-4'>
                             <p className='text-slate-600 mb-2'>Bibliothèques python que j'utilise dans le domaine de la data science</p>
                         </div>
@@ -59,7 +59,7 @@ function Competence(){
 
                 <div className='grid gap-6 grid-rows-2'>
                     <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-left" data-aos-delay="700">
-                        <h2 className='flex md:text-lg lg:text-xl text-indigo-600 text-center py-4 justify-center items-center border-b bg-indigo-300 rounded-t-lg'>Web</h2>
+                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Web</h2>
                         <div className='px-6 pt-4'>
                             <p className='text-slate-600 mb-2'>Framework et CMS web que j'utilise pour developper des applications web</p>
                         </div>
@@ -70,7 +70,7 @@ function Competence(){
                         </div>
                     </div>
                     <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-left" data-aos-delay="800">
-                        <h2 className='flex md:text-lg lg:text-xl text-indigo-600 text-center py-4 justify-center items-center border-b bg-indigo-300 rounded-t-lg'>Autres</h2>
+                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Autres</h2>
                         <div className='px-6 pt-4'>
                             <p className='text-slate-600 mb-2'>Base de données et méthodes que j'utilise pour réaliser mes différents projets</p>
                         </div>

@@ -69,7 +69,7 @@ function Tarif(){
     };
 
     return(
-        <section className='flex flex-col w-full p-10 lg:px-32 justify-center bg-indigo-100' id="Tarifs">
+        <section className='flex flex-col w-full p-10 lg:px-32 justify-center bg-indigo-100 z-10' id="Tarifs">
             <div className='px-8 lg:px-32 flex flex-col'>
                 <h2
                     className='text-2xl md:text-3xl lg:text-4xl text-indigo-500 font-bold text-center mb-8'

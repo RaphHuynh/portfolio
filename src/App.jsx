@@ -9,6 +9,7 @@ import Experience from './components/page/Experience';
 import Work from './components/page/Work';
 import AOS from 'aos';
 import Tarif from './components/page/Tarif';
+import AnimatedBubbles from './components/effect/AnimatedBubbles';
 
 AOS.init({
   once: true,
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className='w-full'>
       <Nav/>
+      <AnimatedBubbles/>
       <NavReseaux
         github={github}
         linkedln={linkedln}

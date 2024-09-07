@@ -84,7 +84,7 @@ function Work() {
     };
 
     return (
-        <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center" id="Projet">
+        <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center z-10" id="Projet">
             <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
                 data-aos="fade-up"
             >

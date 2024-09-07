@@ -13,7 +13,7 @@ function Nav() {
 
     return (
         <div>
-            <nav className="fixed w-full h-10 lg:h-20 z-10 px-10 lg:px-32 border-b border-gray-300 flex justify-between">
+            <nav className="fixed w-full h-10 lg:h-20 z-20 px-10 lg:px-32 border-b border-gray-300 flex justify-between">
                 <div className='flex items-center w-full justify-between'>
                     <h3 className='text-indigo-500 text-lg md:text-2xl'>Raphaëlle Huynh</h3>
                     <div className='flex'>

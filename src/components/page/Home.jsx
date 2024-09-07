@@ -36,20 +36,20 @@ const itemVariants = (delay) => ({
 function Home() {
     return (
         <motion.section 
-            className='flex flex-col sm:flex-row min-h-screen w-full px-10 lg:px-32 gap-20 items-center justify-center' 
+            className='flex flex-col sm:flex-row min-h-screen w-full px-10 lg:px-32 gap-20 items-center justify-center z-10' 
             id='Home'
             variants={fadeInOutVariants}
             initial='hidden'
             animate='visible'
             exit='exit'
         >
-            <motion.article className='w-full lg:w-2/3'>
-                <motion.h1 className='text-xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700'
+            <motion.article className='w-full lg:w-2/3 z-10'>
+                <motion.h1 className='text-xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700 z-10'
                     variants={itemVariants(0)}
                 >
                     Bonjour 👋, je suis Raphaëlle Huynh
                 </motion.h1>
-                <motion.p className='flex text-sm lg:text-lg pb-4 lg:pb-6 gap-4 text-slate-600'>
+                <motion.p className='flex text-sm lg:text-lg pb-4 lg:pb-6 gap-4 text-slate-600 z-10'>
                     <motion.span
                         variants={itemVariants(0.2)}
                     >
@@ -67,7 +67,7 @@ function Home() {
                     </motion.span>
                 </motion.p>
                 <motion.div className='grid grid-cols-3 gap-2 md:gap-4 pb-4 lg:pb-6'>
-                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200'
+                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
                         variants={itemVariants(0.8)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-mortarboard" viewBox="0 0 16 16" className='fill-indigo-500 mb-2'>
@@ -77,7 +77,7 @@ function Home() {
                         <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Etudiante en Master Informatique</p>
                     </motion.div>
 
-                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200'
+                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
                         variants={itemVariants(1)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-mortarboard" viewBox="0 0 16 16" className='fill-indigo-500 mb-2'>
@@ -88,7 +88,7 @@ function Home() {
                         <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Data Scientist</p>
                     </motion.div>
 
-                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200'
+                    <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
                         variants={itemVariants(1.2)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-mortarboard" viewBox="0 0 16 16" className='fill-indigo-500 mb-2'>
@@ -97,36 +97,36 @@ function Home() {
                         <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Freelance</p>
                     </motion.div>
                 </motion.div>
-                <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600'
+                <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600 z-10'
                     variants={itemVariants(1.4)}
                 >
                     Etudiante en première année du Master Informatique à l'université de Reims Champagne Ardenne et Data Scientist en alternance à l'IIAS, je réalise aussi des missions en freelance dans divers domaines de l'informatique.
                 </motion.p>
-                <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600'
+                <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600 z-10'
                     variants={itemVariants(1.6)}
                 >
                     Passionnée par les mathématiques, l'informatique et la science en générale, je souhaite réaliser un doctorat dans le domaine de l'intelligence artificielle afin d'approfondir au maximum mes connaissances dans ce domaine.
                 </motion.p>
                 <motion.div className='flex grid grid-cols-3 gap-4 text-center md:w-1/2'
                 >
-                    <motion.a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded'
+                    <motion.a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded z-10'
                         variants={itemVariants(1.8)}
                     >
                         LinkedIn
                     </motion.a>
-                    <motion.a href={'https://github.com/RaphHuynh'} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded'
+                    <motion.a href={'https://github.com/RaphHuynh'} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded z-10'
                         variants={itemVariants(2)}
                     >
                         Github
                     </motion.a>
-                    <motion.a href={resume} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded'
+                    <motion.a href={resume} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded z-10'
                         variants={itemVariants(2.2)}
                     >
                         CV
                     </motion.a>
                 </motion.div>
             </motion.article>
-            <motion.aside className='hidden lg:block w-1/3'
+            <motion.aside className='hidden lg:block w-1/3 z-10'
                 variants={itemVariants(1.5)}
             >
                 <img src={"https://media.licdn.com/dms/image/D4E03AQE2qM_v5UQuAA/profile-displayphoto-shrink_800_800/0/1694529792449?e=2147483647&v=beta&t=n_5ZZft0O3O5HSOItCmqFyJRblehOuNuZTeAZBPvrpI"} className='rounded-full bg-indigo-500 p-1'></img>

@@ -90,7 +90,7 @@ function Experience() {
     ];
 
     return (
-        <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center' id="Experience">
+        <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center z-10' id="Experience">
             <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
                 data-aos="fade-up"
             >

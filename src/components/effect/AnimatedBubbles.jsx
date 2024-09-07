@@ -13,28 +13,28 @@ const AnimatedBubbles = () => {
     const bubbleCount = 50;
 
     class Bubble {
-        constructor() {
-          this.x = Math.random() * canvas.width;
-          this.y = canvas.height + Math.random() * canvas.height;
-          this.radius = Math.random() * 20 + 5;
-          this.speed = Math.random() * 3 + 1;
-          this.opacity = Math.random() * 0.5 + 0.1;
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * canvas.height;
+        this.radius = Math.random() * 20 + 5;
+        this.speed = Math.random() * 1.5 + 0.5; // Réduit la vitesse
+        this.opacity = Math.random() * 0.2 + 0.1; // Réduit l'opacité
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+        ctx.fill();
+      }
+
+      update() {
+        this.y -= this.speed;
+        if (this.y + this.radius < 0) {
+          this.y = canvas.height + this.radius;
         }
-      
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
-          ctx.fill();
-        }
-      
-        update() {
-          this.y -= this.speed;
-          if (this.y + this.radius < 0) {
-            this.y = canvas.height + this.radius;
-          }
-        }
-      }      
+      }
+    }
 
     for (let i = 0; i < bubbleCount; i++) {
       bubbles.push(new Bubble());

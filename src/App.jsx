@@ -46,7 +46,7 @@ function App() {
  
   //Affichage
   return (
-    <div className='w-full'>
+    <div className='max-w-full overflow-x-hidden'>
       <Nav/>
       <AnimatedBubbles/>
       <NavReseaux

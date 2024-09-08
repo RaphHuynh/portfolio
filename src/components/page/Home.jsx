@@ -43,13 +43,13 @@ function Home() {
             animate='visible'
             exit='exit'
         >
-            <motion.article className='w-full lg:w-2/3 z-10'>
-                <motion.h1 className='text-xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700 z-10'
+            <motion.article className='w-full lg:w-2/3 z-10 py-16 md:pt-0'>
+                <motion.h1 className='text-2xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700 z-10'
                     variants={itemVariants(0)}
                 >
-                    Bonjour 👋, je suis Raphaëlle Huynh
+                    Bonjour 👋, je suis Raphaëlle
                 </motion.h1>
-                <motion.p className='flex text-sm lg:text-lg pb-4 lg:pb-6 gap-4 text-slate-600 z-10'>
+                <motion.p className='flex flex-col md:flex-row sm:text-lg pb-4 lg:pb-6 gap-2 md:gap-4 text-slate-600 z-10'>
                     <motion.span
                         variants={itemVariants(0.2)}
                     >
@@ -66,7 +66,7 @@ function Home() {
                         🖥️ Télétravail possible
                     </motion.span>
                 </motion.p>
-                <motion.div className='grid grid-cols-3 gap-2 md:gap-4 pb-4 lg:pb-6'>
+                <motion.div className='grid sm:grid-cols-3 gap-2 md:gap-4 pb-4 lg:pb-6'>
                     <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
                         variants={itemVariants(0.8)}
                     >
@@ -74,7 +74,7 @@ function Home() {
                             <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z" />
                             <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z" />
                         </svg>
-                        <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Etudiante en Master Informatique</p>
+                        <p className='text-sm md:text-lg lg:text-xl font-black text-slate-800'>Etudiante en Master Informatique</p>
                     </motion.div>
 
                     <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
@@ -85,7 +85,7 @@ function Home() {
                             <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
                             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
                         </svg>
-                        <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Data Scientist</p>
+                        <p className='text-sm md:text-lg lg:text-xl font-black text-slate-900'>Data Scientist en alternance</p>
                     </motion.div>
 
                     <motion.div className='px-4 py-2 md:py-6 rounded flex flex-col items-center text-center h-full border border-indigo-500 bg-indigo-200 z-10'
@@ -94,7 +94,7 @@ function Home() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-mortarboard" viewBox="0 0 16 16" className='fill-indigo-500 mb-2'>
                             <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z" />
                         </svg>
-                        <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Freelance</p>
+                        <p className='text-sm md:text-lg lg:text-xl font-black text-slate-900'>Freelance</p>
                     </motion.div>
                 </motion.div>
                <motion.article className="bg-white/70 p-4 mb-6"

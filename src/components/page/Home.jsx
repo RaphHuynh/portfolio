@@ -97,16 +97,20 @@ function Home() {
                         <p className='text-sm md:text-lg lg:text-xl font-black text-indigo-500'>Freelance</p>
                     </motion.div>
                 </motion.div>
-                <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600 z-10'
+               <motion.article className="bg-white/70 p-4 mb-6"
                     variants={itemVariants(1.4)}
                 >
-                    Etudiante en première année du Master Informatique à l'université de Reims Champagne Ardenne et Data Scientist en alternance à l'IIAS, je réalise aussi des missions en freelance dans divers domaines de l'informatique.
-                </motion.p>
                 <motion.p className='text-sm md:text-lg pb-4 lg:pb-6 text-slate-600 z-10'
-                    variants={itemVariants(1.6)}
-                >
-                    Passionnée par les mathématiques, l'informatique et la science en générale, je souhaite réaliser un doctorat dans le domaine de l'intelligence artificielle afin d'approfondir au maximum mes connaissances dans ce domaine.
-                </motion.p>
+                        variants={itemVariants(1.4)}
+                    >
+                        Etudiante en première année du Master Informatique à l'université de Reims Champagne Ardenne et Data Scientist en alternance à l'IIAS, je réalise aussi des missions en freelance dans divers domaines de l'informatique.
+                    </motion.p>
+                    <motion.p className='text-sm md:text-lg text-slate-600 z-10'
+                        variants={itemVariants(1.6)}
+                    >
+                        Passionnée par les mathématiques, l'informatique et la science en générale, je souhaite réaliser un doctorat dans le domaine de l'intelligence artificielle afin d'approfondir au maximum mes connaissances dans ce domaine.
+                    </motion.p>
+               </motion.article>
                 <motion.div className='flex grid grid-cols-3 gap-4 text-center md:w-1/2'
                 >
                     <motion.a href={'https://www.linkedin.com/in/raphaëlle-huynh-46192919b/'} className='border border-amber-400 text-[#0f1628] px-2 py-1 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-sm md:text-lg rounded z-10'

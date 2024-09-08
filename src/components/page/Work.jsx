@@ -12,7 +12,15 @@ import AOS from 'aos';
 
 AOS.init();
 
+const WaveBackground = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+      <path fill="#E0E7FF" fillOpacity="1" d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,117.3C672,96,768,96,864,117.3C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+  );
+
 function Work() {
+    
+
     const projets = [
         {
             id: 'Portfolio Raphël Demets - Freelance',
@@ -84,7 +92,8 @@ function Work() {
     };
 
     return (
-        <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center z-10" id="Projet">
+        <>
+            <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center z-10" id="Projet">
             <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
                 data-aos="fade-up"
             >
@@ -160,6 +169,8 @@ function Work() {
                 </a>
             </div>
         </section>
+        <WaveBackground />
+        </>
     );
 }
 

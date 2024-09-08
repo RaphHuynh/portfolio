@@ -66,7 +66,7 @@ const AnimatedBubbles = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0"
+      className="fixed inset-0 z-0 blur-[2px]"
     />
   );
 };

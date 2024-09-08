@@ -7,8 +7,9 @@ export default Tarif;
 function Tarif(){
     const tarif=[
         {id:"Site portfolio", price:"300€"},
-        {id:"Spécifique - Sur devis", price:"300€/jour"},
+        {id:"Dev web - Sur devis", price:"300€/jour"},
         {id:"Site vitrine", price:"500€"},
+        {id:"Autres - Sur devis", price:"Par négociation"}
     ]
 
     useEffect(() => {
@@ -69,8 +70,8 @@ function Tarif(){
     };
 
     return(
-        <section className='flex flex-col w-full p-10 lg:px-32 justify-center bg-indigo-100 z-10' id="Tarifs">
-            <div className='px-8 lg:px-32 flex flex-col'>
+        <section className='flex flex-col w-full pb-10 px-10 lg:px-32 justify-center bg-indigo-100 z-10' id="Tarifs">
+            <div className=' flex flex-col'>
                 <h2
                     className='text-2xl md:text-3xl lg:text-4xl text-indigo-500 font-bold text-center mb-8'
                     data-aos="fade-up"
@@ -97,8 +98,8 @@ function Tarif(){
                 >
                     <h3 className='text-xl text-slate-700 mb-4 text-center text-menu'>Contactez-moi</h3>
                     <form onSubmit={handleSubmit}>
-                        <div className='flex gap-8 h-full'>
-                            <div className='w-1/2 flex flex-col gap-4'>
+                        <div className='md:flex gap-8 h-full'>
+                            <div className='md:w-1/2 flex flex-col gap-4'>
                                 <div className='flex-grow'>
                                     <label htmlFor='name' className='block text-slate-700 mb-2'>Nom</label>
                                     <input
@@ -136,7 +137,7 @@ function Tarif(){
                                     />
                                 </div>
                             </div>
-                            <div className='w-1/2 flex flex-col'>
+                            <div className='md:w-1/2 flex flex-col'>
                                 <label htmlFor='message' className='block text-slate-700 mb-2'>Message</label>
                                 <textarea
                                     id='message'

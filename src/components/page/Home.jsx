@@ -43,7 +43,7 @@ function Home() {
             animate='visible'
             exit='exit'
         >
-            <motion.article className='w-full lg:w-2/3 z-10 py-16 md:pt-0'>
+            <motion.article className='w-full lg:w-2/3 z-10 py-16 md:py-0'>
                 <motion.h1 className='text-2xl md:text-4xl lg:text-6xl pb-4 lg:pb-10 text-slate-700 z-10'
                     variants={itemVariants(0)}
                 >

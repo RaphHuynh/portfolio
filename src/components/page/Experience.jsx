@@ -44,12 +44,13 @@ function Experience() {
 
     const experience = [
         {
-            id: "Alternance - Data Scientist",
-            content: "... En attente de la prise de poste",
-            langage: ["Python"],
+            id: "Alternance - Data Scientist - Data Manager",
+            content: "Participation à la mise en place de l'entrepôt de données du CHU. Mise en place de différent model d'IA de deep learning.",
+            langage: ["Python","OpenCV", "Pydicom", "Tensorflow", "Pytorch","Yolo","Numpy","Transfer Learning", "Deep Learning", "Clickhouse", "SQL", "Dagster"],
             date: "Septembre 2024 - Actuellement",
             lieux: "Reims",
-            entreprise: "CHU - IIAS (institut d'intelligence artificielle en santé)"
+            entreprise: "CHU - IIAS (institut d'intelligence artificielle en santé)",
+            more : "Mise en place de différent model d'IA de deep learning pour de la segmentation, de la classification et de la détection dans le domaine du traitement d'images. Prétraitement des données et amélioration de la qualité des données."
         },
         {
             id: "Freelance - Chef de projet",
@@ -63,7 +64,7 @@ function Experience() {
         {
             id: "Stage - Assistante de recherche en traitement d'image médicale",
             content: "Stage de recherche en traitement d'image médicale incluant à la fois des prétraitements et des algorithmes d’Intelligence Artificielle pour une application orientée recherche.",
-            langage: ["Python", "OpenCV", "Pydicom"],
+            langage: ["Python", "OpenCV", "Pydicom", "Yolo"],
             date: "Avril 2024 - juin 2024",
             lieux: "Reims",
             entreprise: "Université de Reims Champagne-Ardenne",

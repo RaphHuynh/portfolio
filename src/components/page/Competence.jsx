@@ -9,11 +9,11 @@ function Competence(){
     //State
     const langage = [{id:"Python"},{id:"C"},{id:"Java"},{id:"PHP"},{id:"Javascript"}];
 
-    const dataScience = [{id:"Anaconda"},{id:"Pandas"},{id:"Seaborn"},{id:"Matplotlib"},{id:"Scikit-learn"},{id:"Tensorflow"},{id:"Pytorch"},{id:"NLTK"},{id:"OpenCV"}]
+    const dataScience = [{id:"Anaconda"},{id:"Pandas"},{id:"Seaborn"},{id:"Matplotlib"},{id:"Scikit-learn"},{id:"Tensorflow"},{id:"Pytorch"},{id:"NLTK"},{id:"OpenCV"}, {id:"Yolo - Ultranalytics"}, {id:"Numpy"}, {id:"Shiny"}]
 
     const web = [{id:"Fast Api"},{id:"ReactJS"},{id:"Laravel"},{id:"Wordpress"},{id:"Tailwind CSS"},{id:"Bootstrap"}]
 
-    const autre = [{id:"MySQL"},{id:"PL/SQL - Oracle"},{id:"NoSQL"},{id:"Git"},{id:"Bash"},{id:"UML"},{id:"Merise"},{id:"Kaggle"}]
+    const autre = [{id:"MySQL"},{id:"PL/SQL - Oracle"},{id:"NoSQL"}, {id:"ClickHouse"},{id:"Git"},{id:"Bash"},{id:"UML"},{id:"Merise"},{id:"Kaggle"}]
 
     //Affichage
     return (

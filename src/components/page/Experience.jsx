@@ -56,7 +56,7 @@ function Experience() {
             id: "Freelance - Chef de projet",
             content: "Developpement d'outils web pour générer des base de données, gestion de projet et management d'équipes..",
             langage: ["JavaScript", "ReactJS", "TailwindCSS", "TypeScript", "NextJS", "React Flow"],
-            date: "Juillet 2024 - Actuellement",
+            date: "Juillet 2024 - Novembre 2024",
             lieux: "Paris",
             entreprise: "Freaks United",
             more: "Commencé en tant que développeuse web, j'ai évolué en chef de projet pour gérer une équipe de développeurs et d'alternants."

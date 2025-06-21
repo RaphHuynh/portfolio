@@ -1,22 +1,120 @@
 import React, { useState } from 'react';
 import CV from "../../assets/cv/CV_raphaelle_Huynh.pdf"
 import AOS from 'aos';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaBriefcase, FaGraduationCap, FaCalendarAlt, FaMapMarkerAlt, FaBuilding, FaCode, FaTimes, FaExternalLinkAlt, FaStar, FaRocket, FaLightbulb, FaDatabase, FaLaptopCode, FaSearch, FaCogs, FaDesktop } from 'react-icons/fa';
 
 AOS.init();
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 function Experience() {
-    const [modalOpen, setModalOpen] = useState(false);
     const [selectedExperience, setSelectedExperience] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = (exp) => {
-        setSelectedExperience(exp);
-        setModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setSelectedExperience(null);
-        setModalOpen(false);
-    };
+    const experiences = [
+        {
+            id: "Alternance - Data Scientist - Data Manager",
+            content: "Participation à la mise en place de l'entrepôt de données du CHU. Mise en place de différents modèles d'IA de deep learning.",
+            langage: ["Python", "OpenCV", "Pydicom", "Tensorflow", "Pytorch", "Yolo", "Numpy", "Transfer Learning", "Deep Learning", "Clickhouse", "SQL", "Dagster", "ReactJS", "TailwindCSS","ViteJS"],
+            date: "Septembre 2024 - Actuellement",
+            lieux: "Reims",
+            entreprise: "CHU - IIAS (Institut d'Intelligence Artificielle en Santé)",
+            more: "Mise en place de différents modèles d'IA de deep learning pour de la segmentation, de la classification et de la détection dans le domaine du traitement d'images. Prétraitement des données et amélioration de la qualité des données. Création d'un annotateur d'images.",
+            achievements: [
+                "Développement de modèles de détection de tumeurs",
+                "Participation à la mise en place d'un entrepôt de données avec ClickHouse",
+                "Collaboration avec les équipes médicales pour la validation des modèles",
+                "Ecriture d'articles scientifiques",
+                "Création d'un annotateur d'images"
+            ],
+            impact: "Amélioration de modèle d'IA, amélioration de la qualité des données de l'entrepôt.",
+            icon: <FaDatabase className="w-6 h-6" />,
+            color: "from-blue-500 to-blue-600"
+        },
+        {
+            id: "Freelance - Chef de projet",
+            content: "Développement d'outils web pour générer des bases de données, gestion de projet et management d'équipes.",
+            langage: ["JavaScript", "ReactJS", "TailwindCSS", "TypeScript", "NextJS", "React Flow"],
+            date: "Juillet 2024 - Novembre 2024",
+            lieux: "Paris",
+            entreprise: "Freaks United",
+            more: "Commencé en tant que développeuse web, j'ai évolué en chef de projet pour gérer une équipe de développeurs puis d'alternants. J'ai également développé des portfolio artistiques.",
+            achievements: [
+                "Gestion d'une équipe de développeurs web",
+                "Mise en place de méthodologies Agile",
+                "Développement d'outils de génération de bases de données",
+                "Développement de portfolio artistique"
+            ],
+            impact: "Livraison de 2 projets majeurs dans les délais impartis",
+            icon: <FaBriefcase className="w-6 h-6" />,
+            color: "from-green-500 to-green-600"
+        },
+        {
+            id: "Stage - Assistante de recherche en traitement d'image médicale",
+            content: "Stage de recherche en traitement d'image médicale incluant à la fois des prétraitements et des algorithmes d'Intelligence Artificielle pour une application orientée recherche.",
+            langage: ["Python", "OpenCV", "Pydicom", "Yolo"],
+            date: "Avril 2024 - Juin 2024",
+            lieux: "Reims",
+            entreprise: "Université de Reims Champagne-Ardenne",
+            more: "Traitement d'image sur des échographies pulmonaires afin de détecter les lignes B à l'aide d'algorithmes utilisant les flux optiques.",
+            achievements: [
+                "Développement d'algorithmes de détection de lignes B",
+                "Prétraitement d'images échographiques",
+            ],
+            icon: <FaSearch className="w-6 h-6" />,
+            color: "from-orange-500 to-orange-600"
+        },
+        {
+            id: "Stage - Développeuse WordPress",
+            content: "Le stage consistait à réaliser une extension WordPress permettant d'automatiser la prise de réunion à plusieurs (plus de 3 personnes).",
+            langage: ["PHP", "WordPress", "MySQL"],
+            date: "Avril 2023 - Juin 2023",
+            lieux: "Paris",
+            entreprise: "Cabinet Lacour",
+            more: "Dans un premier temps j'ai réalisé un travail de modélisation en utilisant la méthode UML, pour définir mes classes et construire ma base de données. J'ai réalisé par la suite une connexion avec l'API Google afin de connecter son Google Calendar à l'extension.",
+            achievements: [
+                "Modélisation UML complète du système",
+                "Intégration avec l'API Google Calendar",
+            ],
+            icon: <FaCode className="w-6 h-6" />,
+            color: "from-gray-500 to-gray-600"
+        },
+        {
+            id: "Stage - Développeuse Web",
+            content: "Le stage consistait à réaliser un site click & collect, afin de faciliter la prise de commande pendant le covid.",
+            langage: ["PHP", "Symfony", "Tailwind CSS"],
+            date: "Mai 2021 - Juillet 2021",
+            lieux: "Troyes",
+            entreprise: "LeBidibul",
+            more: "Avant de réaliser le projet demandé, j'ai dû réaliser un travail de recherche sur les différents frameworks et CMS existants afin de réaliser un travail de comparaison. Ensuite, pour commencer le projet, je l'ai modélisé avec Looping et la méthode Merise.",
+            achievements: [
+                "Étude comparative des frameworks web",
+                "Modélisation Merise du système",
+                "Développement avec Symfony",
+                "Interface utilisateur avec Tailwind CSS"
+            ],
+            icon: <FaDesktop className="w-6 h-6" />,
+            color: "from-indigo-500 to-indigo-600"
+        }
+    ];
 
     const formations = [
         {
@@ -31,205 +129,346 @@ function Experience() {
             date: "Septembre 2019 - Juin 2024",
             lieux: "Reims",
             entreprise: "Université de Reims",
-            more: "Pause d'un an après la 1 er année de licence - Rang : Dans le top 10 chaque année"
+            more: "Pause d'un an après la 1ère année de licence - Rang : Dans le top 10 chaque année"
         },
         {
-            id: "Licence  Electronique, Energie Electrique, Automatique",
+            id: "Licence Électronique, Énergie Électrique, Automatique",
             date: "Septembre 2018 - Juin 2019",
             lieux: "Reims",
             entreprise: "Université de Reims",
             more: "Réalisation de la première année."
         }
-    ]
-
-    const experience = [
-        {
-            id: "Alternance - Data Scientist - Data Manager",
-            content: "Participation à la mise en place de l'entrepôt de données du CHU. Mise en place de différent model d'IA de deep learning.",
-            langage: ["Python","OpenCV", "Pydicom", "Tensorflow", "Pytorch","Yolo","Numpy","Transfer Learning", "Deep Learning", "Clickhouse", "SQL", "Dagster"],
-            date: "Septembre 2024 - Actuellement",
-            lieux: "Reims",
-            entreprise: "CHU - IIAS (institut d'intelligence artificielle en santé)",
-            more : "Mise en place de différent model d'IA de deep learning pour de la segmentation, de la classification et de la détection dans le domaine du traitement d'images. Prétraitement des données et amélioration de la qualité des données."
-        },
-        {
-            id: "Freelance - Chef de projet",
-            content: "Developpement d'outils web pour générer des base de données, gestion de projet et management d'équipes..",
-            langage: ["JavaScript", "ReactJS", "TailwindCSS", "TypeScript", "NextJS", "React Flow"],
-            date: "Juillet 2024 - Novembre 2024",
-            lieux: "Paris",
-            entreprise: "Freaks United",
-            more: "Commencé en tant que développeuse web, j'ai évolué en chef de projet pour gérer une équipe de développeurs et d'alternants."
-        },
-        {
-            id: "Stage - Assistante de recherche en traitement d'image médicale",
-            content: "Stage de recherche en traitement d'image médicale incluant à la fois des prétraitements et des algorithmes d’Intelligence Artificielle pour une application orientée recherche.",
-            langage: ["Python", "OpenCV", "Pydicom", "Yolo"],
-            date: "Avril 2024 - juin 2024",
-            lieux: "Reims",
-            entreprise: "Université de Reims Champagne-Ardenne",
-            more: "Traitement d'image sur des echographies pulmonaires afin de détecter les lignes B à l'aide d'algorithmes utilisant les flux optiques."
-        },
-        {
-            id: "Stage - Developpeuse WordPress",
-            content: "Le stage consistait à réaliser une extension WordPress permettant d'automatiser la prise de réunion à plusieurs ( plus de 3 personnes ).",
-            lieux: "Paris",
-            entreprise: "Cabinet Lacour",
-            date: "Avril 2023 - juin 2023",
-            langage: ["PHP", "WordPress", "MySQL"],
-            more: "Dans un premier temps j'ai réalisé un travail de modélisation en utilisant la méthode UML, pour définir mes classes et construire ma base de donnée. J'ai réalisé par la suite une connexion avec l'API google afin de connecter son google Calendar à l'extension afin de récuperer les horaires libres sur l'agenda pour envoyer aux participants ( sans l'orginasateur ) les horaires et les dates disponibles pour qu'ils puissent mettre leurs disponibilités."
-        },
-        {
-            id: "Stage - Developpeuse Web",
-            content: "Le stage consistait à réaliser un site click & collect, afin de faciliter la prise de commande pendant le covid.",
-            lieux: "Troyes",
-            entreprise: "LeBidibul",
-            date: "Mai 2021 - juillet 2021",
-            langage: ["PHP", "Symfony", "Tailwind CSS"],
-            more: "Avant, de réaliser le projet demandé, j'ai du réaliser un travail de recherche sur les différents framework et CMS existant afin de réaliser un travail de comparaison. Ensuite, pour commencer le projet, je l'ai modélisé avec looping et la méthode mérise, afin de définir mes classes, mes entités et mes relations. Ensuite, j'ai utilisé le framework Symfony pour réaliser le projet. J'ai utilisé Tailwind comme librairie CSS."
-        }
     ];
 
+    const openModal = (experience) => {
+        setSelectedExperience(experience);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedExperience(null);
+    };
+
     return (
-        <section className='flex flex-col min-h-screen w-full justify-center z-10' id="Experience">
-            <div className='p-10 lg:px-32 w-full'>
-                <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
-                    data-aos="fade-up"
+        <section className="section-padding gradient-bg" id="Experience">
+            <div className="container-custom">
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
                 >
-                    💼 Experiences & 🎓 Formations
-                </h1>
-                <article className='text-slate-600 pb-10 text-lg lg:text-xl'
-                    data-aos="fade-up"
-                    data-aos-delay="200"
+                    <motion.h2 
+                        variants={fadeInUp}
+                        className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+                    >
+                        Expériences & <span className="gradient-text">Formations</span>
+                    </motion.h2>
+                    
+                    <motion.p 
+                        variants={fadeInUp}
+                        className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+                    >
+                        Mon parcours professionnel et académique qui m'a permis de développer une expertise solide en data science et développement.
+                    </motion.p>
+                </motion.div>
+
+                {/* Expériences professionnelles */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="mb-20"
                 >
-                    <p>Mes expériences professionnelles réalisées ou en cours.</p>
-                </article>
-                <ul className="timeline timeline-vertical">
-                    {experience.map((exp, index) => (
-                        <li key={index} className="">
-                            <hr className="bg-amber-400"
-                                data-aos="zoom-in"
-                            />
-                            <div className="hidden md:block md:timeline-middle px-2"
-                                data-aos="zoom-in"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    className="h-5 w-5 fill-amber-500">
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                        clipRule="evenodd" />
-                                </svg>
-                            </div>
-                            <div className={`cursor-pointer my-2 transition delay-75 shadow bg-white hover:bg-indigo-100 rounded-lg ${index % 2 === 0 ? 'timeline-middle md:timeline-start' : 'timeline-middle md:timeline-end'}`} onClick={() => openModal(exp)}
-                                data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                                data-aos-delay="200"
-                            >
-                                <h2 className="flex text-sm md:text-lg lg:text-xl text-white p-6 bg-indigo-500 justify-center rounded-t-lg">{exp.id}</h2>
-                                <div className='p-6'>
-                                    <p className='md:hidden text-sm text-slate-600'>🗓️ {exp.date}</p>
-                                    <p className="font-bold mt-1 text-slate-600 text-sm md:text-base">🏢 {exp.entreprise}</p>
-                                    <p className="mt-1 text-slate-600 text-sm md:text-base">📍 {exp.lieux}</p>
-                                    {exp.content && <p className="mt-1 italic text-slate-500 text-sm md:text-base">{exp.content}</p>}
-                                </div>
-                            </div>
-                            <div className={`bg-white my-2 ${index % 2 === 0 ? 'hidden md:block md:timeline-end' : 'hidden md:block md:timeline-start'}`}
-                                data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
-                                data-aos-delay="200"
-                            >
+                    <motion.h3 
+                        variants={fadeInUp}
+                        className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-12 flex items-center justify-center"
+                    >
+                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <FaBriefcase className="w-6 h-6 text-white" />
+                        </div>
+                        Expériences Professionnelles
+                    </motion.h3>
 
-                                <p className="p-4 text-slate-600 rounded shadow text-sm md:text-base">🗓️ {exp.date}</p>
-
-                            </div>
-                            <hr className="bg-amber-400"
-                                data-aos="zoom-in"
-                            />
-                            {modalOpen && selectedExperience && selectedExperience.id === exp.id && (
-                                <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black/60">
-                                    <div className="relative mx-auto max-w-lg md:max-w-2xl bg-[#dee4fe] rounded-lg shadow-lg p-6 md:p-8">
-                                        <button onClick={closeModal} className="absolute top-0 right-0 m-4 text-gray-800 hover:text-gray-500 focus:outline-none">
-                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                        <h2 className="text-2xl md:text-2xl font-bold text-indigo-500 mb-4 text-center">{selectedExperience.id}</h2>
-                                        <p className="font-bold mb-1 text-center text-slate-600"> {selectedExperience.entreprise}</p>
-                                        <p className="text-lg mb-1 text-center text-slate-600">{selectedExperience.date}</p>
-                                        <p className="mb-4 text-center text-slate-600">{selectedExperience.lieux}</p>
-                                        <p className="mb-4 text-slate-600">{selectedExperience.content}</p>
-                                        {selectedExperience.more && <p className="italic mb-4 text-slate-600">{selectedExperience.more}</p>}
-                                        {Array.isArray(selectedExperience.langage) && (
-                                            <div className="flex flex-wrap gap-2 mt-2">
-                                                {selectedExperience.langage.map((lang, langIndex) => (
-                                                    <span key={langIndex} className="bg-indigo-300 text-indigo-700 px-2 py-1 rounded">{lang}</span>
-                                                ))}
+                    <div className="space-y-8">
+                        {experiences.map((exp, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeInUp}
+                                className="experience-card p-8 group"
+                                whileHover={{ y: -8 }}
+                                onClick={() => openModal(exp)}
+                            >
+                                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                                    <div className="flex-1">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className="flex items-center space-x-4">
+                                                <div className={`w-12 h-12 bg-gradient-to-r ${exp.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                                                    <div className="text-white">
+                                                        {exp.icon}
+                                                    </div>
+                                                </div>
+                                                <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                                                    {exp.id}
+                                                </h4>
                                             </div>
-                                        )}
+                                            <FaExternalLinkAlt className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                                                <FaBuilding className="w-4 h-4 text-blue-500" />
+                                                <span className="font-medium">{exp.entreprise}</span>
+                                            </div>
+                                            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                                                <FaMapMarkerAlt className="w-4 h-4 text-green-500" />
+                                                <span className="font-medium">{exp.lieux}</span>
+                                            </div>
+                                            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                                                <FaCalendarAlt className="w-4 h-4 text-purple-500" />
+                                                <span className="font-medium">{exp.date}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                                            {exp.content}
+                                        </p>
                                     </div>
                                 </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className='p-10 lg:px-32 w-full bg-indigo-100'>
-                <article className='text-slate-600 py-10 text-lg lg:text-xl'
-                    data-aos="fade-up"
-                >
-                    <p>Mes formations réalisées ou en cours.</p>
-                </article>
-                <div className="w-full text-sm md:text-lg md:flex md:grid md:grid-cols-3 md:gap-4">
-                    {formations.map((formation, index) => (
-                        <div key={index} className="bg-white py-6 rounded-lg shadow-lg my-4 md:m-0"
-                            data-aos="fade-up"
-                            data-aos-delay={index * 200}
-                        >
-                            <div className="pb-4 md:pb-auto h-full">
-                                <div className='flex w-full items-center justify-center px-10'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" className='fill-indigo-500 my-2  bg-indigo-200 rounded-full p-4' viewBox="0 0 16 16">
-                                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z" />
-                                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z" />
-                                    </svg>
+
+                                {exp.langage && (
+                                    <div className="mb-6">
+                                        <div className="flex items-center space-x-2 mb-4">
+                                            <FaCode className="w-4 h-4 text-blue-500" />
+                                            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                                Technologies utilisées :
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {exp.langage.slice(0, 6).map((tech, techIndex) => (
+                                                <span
+                                                    key={techIndex}
+                                                    className="skill-tag"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                            {exp.langage.length > 6 && (
+                                                <span className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-600">
+                                                    +{exp.langage.length - 6} autres
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="flex items-center justify-between">
+                                    <div className="text-sm text-blue-600 dark:text-blue-400 font-semibold">
+                                        Cliquez pour plus de détails →
+                                    </div>
+                                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                                        Impact: {exp.impact}
+                                    </div>
                                 </div>
-                                <h2 className="pb-6 md:text-lg lg:text-xl font-bold text-indigo-500 text-center px-10 mb-6">
-                                    {formation.id}
-                                </h2>
-                                <p className="pb-2 px-10 text-slate-600">🗓️ {formation.date}</p>
-                                <p className="font-bold pb-2 px-10 text-slate-600">🏢 {formation.entreprise}</p>
-                                <p className="pb-6 px-10 text-slate-600">📍 {formation.lieux}</p>
-                                <p className='px-10 text-slate-500 italic'>{formation.more}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-center mt-10"
-                    data-aos="zoom-in"
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Formations */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                 >
-                    <a
-                        href={CV}
-                        download
-                        className="flex items-center justify-center border border-amber-400 text-[#0f1628] px-4 py-2 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-lg rounded shadow-md"
+                    <motion.h3 
+                        variants={fadeInUp}
+                        className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-12 flex items-center justify-center"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            className="w-4 h-4 mr-2"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 4v16m8-8H4"
-                            />
-                        </svg>
-                        Télécharger mon CV
-                    </a>
-                </div>
+                        <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mr-4">
+                            <FaGraduationCap className="w-6 h-6 text-white" />
+                        </div>
+                        Formations
+                    </motion.h3>
+
+                    <div className="grid gap-8 lg:grid-cols-3">
+                        {formations.map((formation, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeInUp}
+                                className="card p-8 text-center card-hover"
+                                whileHover={{ y: -8 }}
+                            >
+                                <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                    <FaGraduationCap className="w-10 h-10 text-white" />
+                                </div>
+                                
+                                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                                    {formation.id}
+                                </h4>
+                                
+                                <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                                    <div className="flex items-center justify-center space-x-2">
+                                        <FaBuilding className="w-4 h-4 text-blue-500" />
+                                        <span className="font-medium">{formation.entreprise}</span>
+                                    </div>
+                                    <div className="flex items-center justify-center space-x-2">
+                                        <FaMapMarkerAlt className="w-4 h-4 text-green-500" />
+                                        <span className="font-medium">{formation.lieux}</span>
+                                    </div>
+                                    <div className="flex items-center justify-center space-x-2">
+                                        <FaCalendarAlt className="w-4 h-4 text-purple-500" />
+                                        <span className="font-medium">{formation.date}</span>
+                                    </div>
+                                </div>
+                                
+                                {formation.more && (
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 italic bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                                        {formation.more}
+                                    </p>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
+
+            {/* Modal pour les détails d'expérience */}
+            <AnimatePresence>
+                {isModalOpen && selectedExperience && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="modal-overlay"
+                        onClick={closeModal}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="modal-content"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="p-8">
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="flex items-center space-x-4">
+                                        <div className={`w-16 h-16 bg-gradient-to-r ${selectedExperience.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                                            <div className="text-white">
+                                                {selectedExperience.icon}
+                                            </div>
+                                        </div>
+                                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                                            {selectedExperience.id}
+                                        </h2>
+                                    </div>
+                                    <button
+                                        onClick={closeModal}
+                                        className="p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors duration-200"
+                                    >
+                                        <FaTimes className="w-6 h-6 text-gray-500" />
+                                    </button>
+                                </div>
+
+                                <div className="grid gap-8 lg:grid-cols-2">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                                            <FaBuilding className="w-5 h-5 text-blue-500 mr-2" />
+                                            Informations générales
+                                        </h3>
+                                        <div className="space-y-4 mb-8">
+                                            <div className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                                                <FaBuilding className="w-5 h-5 text-blue-500" />
+                                                <div>
+                                                    <div className="text-sm font-medium text-gray-500 dark:text-gray-400">Entreprise</div>
+                                                    <div className="text-gray-900 dark:text-white font-semibold">{selectedExperience.entreprise}</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                                                <FaMapMarkerAlt className="w-5 h-5 text-green-500" />
+                                                <div>
+                                                    <div className="text-sm font-medium text-gray-500 dark:text-gray-400">Lieu</div>
+                                                    <div className="text-gray-900 dark:text-white font-semibold">{selectedExperience.lieux}</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                                                <FaCalendarAlt className="w-5 h-5 text-purple-500" />
+                                                <div>
+                                                    <div className="text-sm font-medium text-gray-500 dark:text-gray-400">Période</div>
+                                                    <div className="text-gray-900 dark:text-white font-semibold">{selectedExperience.date}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                                                Description
+                                            </h4>
+                                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                                                {selectedExperience.more}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                                            <FaBriefcase className="w-5 h-5 text-gray-600 mr-2" />
+                                            Réalisations principales
+                                        </h3>
+                                        {selectedExperience.achievements && (
+                                            <ul className="space-y-3 mb-8">
+                                                {selectedExperience.achievements.map((achievement, index) => (
+                                                    <li key={index} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                                        <span className="text-gray-700 dark:text-gray-300">
+                                                            {achievement}
+                                                        </span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+
+                                        {selectedExperience.impact && (
+                                            <div className="mb-8">
+                                                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                                    <FaBriefcase className="w-5 h-5 text-green-500 mr-2" />
+                                                    Impact
+                                                </h4>
+                                                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 p-6 rounded-xl border border-green-200 dark:border-green-700">
+                                                    <p className="text-green-700 dark:text-green-300 font-semibold text-lg">
+                                                        {selectedExperience.impact}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div>
+                                            <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                                <FaCode className="w-5 h-5 text-blue-500 mr-2" />
+                                                Technologies utilisées
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {selectedExperience.langage.map((tech, index) => (
+                                                    <span
+                                                        key={index}
+                                                        className="skill-tag"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

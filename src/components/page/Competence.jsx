@@ -1,88 +1,205 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import image from "../../assets/illustration.svg"
+import { motion } from 'framer-motion';
+import { FaPython, FaDatabase, FaCode, FaChartLine, FaBrain, FaServer, FaTools } from 'react-icons/fa';
+import { SiTensorflow, SiPytorch, SiPandas, SiNumpy, SiScikitlearn, SiReact, SiFastapi, SiMysql, SiGit } from 'react-icons/si';
+
 export default Competence;
 
-AOS.init();
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
 
-function Competence(){
-    //State
-    const langage = [{id:"Python"},{id:"C"},{id:"Java"},{id:"PHP"},{id:"Javascript"}];
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
-    const dataScience = [{id:"Anaconda"},{id:"Pandas"},{id:"Seaborn"},{id:"Matplotlib"},{id:"Scikit-learn"},{id:"Tensorflow"},{id:"Pytorch"},{id:"NLTK"},{id:"OpenCV"}, {id:"Yolo - Ultranalytics"}, {id:"Numpy"}, {id:"Shiny"}]
+function Competence() {
+  const skillCategories = [
+    {
+      title: "Machine Learning & IA",
+      icon: <FaBrain className="w-6 h-6" />,
+      description: "Modèles prédictifs, deep learning et intelligence artificielle",
+      skills: [
+        { name: "TensorFlow", icon: <SiTensorflow className="w-5 h-5" /> },
+        { name: "PyTorch", icon: <SiPytorch className="w-5 h-5" /> },
+        { name: "Scikit-learn", icon: <SiScikitlearn className="w-5 h-5" /> },
+        { name: "OpenCV", icon: <FaCode className="w-5 h-5" /> },
+        { name: "NLTK", icon: <FaCode className="w-5 h-5" /> },
+        { name: "YOLO", icon: <FaCode className="w-5 h-5" /> }
+      ]
+    },
+    {
+      title: "Data Analysis",
+      icon: <FaChartLine className="w-6 h-6" />,
+      description: "Analyse exploratoire et visualisation de données",
+      skills: [
+        { name: "Pandas", icon: <SiPandas className="w-5 h-5" /> },
+        { name: "NumPy", icon: <SiNumpy className="w-5 h-5" /> },
+        { name: "Matplotlib", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "Seaborn", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "Plotly", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "Shiny", icon: <FaChartLine className="w-5 h-5" /> }
+      ]
+    },
+    {
+      title: "Développement",
+      icon: <FaCode className="w-6 h-6" />,
+      description: "Langages de programmation et frameworks",
+      skills: [
+        { name: "Python", icon: <FaPython className="w-5 h-5" /> },
+        { name: "React", icon: <SiReact className="w-5 h-5" /> },
+        { name: "FastAPI", icon: <SiFastapi className="w-5 h-5" /> },
+        { name: "JavaScript", icon: <FaCode className="w-5 h-5" /> },
+        { name: "Java", icon: <FaCode className="w-5 h-5" /> },
+        { name: "PHP", icon: <FaCode className="w-5 h-5" /> }
+      ]
+    },
+    {
+      title: "Data Engineering",
+      icon: <FaDatabase className="w-6 h-6" />,
+      description: "Bases de données et pipelines de données",
+      skills: [
+        { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
+        { name: "PostgreSQL", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "MongoDB", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "ClickHouse", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "Apache Spark", icon: <FaServer className="w-5 h-5" /> },
+        { name: "PL/SQL Oracle", icon: <FaDatabase className="w-5 h-5" /> }
+      ]
+    },
+    {
+      title: "Outils & DevOps",
+      icon: <FaTools className="w-6 h-6" />,
+      description: "Outils de développement et gestion de version",
+      skills: [
+        { name: "Git", icon: <SiGit className="w-5 h-5" /> },
+        { name: "Docker", icon: <FaTools className="w-5 h-5" /> },
+        { name: "Jupyter", icon: <FaTools className="w-5 h-5" /> },
+        { name: "VS Code", icon: <FaTools className="w-5 h-5" /> },
+        { name: "Linux", icon: <FaTools className="w-5 h-5" /> },
+        { name: "Bash", icon: <FaTools className="w-5 h-5" /> }
+      ]
+    }
+  ];
 
-    const web = [{id:"Fast Api"},{id:"ReactJS"},{id:"Laravel"},{id:"Wordpress"},{id:"Tailwind CSS"},{id:"Bootstrap"}]
+  return (
+    <section className="section-padding bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-secondary-800" id="Competence">
+      <div className="container-custom">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            variants={fadeInUp}
+            className="text-4xl lg:text-5xl font-bold text-secondary-900 dark:text-white mb-6"
+          >
+            Compétences & <span className="gradient-text">Expertise</span>
+          </motion.h2>
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto"
+          >
+            Mon expertise couvre l'ensemble du pipeline de données, de la collecte à la mise en production de modèles d'IA. 
+            Voici les technologies que j'utilise quotidiennement pour transformer les données en insights actionnables.
+          </motion.p>
+        </motion.div>
 
-    const autre = [{id:"MySQL"},{id:"PL/SQL - Oracle"},{id:"NoSQL"}, {id:"ClickHouse"},{id:"Git"},{id:"Bash"},{id:"UML"},{id:"Merise"},{id:"Kaggle"}]
-
-    //Affichage
-    return (
-        <section className='flex flex-col min-h-screen w-full p-10 lg:px-32 justify-center z-10 bg-indigo-100' id="Competence">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10' data-aos="fade-up">
-                💻 Compétences
-            </h1>
-            <aside className="text-sm md:text-lg pb-10">
-                <p className='text-slate-600' data-aos="fade-up" data-aos-delay="200">
-                    Voici les différentes technologies que j'utilise au quotidien dans mon travail, à l'université ou pour mes projets personnels.
-                </p>
-            </aside>
-            <article className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 text-sm md:text-lg'>
-                <div className='grid gap-6 grid-rows-2 h-full'>
-                    <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-right" data-aos-delay="400">
-                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Langages</h2>
-                        <div className='px-6 pt-4'>
-                            <p className='text-slate-600 mb-2'>Les différents langages de programmation que j'utilise régulièrement</p>
-                        </div>
-                        <div className='flex flex-wrap pb-6 px-6'>
-                            {langage.map(item => (
-                                <span className="bg-indigo-300 text-indigo-700 mr-2 px-2 py-1 rounded mb-2 text-sm" key={item.id}>{item.id}</span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-right" data-aos-delay="500">
-                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Data Science</h2>
-                        <div className='px-6 pt-4'>
-                            <p className='text-slate-600 mb-2'>Bibliothèques python que j'utilise dans le domaine de la data science</p>
-                        </div>
-                        <div className='flex flex-wrap px-6 pb-6'>
-                                {dataScience.map(item => (
-                                    <span className="bg-indigo-300 text-indigo-700 mr-2 px-2 py-1 rounded mb-2 text-sm" key={item.id}>{item.id}</span>
-                                ))}
-                        </div>
-                    </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3"
+        >
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={categoryIndex}
+              variants={fadeInUp}
+              className="card p-6 hover:shadow-xl transition-all duration-300"
+              whileHover={{ y: -5 }}
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                  {category.icon}
                 </div>
-
-                <div className='h-full md:flex items-center hidden' data-aos="zoom-in" data-aos-delay="600">
-                    <img src={image} alt="Illustration">
-                    </img>
-                </div>
-
-                <div className='grid gap-6 grid-rows-2'>
-                    <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-left" data-aos-delay="700">
-                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Web</h2>
-                        <div className='px-6 pt-4'>
-                            <p className='text-slate-600 mb-2'>Framework et CMS web que j'utilise pour developper des applications web</p>
-                        </div>
-                        <div className='flex  flex-wrap pb-6 px-6'>
-                                {web.map(item => (
-                                    <span className="bg-indigo-300 text-indigo-700 mr-2 px-2 py-1 rounded mb-2 text-sm" key={item.id}>{item.id}</span>
-                                ))}
-                        </div>
+                <h3 className="text-xl font-semibold text-secondary-900 dark:text-white">
+                  {category.title}
+                </h3>
+              </div>
+              
+              <p className="text-secondary-600 dark:text-secondary-400 mb-6 text-sm">
+                {category.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.div
+                    key={skillIndex}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 text-sm font-medium"
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                  >
+                    <div className="text-primary-500 dark:text-primary-400">
+                      {skill.icon}
                     </div>
-                    <div className="w-full rounded-lg flex flex-col justify-between bg-white/70 shadow" data-aos="fade-left" data-aos-delay="800">
-                        <h2 className='flex md:text-lg lg:text-xl text-white text-center py-4 justify-center items-center border-b bg-indigo-500 rounded-t-lg'>Autres</h2>
-                        <div className='px-6 pt-4'>
-                            <p className='text-slate-600 mb-2'>Base de données et méthodes que j'utilise pour réaliser mes différents projets</p>
-                        </div>
-                        <div className='flex  flex-wrap px-6 pb-6'>
-                                {autre.map(item => (
-                                    <span className="bg-indigo-300 text-indigo-700 mr-2 px-2 py-1 rounded mb-2 text-sm" key={item.id}>{item.id}</span>
-                                ))}
-                            </div>
-                    </div>
-                </div>
-            </article>
-        </section>
-    );
+                    <span>{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Section statistiques */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {[
+            { number: "50+", label: "Projets réalisés" },
+            { number: "3+", label: "Années d'expérience" },
+            { number: "15+", label: "Technologies maîtrisées" },
+            { number: "100%", label: "Satisfaction client" }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+            >
+              <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">
+                {stat.number}
+              </div>
+              <div className="text-sm text-secondary-600 dark:text-secondary-400">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 

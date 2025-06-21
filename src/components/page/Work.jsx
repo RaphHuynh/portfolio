@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaCode, FaFolder } from 'react-icons/fa';
 import ImgBotDisMeteo from '../../assets/img_projet/bot_meteo.png';
 import ImgBotDisCVDev from '../../assets/img_projet/bot_cv.png';
 import ImgBotDisChoixPoop from '../../assets/img_projet/choix_de_poop.png';
@@ -8,171 +9,247 @@ import ImgCoursIA from '../../assets/img_projet/cours_ia.png';
 import ImgFRDesDev from '../../assets/img_projet/frdesdev.png';
 import ImgHSR from '../../assets/img_projet/hsr.png';
 import ImgPortRaphDem from '../../assets/img_projet/portfolio_raph_demets.png';
-import AOS from 'aos';
-
-AOS.init();
-
-const WaveBackground = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
-      <path fill="#E0E7FF" fillOpacity="1" d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,117.3C672,96,768,96,864,117.3C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-    </svg>
-  );
-
-function Work() {
-    
-
-    const projets = [
-        {
-            id: 'Portfolio Raphël Demets - Freelance',
-            img: ImgPortRaphDem,
-            content: "Portfolio réalisé pour un client dans le domaine de la vfx et du montage vidéo.",
-            lang:["ReactJS","JavaScript","TailwindCSS"]
-        },
-        {
-            id: 'Site web Française des developpeuse',
-            img: ImgFRDesDev,
-            content: "Site web de françaises des developpeuses. Ce site permet aux femmes dans le domaine de l'informatique de partager leur profil, portfolio afin de mettre leur profil en avant.\nUtile une API REST pour gérer la partie Back-end avec FastAPI de mon projet Françaises des développeuses.",
-            lang:["JavaScript","Python","MySQL","ReactJS","FastAPI"]
-        },
-        { 
-            id: 'Cours d\'intelligence artificielle', 
-            img: ImgCoursIA, 
-            content: "Cours d'intelligence artificielle sur github dans différentes langues afin d'aider les débutants à comprendre et à faire de l'intelligence artificielle avec des parties cours et des parties pratiques. Actuellement les cours sont publiés sous forme de fichier jupyter.",
-            lang:["Python","NLTK"]
-        },
-        { 
-            id: 'Bot Discord : Méteo', 
-            img: ImgBotDisMeteo, 
-            content: "Bot discord affichant la météo de différentes villes à l'aide d'une API météo (OpenWeatherMap).",
-            lang:["Python"]
-        },
-        { 
-            id: 'IA Chatbot : Covid', 
-            img: ImgChatBotCovid, 
-            content: "ChatBot développé à l'aide d'un fichier txt contenant des séries de questions réponses utilisant les méthodes de traitements du langages naturels. Il existe 2 chatbots différents fait avec 2 librairies différentes pour étudier leurs efficacités et leurs points faibles par rapport à l'autre.",
-            lang:["Python","Skicit-Learn","NLTK","TensorFlow"]
-        },
-        { 
-            id: 'IA Analyse de sentiment', 
-            img: ImgAnalyseSentiment, 
-            content: "Analyse de sentiment de tweet utilisant les techniques de pré-traitement du langages naturels et un modèle de RandomForest.",
-            lang:["Python","NLTK","Seaborn","Scikit-learn"]
-        },
-        { 
-            id: 'Bot Discord : CV Developpeur', 
-            img: ImgBotDisCVDev, 
-            content: "C'est un bot discord qui permet de mettre en ligne son CV sur discord afin de faciliter le partage de celui-ci. Il permet aussi de génerer un CV au format PDF",
-            lang:["Python","JSON"]
-        },
-        { 
-            id: 'Site Web : HS\'R - Freelance', 
-            img: ImgHSR, 
-            content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la région Grand-Est.",
-            lang:["JavaScript","ReactJS"] 
-        },
-        { 
-            id: 'Bot Discord : Choix de Poop', 
-            img: ImgBotDisChoixPoop, 
-            content: "C'est un bot discord qui permet aux gens de s'enregistrer dessus respectant aussi le RGPD afin de répondre à une série de questions réponses. Nous pouvons consulter les données des questions sous forme de statistiques anonymes et de graphiques.",
-            lang:["Python","Plotly","MySQL"]
-        },
-    ];
-
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedProjet, setSelectedProjet] = useState(null);
-
-    const openModal = (projet) => {
-        setSelectedProjet(projet);
-        setModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setSelectedProjet(null);
-        setModalOpen(false);
-    };
-
-    return (
-        <>
-            <section className="flex flex-col min-h-screen w-full p-10 md:px-32 pb-20 justify-center z-10" id="Projet">
-            <h1 className='text-2xl md:text-3xl lg:text-5xl text-slate-700 h-fit py-2 w-fit mb-10'
-                data-aos="fade-up"
-            >
-                📂 Projets
-            </h1>
-            <p className="pb-10 text-sm md:text-lg text-slate-600"
-                data-aos="fade-up"
-                data-aos-delay="200"
-            >
-                Cette section présente les divers projets que j'ai réalisés et que j'ai choisi de mettre en avant. <br />
-                Pour trouver mes autres projets personnels, il faut se rendre sur GitHub.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projets.map((projet, index) => (
-                    <div key={index} className="cursor-pointer" onClick={() => openModal(projet)}
-                        data-aos="fade-up"
-                    >
-                        <div className="relative">
-                            <img src={projet.img} alt={projet.id} className="w-full h-56 object-cover rounded brightness-90 hover:brightness-100 transition duration-300"/>
-                            <h2 className="text-indigo-500 mt-2 text-xl">{projet.id}</h2>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {modalOpen && selectedProjet && (
-                <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center bg-black bg-opacity-60">
-                    <div className="relative mx-auto max-w-3xl bg-[#dee4fe] rounded-lg shadow-lg p-6 md:p-8 ">
-                        <button onClick={closeModal} className="absolute top-0 right-0 m-4 text-gray-800 hover:text-gray-500 focus:outline-none">
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                        <h2 className="text-2xl md:text-3xl font-bold text-indigo-500 mb-4 text-center">{selectedProjet.id}</h2>
-                        <img src={selectedProjet.img} alt={selectedProjet.id} className="mb-4 w-full h-96 object-cover rounded" />
-                        <p className="text-slate-600 mb-4">
-                            {selectedProjet.content}
-                        </p>
-                        <div className='flex flex-wrap'>
-                            {selectedProjet.lang.map((language, index) => (
-                                <span key={index} className='bg-indigo-300 text-indigo-700 px-2 py-1 m-1 rounded'>
-                                    {language}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-            <div className="flex justify-center mt-10" 
-                data-aos="zoom-in"
-                data-aos-delay="200"
-            >
-                <a
-                    href={"https://github.com/RaphHuynh"}
-                    download
-                    className="flex items-center justify-center border border-amber-400 text-[#0f1628] px-4 py-2 bg-amber-400 hover:bg-indigo-300 hover:border-indigo-300 transition delay-75 text-lg rounded shadow-md"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-4 h-4 mr-2"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4v16m8-8H4"
-                        />
-                    </svg>
-                    De projets
-                </a>
-            </div>
-        </section>
-        <WaveBackground />
-        </>
-    );
-}
 
 export default Work;
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+function Work() {
+  const projets = [
+    {
+      id: 'Portfolio Raphël Demets - Freelance',
+      img: ImgPortRaphDem,
+      content: "Portfolio réalisé pour un client dans le domaine de la vfx et du montage vidéo.",
+      lang: ["ReactJS", "JavaScript", "TailwindCSS"],
+      category: "Freelance",
+      github: null,
+      live: null
+    },
+    {
+      id: 'Site web Française des développeuses',
+      img: ImgFRDesDev,
+      content: "Site web de françaises des développeuses. Ce site permet aux femmes dans le domaine de l'informatique de partager leur profil, portfolio afin de mettre leur profil en avant. Utilise une API REST pour gérer la partie Back-end avec FastAPI.",
+      lang: ["JavaScript", "Python", "MySQL", "ReactJS", "FastAPI"],
+      category: "Personnel",
+      github: "https://github.com/RaphHuynh/francaise-des-developpeuses",
+      live: null
+    },
+    { 
+      id: 'Cours d\'intelligence artificielle', 
+      img: ImgCoursIA, 
+      content: "Cours d'intelligence artificielle sur GitHub dans différentes langues afin d'aider les débutants à comprendre et à faire de l'intelligence artificielle avec des parties cours et des parties pratiques. Actuellement les cours sont publiés sous forme de fichier Jupyter.",
+      lang: ["Python", "NLTK"],
+      category: "Éducatif",
+      github: "https://github.com/RaphHuynh/cours-ia",
+      live: null
+    },
+    { 
+      id: 'Bot Discord : Météo', 
+      img: ImgBotDisMeteo, 
+      content: "Bot Discord affichant la météo de différentes villes à l'aide d'une API météo (OpenWeatherMap).",
+      lang: ["Python"],
+      category: "Bot Discord",
+      github: "https://github.com/RaphHuynh/BotDiscordMeteo",
+      live: null
+    },
+    { 
+      id: 'IA Chatbot : Covid', 
+      img: ImgChatBotCovid, 
+      content: "ChatBot développé à l'aide d'un fichier txt contenant des séries de questions réponses utilisant les méthodes de traitements du langage naturel. Il existe 2 chatbots différents faits avec 2 librairies différentes pour étudier leurs efficacités.",
+      lang: ["Python", "Scikit-Learn", "NLTK", "TensorFlow"],
+      category: "IA",
+      github: "https://github.com/RaphHuynh/chatbot-covid",
+      live: null
+    },
+    { 
+      id: 'IA Analyse de sentiment', 
+      img: ImgAnalyseSentiment, 
+      content: "Analyse de sentiment de tweets utilisant les techniques de pré-traitement du langage naturel et un modèle de RandomForest.",
+      lang: ["Python", "NLTK", "Seaborn", "Scikit-learn"],
+      category: "IA",
+      github: "https://github.com/RaphHuynh/analyse-sentiment",
+      live: null
+    },
+    { 
+      id: 'Bot Discord : CV Développeur', 
+      img: ImgBotDisCVDev, 
+      content: "C'est un bot Discord qui permet de mettre en ligne son CV sur Discord afin de faciliter le partage de celui-ci. Il permet aussi de générer un CV au format PDF.",
+      lang: ["Python", "JSON"],
+      category: "Bot Discord",
+      github: "https://github.com/RaphHuynh/bot-cv-developer-v1",
+      live: null
+    },
+    { 
+      id: 'Site Web : HS\'R - Freelance', 
+      img: ImgHSR, 
+      content: "Site vitrine réalisé pour l'association du HSR qui est une association de CTF de la région Grand-Est.",
+      lang: ["JavaScript", "ReactJS"],
+      category: "Freelance",
+      github: "https://github.com/RaphHuynh/HackSecuR",
+      live: "https://storied-rolypoly-36ef5a.netlify.app"
+    },
+    { 
+      id: 'Bot Discord : Choix de Poop', 
+      img: ImgBotDisChoixPoop, 
+      content: "C'est un bot Discord qui permet aux gens de s'enregistrer dessus respectant aussi le RGPD afin de répondre à une série de questions réponses. Nous pouvons consulter les données des questions sous forme de statistiques anonymes et de graphiques.",
+      lang: ["Python", "Plotly", "MySQL"],
+      category: "Bot Discord",
+      github: "https://github.com/RaphHuynh/Bot-Choix-de-Poop",
+      live: null
+    }
+  ];
+
+  const categories = [...new Set(projets.map(projet => projet.category))];
+
+  return (
+    <section className="section-padding bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-secondary-800" id="Projet">
+      <div className="container-custom">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            variants={fadeInUp}
+            className="text-4xl lg:text-5xl font-bold text-secondary-900 dark:text-white mb-6"
+          >
+            Mes <span className="gradient-text">Projets</span>
+          </motion.h2>
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto"
+          >
+            Une sélection de mes projets les plus significatifs, allant du développement web à l'intelligence artificielle. 
+            Chaque projet représente une étape de mon apprentissage et de mon développement professionnel.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3"
+        >
+          {projets.map((projet, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="card overflow-hidden hover:shadow-xl transition-all duration-300 group"
+              whileHover={{ y: -5 }}
+            >
+              {/* Image du projet */}
+              <div className="relative overflow-hidden">
+                <img 
+                  src={projet.img} 
+                  alt={projet.id} 
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4 flex space-x-2">
+                    {projet.github && (
+                      <a
+                        href={projet.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors duration-200"
+                      >
+                        <FaGithub className="w-4 h-4" />
+                      </a>
+                    )}
+                    {projet.live && (
+                      <a
+                        href={projet.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors duration-200"
+                      >
+                        <FaExternalLinkAlt className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Contenu du projet */}
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">
+                    {projet.category}
+                  </span>
+                  <FaFolder className="w-4 h-4 text-secondary-400" />
+                </div>
+
+                <h3 className="text-xl font-bold text-secondary-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
+                  {projet.id}
+                </h3>
+
+                <p className="text-secondary-600 dark:text-secondary-400 text-sm mb-4 line-clamp-3">
+                  {projet.content}
+                </p>
+
+                {/* Technologies utilisées */}
+                <div className="flex items-center space-x-2 mb-3">
+                  <FaCode className="w-4 h-4 text-primary-500" />
+                  <span className="text-sm font-medium text-secondary-700 dark:text-secondary-300">
+                    Technologies :
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {projet.lang.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-1 bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 rounded text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Bouton GitHub */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="https://github.com/RaphHuynh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline inline-flex items-center space-x-2"
+          >
+            <FaGithub className="w-5 h-5" />
+            <span>Voir tous mes projets sur GitHub</span>
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 

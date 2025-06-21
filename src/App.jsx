@@ -4,12 +4,11 @@ import { useState } from "react";
 import Nav from "./components/navigation/Nav"
 import Home from "./components/page/Home"
 import NavReseaux from './components/navigation/NavReseaux';
-import Competence from './components/page/Competence'
-import Experience from './components/page/Experience';
-import Work from './components/page/Work';
+import Competence from "./components/page/Competence"
+import Experience from "./components/page/Experience";
+import Work from "./components/page/Work";
 import AOS from 'aos';
 import Tarif from './components/page/Tarif';
-import AnimatedBubbles from './components/effect/AnimatedBubbles';
 
 AOS.init({
   once: true,
@@ -46,9 +45,8 @@ function App() {
  
   //Affichage
   return (
-    <div className='max-w-full overflow-x-hidden'>
+    <div className='min-h-screen bg-white dark:bg-secondary-900 transition-colors duration-300'>
       <Nav/>
-      <AnimatedBubbles/>
       <NavReseaux
         github={github}
         linkedln={linkedln}

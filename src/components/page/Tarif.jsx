@@ -1,167 +1,318 @@
-import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
-import emailjs from 'emailjs-com';
+import { motion } from 'framer-motion';
+import { FaEnvelope, FaMapMarkerAlt, FaCode, FaPalette, FaGlobe, FaCog, FaPause, FaCalendarAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
 
 export default Tarif;
 
-function Tarif(){
-    const tarif=[
-        {id:"Site portfolio", price:"300€"},
-        {id:"Dev web - Sur devis", price:"300€/jour"},
-        {id:"Site vitrine", price:"500€"},
-        {id:"Autres - Sur devis", price:"Par négociation"}
-    ]
-
-    useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
-
-    const [formState, setFormState] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        success: false,
-        error: false
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormState({
-            ...formState,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const { name, email, subject, message } = formState;
-
-        if (name && email && subject && message) {
-            emailjs.sendForm(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-                e.target,
-                import.meta.env.VITE_EMAILJS_USER_ID
-            ).then((result) => {
-                setFormState({
-                    name: '',
-                    email: '',
-                    subject: '',
-                    message: '',
-                    success: true,
-                    error: false
-                });
-            }, (error) => {
-                setFormState({
-                    ...formState,
-                    success: false,
-                    error: true
-                });
-            });
-        } else {
-            setFormState({
-                ...formState,
-                success: false,
-                error: true
-            });
-        }
-    };
-
-    return(
-        <section className='flex flex-col w-full pb-10 px-10 lg:px-32 justify-center bg-indigo-100 z-10' id="Tarifs">
-            <div className=' flex flex-col'>
-                <h2
-                    className='text-2xl md:text-3xl lg:text-4xl text-indigo-500 font-bold text-center mb-8'
-                    data-aos="fade-up"
-                >
-                    Tarifs prestations
-                </h2>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12'>
-                    {tarif.map((option, index) => (
-                        <div
-                            key={index}
-                            className='bg-white p-6 rounded-lg shadow-md  text-center'
-                            data-aos="fade-up"
-                            data-aos-delay={`${index * 100}`}
-                        >
-                            <h3 className='text-xl font-bold text-indigo-500 mb-2'>{option.id}</h3>
-                            <p className='text-lg text-slate-700'>{option.price}</p>
-                        </div>
-                    ))}
-                </div>
-
-                <div
-                    className='bg-white py-6 px-9 rounded-lg shadow-md '
-                    data-aos="fade-up"
-                >
-                    <h3 className='text-xl text-slate-700 mb-4 text-center text-menu'>Contactez-moi</h3>
-                    <form onSubmit={handleSubmit}>
-                        <div className='md:flex gap-8 h-full'>
-                            <div className='md:w-1/2 flex flex-col gap-4'>
-                                <div className='flex-grow'>
-                                    <label htmlFor='name' className='block text-slate-700 mb-2'>Nom</label>
-                                    <input
-                                        type='text'
-                                        id='name'
-                                        name='name'
-                                        value={formState.name}
-                                        onChange={handleChange}
-                                        className='w-full p-2 border border-gray-300 rounded bg-white'
-                                        required
-                                    />
-                                </div>
-                                <div className='flex-grow'>
-                                    <label htmlFor='email' className='block text-slate-700 mb-2'>Email</label>
-                                    <input
-                                        type='email'
-                                        id='email'
-                                        name='email'
-                                        value={formState.email}
-                                        onChange={handleChange}
-                                        className='w-full p-2 border border-gray-300 rounded bg-white'
-                                        required
-                                    />
-                                </div>
-                                <div className='flex-grow'>
-                                    <label htmlFor='subject' className='block text-slate-700 mb-2'>Objet</label>
-                                    <input
-                                        type='text'
-                                        id='subject'
-                                        name='subject'
-                                        value={formState.subject}
-                                        onChange={handleChange}
-                                        className='w-full p-2 border border-gray-300 rounded bg-white'
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <div className='md:w-1/2 flex flex-col'>
-                                <label htmlFor='message' className='block text-slate-700 mb-2'>Message</label>
-                                <textarea
-                                    id='message'
-                                    name='message'
-                                    value={formState.message}
-                                    onChange={handleChange}
-                                    className='w-full p-2 border border-gray-300 rounded flex-grow bg-white'
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className='text-center pt-9'>
-                            <button
-                                type='submit'
-                                className='bg-amber-400 hover:bg-indigo-300 text-black px-4 py-2 rounded shadow-md shadow-md transition delay-75'
-                            >
-                                Envoyer
-                            </button>
-                        </div>
-                        {formState.success && <p className='text-green-500 text-center mt-4'>Votre message a été envoyé avec succès !</p>}
-                        {formState.error && <p className='text-red-500 text-center mt-4'>Veuillez remplir tous les champs.</p>}
-                    </form>
-                </div>
-            </div>
-        </section>
-    );
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 };
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+function Tarif() {
+  const services = [
+    {
+      id: "Site Portfolio",
+      price: "300€",
+      description: "Portfolio professionnel personnalisé avec design moderne et responsive",
+      icon: <FaPalette className="w-6 h-6" />,
+      features: ["Design personnalisé", "Responsive", "SEO optimisé", "Formulaire de contact"],
+      available: false,
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      id: "Site Vitrine",
+      price: "500€",
+      description: "Site vitrine pour entreprise avec gestion de contenu",
+      icon: <FaGlobe className="w-6 h-6" />,
+      features: ["Design professionnel", "Gestion de contenu", "Optimisation SEO", "Support technique"],
+      available: false,
+      color: "from-green-500 to-green-600"
+    },
+    {
+      id: "Développement Web",
+      price: "300€/jour",
+      description: "Développement sur mesure d'applications web complexes",
+      icon: <FaCode className="w-6 h-6" />,
+      features: ["Architecture sur mesure", "Base de données", "API REST", "Tests automatisés"],
+      available: false,
+      color: "from-gray-500 to-gray-600"
+    },
+    {
+      id: "Data Science",
+      price: "Sur devis",
+      description: "Solutions d'intelligence artificielle et d'analyse de données",
+      icon: <FaCog className="w-6 h-6" />,
+      features: ["Machine Learning", "Analyse de données", "Visualisation", "Déploiement"],
+      available: false,
+      color: "from-orange-500 to-orange-600"
+    }
+  ];
+
+  const contactInfo = [
+    {
+      icon: <FaEnvelope className="w-5 h-5" />,
+      label: "Email",
+      value: "raphaelle.huynh@example.com",
+      link: "mailto:raphaelle.huynh@example.com"
+    },
+    {
+      icon: <FaMapMarkerAlt className="w-5 h-5" />,
+      label: "Localisation",
+      value: "Reims, France",
+      link: null
+    }
+  ];
+
+  return (
+    <section className="section-padding gradient-bg" id="Tarifs">
+      <div className="container-custom">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            variants={fadeInUp}
+            className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Services & <span className="gradient-text">Tarifs</span>
+          </motion.h2>
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+          >
+            Actuellement, je ne suis pas disponible pour des missions freelance car je me concentre sur mes études 
+            et mon alternance en data science. Cependant, n'hésitez pas à me contacter pour échanger sur vos projets futurs.
+          </motion.p>
+        </motion.div>
+
+        {/* Statut de disponibilité */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="card p-10 text-center max-w-3xl mx-auto bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-orange-200 dark:border-orange-700">
+            <div className="w-24 h-24 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+              <FaPause className="w-12 h-12 text-white" />
+            </div>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              Actuellement indisponible
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+              Je me concentre actuellement sur mes études en Master Informatique et mon alternance en Data Science. 
+              Je ne prends pas de nouvelles missions freelance pour le moment.
+            </p>
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full text-lg font-semibold shadow-lg">
+              <FaClock className="w-5 h-5 mr-3" />
+              Reprise prévue en 2026
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Services (pour référence future) */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-8 lg:grid-cols-2 xl:grid-cols-4 mb-20"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="card p-8 text-center transition-all duration-500 opacity-60 hover:opacity-80"
+              whileHover={{ y: -5 }}
+            >
+              <div className={`w-20 h-20 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}>
+                <div className="text-white">
+                  {service.icon}
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-bold text-gray-400 dark:text-gray-500 mb-3">
+                {service.id}
+              </h3>
+              
+              <div className="text-3xl font-bold text-gray-400 dark:text-gray-500 mb-4">
+                {service.price}
+              </div>
+              
+              <p className="text-gray-400 dark:text-gray-500 text-sm mb-6 leading-relaxed">
+                {service.description}
+              </p>
+              
+              <ul className="space-y-3 text-left">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center space-x-3 text-sm text-gray-400 dark:text-gray-500">
+                    <FaCheckCircle className="w-4 h-4 text-gray-300 dark:text-gray-600" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Contact */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-12 lg:grid-cols-2"
+        >
+          {/* Informations de contact */}
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                <FaEnvelope className="w-6 h-6 text-white" />
+              </div>
+              Contactez-moi
+            </h3>
+            
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+              Même si je ne suis pas disponible pour des missions freelance actuellement, 
+              n'hésitez pas à me contacter pour échanger sur vos projets futurs ou pour discuter 
+              de collaborations potentielles.
+            </p>
+            
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="text-white">
+                      {info.icon}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      {info.label}
+                    </div>
+                    {info.link ? (
+                      <a
+                        href={info.link}
+                        className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-semibold"
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <div className="text-gray-900 dark:text-white font-semibold">
+                        {info.value}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Formulaire de contact */}
+          <motion.div variants={fadeInUp} className="card p-8">
+            <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <FaEnvelope className="w-5 h-5 text-blue-500 mr-2" />
+              Envoyez-moi un message
+            </h4>
+            
+            <form className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    Nom complet
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    placeholder="Votre nom"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    placeholder="votre@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Sujet
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  placeholder="Votre projet"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+                  placeholder="Décrivez votre projet..."
+                  required
+                ></textarea>
+              </div>
+              
+              <motion.button
+                type="submit"
+                className="btn-primary w-full"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Envoyer le message
+              </motion.button>
+            </form>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

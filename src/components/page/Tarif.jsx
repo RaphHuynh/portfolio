@@ -66,8 +66,8 @@ function Tarif() {
     {
       icon: <FaEnvelope className="w-5 h-5" />,
       label: "Email",
-      value: "raphaelle.huynh@example.com",
-      link: "mailto:raphaelle.huynh@example.com"
+      value: "raphaellehuynh@gmail.com",
+      link: "mailto:raphaellehuynh@gmail.com"
     },
     {
       icon: <FaMapMarkerAlt className="w-5 h-5" />,

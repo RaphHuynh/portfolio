@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { FaPython, FaDatabase, FaCode, FaChartLine, FaBrain, FaServer, FaTools } from 'react-icons/fa';
-import { SiTensorflow, SiPytorch, SiPandas, SiNumpy, SiScikitlearn, SiReact, SiFastapi, SiMysql, SiGit } from 'react-icons/si';
+import { FaPython, FaDatabase, FaCode, FaChartLine, FaBrain, FaServer, FaTools, FaRProject, FaJava, FaPhp, FaHtml5, FaCss3, FaReact } from 'react-icons/fa';
+import { FaC } from 'react-icons/fa6';
+import { SiTensorflow, SiPytorch, SiPandas, SiNumpy, SiScikitlearn, SiReact, SiFastapi, SiMysql, SiGit, SiDjango, SiTailwindcss, SiStreamlit, SiLaravel } from 'react-icons/si';
 
 export default Competence;
 
@@ -26,6 +27,22 @@ const staggerContainer = {
 function Competence() {
   const skillCategories = [
     {
+      title: "Langages de programmation",
+      icon: <FaCode className="w-6 h-6" />,
+      description: "Langages de programmation",
+      skills: [
+        { name: "Python", icon: <FaPython className="w-5 h-5" /> },
+        { name: "JavaScript", icon: <FaCode className="w-5 h-5" /> },
+        { name: "Java", icon: <FaJava className="w-5 h-5" /> },
+        { name: "PHP", icon: <FaPhp className="w-5 h-5" /> },
+        { name: "SQL", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "HTML", icon: <FaHtml5 className="w-5 h-5" /> },
+        { name: "CSS", icon: <FaCss3 className="w-5 h-5" /> },
+        { name: "R", icon: <FaRProject className="w-5 h-5" /> },
+        { name: "C", icon: <FaC className="w-5 h-5" /> },
+      ]
+    },
+    {
       title: "Machine Learning & IA",
       icon: <FaBrain className="w-6 h-6" />,
       description: "Modèles prédictifs, deep learning et intelligence artificielle",
@@ -35,7 +52,9 @@ function Competence() {
         { name: "Scikit-learn", icon: <SiScikitlearn className="w-5 h-5" /> },
         { name: "OpenCV", icon: <FaCode className="w-5 h-5" /> },
         { name: "NLTK", icon: <FaCode className="w-5 h-5" /> },
-        { name: "YOLO", icon: <FaCode className="w-5 h-5" /> }
+        { name: "YOLO", icon: <FaCode className="w-5 h-5" /> },
+        { name: "Pydicom", icon: <FaCode className="w-5 h-5" /> },
+        { name: "Spacy", icon: <FaCode className="w-5 h-5" /> },
       ]
     },
     {
@@ -48,20 +67,28 @@ function Competence() {
         { name: "Matplotlib", icon: <FaChartLine className="w-5 h-5" /> },
         { name: "Seaborn", icon: <FaChartLine className="w-5 h-5" /> },
         { name: "Plotly", icon: <FaChartLine className="w-5 h-5" /> },
-        { name: "Shiny", icon: <FaChartLine className="w-5 h-5" /> }
+        { name: "Shiny", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "ggplot2", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "Wordcloud", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "ggplot", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "ggmap", icon: <FaChartLine className="w-5 h-5" /> },
+        { name: "Networkx", icon: <FaChartLine className="w-5 h-5" /> },
       ]
     },
     {
       title: "Développement",
       icon: <FaCode className="w-6 h-6" />,
-      description: "Langages de programmation et frameworks",
+      description: "Frameworks de développement et librairies web",
       skills: [
         { name: "Python", icon: <FaPython className="w-5 h-5" /> },
         { name: "React", icon: <SiReact className="w-5 h-5" /> },
         { name: "FastAPI", icon: <SiFastapi className="w-5 h-5" /> },
-        { name: "JavaScript", icon: <FaCode className="w-5 h-5" /> },
-        { name: "Java", icon: <FaCode className="w-5 h-5" /> },
-        { name: "PHP", icon: <FaCode className="w-5 h-5" /> }
+        { name: "Django", icon: <SiDjango className="w-5 h-5" /> },
+        { name: "ViteJS", icon: <FaCode className="w-5 h-5" /> },
+        { name: "TailwindCSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+        { name: "Streamlit", icon: <SiStreamlit className="w-5 h-5" /> },
+        { name: "Shiny", icon: <FaCode className="w-5 h-5" /> },
+        { name: "Laravel", icon: <SiLaravel className="w-5 h-5" /> },
       ]
     },
     {
@@ -71,10 +98,11 @@ function Competence() {
       skills: [
         { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
         { name: "PostgreSQL", icon: <FaDatabase className="w-5 h-5" /> },
-        { name: "MongoDB", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "SQLite", icon: <FaDatabase className="w-5 h-5" /> },
         { name: "ClickHouse", icon: <FaDatabase className="w-5 h-5" /> },
-        { name: "Apache Spark", icon: <FaServer className="w-5 h-5" /> },
-        { name: "PL/SQL Oracle", icon: <FaDatabase className="w-5 h-5" /> }
+        { name: "PL/SQL Oracle", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "UML", icon: <FaDatabase className="w-5 h-5" /> },
+        { name: "Merise", icon: <FaDatabase className="w-5 h-5" /> },
       ]
     },
     {
@@ -87,7 +115,8 @@ function Competence() {
         { name: "Jupyter", icon: <FaTools className="w-5 h-5" /> },
         { name: "VS Code", icon: <FaTools className="w-5 h-5" /> },
         { name: "Linux", icon: <FaTools className="w-5 h-5" /> },
-        { name: "Bash", icon: <FaTools className="w-5 h-5" /> }
+        { name: "Bash", icon: <FaTools className="w-5 h-5" /> },
+        { name: "Anaconda", icon: <FaTools className="w-5 h-5" />},
       ]
     }
   ];

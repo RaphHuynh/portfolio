@@ -9,6 +9,9 @@ import ImgCoursIA from '../../assets/img_projet/cours_ia.png';
 import ImgFRDesDev from '../../assets/img_projet/frdesdev.png';
 import ImgHSR from '../../assets/img_projet/hsr.png';
 import ImgPortRaphDem from '../../assets/img_projet/portfolio_raph_demets.png';
+import ImgSumApp from '../../assets/img_projet/sumApp.png';
+import ImgPortJonathanStueur from '../../assets/img_projet/portfolioJonathan.png';
+import ImgNLP from '../../assets/img_projet/nlp.png';
 
 export default Work;
 
@@ -33,6 +36,33 @@ const staggerContainer = {
 
 function Work() {
   const projets = [
+    {
+        id : "Projet NLP - Traitement du langage naturel",
+        img : ImgNLP,
+        content : "J'ai developpé une interface d'analyse de texte en python et shiny afin d'analyser différentes données de documents textes, corpus, comme calculer la distance entre les phrases pour trouver les plus proches voisins d'un corpus. J'ai aussi développé d'autres features comme un simple chatbot et divers nuages de mots.",
+        lang : ["Python","NLTK","Scikit-learn","Spacy", "Word2Vec","matplotlib","Plotly","Shiny","Wordcloud","FastText","Doc2Vec","Networkx"],
+        category : "NLP - App web",
+        github : "https://github.com/RaphHuynh/Interface-NLP-avec-nuage-de-mot-Chatbot-basique-et-Analyse-de-documents",
+        live : null
+    },
+    {
+        id : "Sum'App",
+        img : ImgSumApp,
+        content : "Application web et bot discord pour réaliser des résumés de réunions vocal au format pdf.",
+        lang : ["Python","Pycord","TailwindCSS","Django","SQLite","OpenAI","Whisper"],
+        category : "IA - App web - Bot Discord",
+        github : "https://github.com/RaphHuynh/projet_info707_bot_discord_reunion_resume",
+        live : null
+    },
+    {
+        id : "Portfolio Jonathan Stueur - Freelance",
+        img : ImgPortJonathanStueur,
+        content : "Portfolio réalisé pour un client (Front End) dans le domaine du cinéma et de la réalisation.",
+        lang : ["ReactJS", "JavaScript", "TailwindCSS", "ViteJS"],
+        category : "Freelance",
+        github : null,
+        live : "https://www.jonathansteuer.fr"
+    },
     {
       id: 'Portfolio Raphël Demets - Freelance',
       img: ImgPortRaphDem,

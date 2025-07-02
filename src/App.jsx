@@ -11,6 +11,7 @@ import Experience from "./components/page/Experience";
 import Work from "./components/page/Work";
 import AOS from 'aos';
 import Tarif from './components/page/Tarif';
+import Formation from "./components/page/Formation";
 
 AOS.init({
   once: true,
@@ -52,6 +53,7 @@ function App() {
       <Home/>
       <About />
       <Competence/>
+      <Formation/>
       <Experience />
       <Work
         projet={projet}

@@ -48,6 +48,7 @@ export default function Nav() {
             <div className="flex items-center gap-8">
                 <ThemeToggle />
                 <ul className="flex items-center gap-8 font-medium uppercase tracking-widest dark:text-[#bfa76a]">
+                    <li><a href="#Formation" className="hover:underline">Formation</a></li>
                     <li><a href="#Skill" className="hover:underline">Competences</a></li>
                     <li><a href="#Experience" className="hover:underline">Expérience</a></li>
                     <li><a href="#Work" className="hover:underline">Projets</a></li>

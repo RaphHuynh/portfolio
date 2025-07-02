@@ -48,7 +48,7 @@ function Home() {
             Huynh
           </h1>
         </div>
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full md:w-1/2 text-center md:text-left px-2">
           <p className="text-base md:text-lg lg:text-2xl text-stone-400 font-light tracking-wide">
             Data Scientist, Engineer et Analyst et Développeuse Full-Stack avec 1 ans d'expérience en alternance et en freelance. Projètes de devenir doctorante.
           </p>

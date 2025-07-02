@@ -55,21 +55,21 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-24 py-20 font-satoshi">
-      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-6 md:px-28 py-20 font-satoshi">
+      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
         Expérience
       </h2>
-      <div className="border-b border-[#d1d5db] dark:border-stone-700 mb-12 w-full" />
-      <div className="flex flex-col gap-24">
+      <div className="border-b border-stone-700 mb-12 w-full" />
+      <div className="flex flex-col gap-12 md:gap-24">
         {experiences.map((exp, i) => (
-          <div key={i} className="grid grid-cols-12 gap-8 items-start">
+          <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
             {/* Colonne entreprise */}
-            <div className="col-span-3 flex flex-col">
-              <span className="text-3xl font-semibold text-[#e5e5e7] leading-tight mb-2">{exp.entreprise}</span>
-              <span className="text-base text-[#b0b0b8] mt-2">{exp.poste}</span>
+            <div className="md:col-span-3 flex flex-col">
+              <span className="text-xl md:text-3xl font-semibold text-[#e5e5e7] leading-tight md:mb-2">{exp.entreprise}</span>
+              <span className="text-base text-[#b0b0b8] md:mt-2">{exp.poste}</span>
             </div>
             {/* Colonne infos */}
-            <div className="col-span-3 flex flex-col gap-4 text-sm text-[#b0b0b8]">
+            <div className="md:col-span-3 flex flex-col md:gap-2 lg:gap-4 text-sm text-[#b0b0b8]">
             <div><span className="font-semibold text-[#d1d1d6]">Date</span> : {exp.date}</div>
               <div><span className="font-semibold text-[#d1d1d6]">Lieu</span> : {exp.lieu}</div>
               <div><span className="font-semibold text-[#d1d1d6]">Secteur</span> : {exp.secteur}</div>
@@ -79,8 +79,8 @@ export default function Experience() {
               )}
             </div>
             {/* Colonne description */}
-            <div className="col-span-6 text-base leading-relaxed text-[#d1d1d6]">
-              <blockquote className="bg-[#23232a] dark:bg-[#23232a] rounded-lg p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+            <div className="md:col-span-6 text-base leading-relaxed text-[#d1d1d6]">
+              <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-sm md:text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
                 {exp.description}
               </blockquote>
             </div>
@@ -88,28 +88,29 @@ export default function Experience() {
         ))}
       </div>
       {/* Section Bilan Freelance */}
-      <div className="mt-24">
-        <h2 className="text-2xl lg:text-4xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+      <div className="mt-16 md:mt-24">
+        <h2 className="text-2xl lg:text-4xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           Freelance
         </h2>
-        <div className="border-b border-[#d1d5db] dark:border-stone-700 mb-8 w-full" />
-        <p className="text-lg text-[#22304a] dark:text-stone-200 font-light mb-8 w-1/2">
+        <div className="border-b border-stone-700 mb-8 w-full" />
+        <p className="text-lg text-stone-200 font-light mb-8 w-full md:w-1/2">
           Depuis 2024, j'ai accompagné des clients dans la réalisation de leurs projets informatiques. J'accorde une grande importance à la satisfaction client, à la pédagogie et à la qualité du code livré.
         </p>
-        <div className="flex flex-wrap gap-16 mb-10">
+        <div className="flex flex-wrap gap-8 md:gap-16 mb-10">
           <div className="flex flex-col">
-            <span className="text-4xl font-bold text-[#bfa76a] dark:text-[#bfa76a]">5</span>
-            <span className="text-base text-[#22304a] dark:text-stone-400">Clients accompagnés</span>
+            <span className="text-4xl font-bold text-[#bfa76a]">5</span>
+            <span className="text-base text-stone-400">Clients accompagnés</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-4xl font-bold text-[#bfa76a] dark:text-[#bfa76a]">4</span>
-            <span className="text-base text-[#22304a] dark:text-stone-400">Projets freelance réalisés</span>
+            <span className="text-4xl font-bold text-[#bfa76a]">4</span>
+            <span className="text-base text-stone-400">Projets freelance réalisés</span>
           </div>
         </div>
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-[#22304a] dark:text-[#bfa76a] mb-4">Recommandations LinkedIn</h3>
-          <div className="flex flex-col gap-6">
-            <blockquote className="bg-[#23232a] dark:bg-[#23232a] rounded-lg p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+          <h3 className="text-xl font-semibold text-[#bfa76a] mb-4">Recommandations LinkedIn</h3>
+          {/* Témoignages cachés sur mobile, visibles à partir de md */}
+          <div className="hidden md:flex flex-col gap-6">
+            <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
             J'ai eu l'opportunité de collaborer avec Raphaëlle en tant que développeuse web, et elle s'est distinguée par son autonomie et son engagement. Elle s'est approprié les projets avec une efficacité remarquable, notamment pour quelqu'un d'aussi jeune dans sa carrière.
             <br />
             Raphaëlle a un véritable sens du détail, que ce soit sur les aspects front-end ou back-end, et elle est toujours à l'écoute des besoins de l'équipe. Sa capacité à proposer des solutions adaptées et sa rigueur font d'elle un moteur précieux au sein de l'équipe ! 
@@ -118,7 +119,7 @@ export default function Experience() {
               <br />
               <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[#bfa76a] underline mt-2 inline-block">Voir sur LinkedIn</a>
             </blockquote>
-            <blockquote className="bg-[#23232a] dark:bg-[#23232a] rounded-lg p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+            <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
             En tant que CTO, j'ai eu le plaisir de superviser Raphaëlle Huynh durant notre collaboration sur une plateforme de jeu social. Elle a d'abord été intégrée en tant que développeuse JavaScript, où elle a travaillé à la fois sur le front-end, en développant l'éditeur graphique, et sur une partie du back-end. Son engagement, sa motivation et son efficacité lui ont rapidement permis de se démarquer par la qualité de son travail et sa capacité à résoudre des problèmes complexes. Cela nous a conduits à la promouvoir au poste de Lead Developer en cours de projet.
             <br />
             Je suis toujours impressionné par les femmes qui choisissent de s'investir dans le développement logiciel, un domaine exigeant, et Raphaëlle excelle dans ce métier avec une passion et un talent indéniables. C'est un véritable plaisir de travailler à ses côtés, et je la recommande vivement pour toute collaboration future.
@@ -128,10 +129,40 @@ export default function Experience() {
               <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[#bfa76a] underline mt-2 inline-block">Voir sur LinkedIn</a>
             </blockquote>
           </div>
+          {/* Lien seul sur mobile ET bouton sur desktop */}
+          <div className="flex flex-col">
+            <a
+              href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/details/recommendations/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-block
+                mt-2
+                w-full
+                md:w-auto
+                px-6 py-3
+                border border-[#bfa76a]
+                text-[#bfa76a]
+                rounded-2xl
+                font-semibold
+                uppercase
+                tracking-widest
+                text-center
+                bg-transparent
+                transition-all duration-200
+                shadow-none
+                md:mx-auto
+                md:hover:bg-[#bfa76a] md:hover:text-[#181a1b] md:hover:shadow-lg
+                md:shadow-[0_2px_16px_0_rgba(191,167,106,0.10)]
+                md:text-base
+                md:font-bold
+                md:mt-8
+              "
+            >
+              Voir toutes mes recommandations sur LinkedIn
+            </a>
+          </div>
         </div>
-        <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/details/recommendations/" target="_blank" rel="noopener noreferrer" className="inline-block mt-4 px-6 py-3 border border-[#bfa76a] text-[#bfa76a] rounded-full font-semibold hover:bg-[#bfa76a] hover:text-[#23232a] transition-colors">
-          Voir toutes mes recommandations sur LinkedIn
-        </a>
       </div>
     </section>
   );

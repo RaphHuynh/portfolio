@@ -88,30 +88,30 @@ export default function Competence() {
   ];
 
   return (
-    <section className="min-h-screen bg-white dark:bg-[#181a1b] flex items-center w-full" id="Competence">
-      <div className="px-28 w-full">
+    <section className="min-h-screen bg-[#181a1b] flex items-center w-full" id="Competence">
+      <div className="px-6 md:px-28 w-full">
         {/* Titre et séparateur */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           Compétences
         </h2>
-        <div className="border-b border-[#d1d5db] dark:border-stone-700 mb-12 w-full" />
-        <p className="text-base lg:text-lg text-[#22304a] dark:text-stone-200 font-light mb-12 max-w-3xl text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+        <div className="border-b border-stone-700 mb-12 w-full" />
+        <p className="text-sm md:text-base lg:text-lg text-stone-200 font-light mb-12 max-w-3xl text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
           J'ai développé ces compétences tout au long de mon parcours en informatique, aussi bien lors de mes études que dans le cadre de mes expériences professionnelles. J'ai également enrichi mon expertise à travers des projets personnels et en pratiquant le pair programming avec des développeurs seniors.
         </p>
         {/* Grille des cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {skillCategories.map((category, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-[#181a1b] border border-[#e5e7eb] dark:border-stone-700 rounded-2xl p-8 flex flex-col gap-6 transition-all duration-200 hover:scale-[1.02] hover:border-[#bfa76a]"
+              className="bg-[#181a1b] border border-stone-700 rounded-2xl p-6 md:p-8 flex flex-col gap-4 md:gap-6 transition-all duration-200 hover:scale-[1.02] hover:border-[#bfa76a]"
             >
-              <h3 className="text-xl font-semibold text-[#22304a] dark:text-[#bfa76a] mb-2 uppercase tracking-wide" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+              <h3 className="text-lg md:text-xl font-semibold text-[#bfa76a] mb-2 uppercase tracking-wide" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
                 {category.title}
               </h3>
-              <ul className="flex flex-wrap gap-4">
+              <ul className="flex flex-wrap gap-3 md:gap-4">
                 {category.skills.map((skill, i) => (
-                  <li key={i} className="flex items-center gap-2 text-base text-[#22304a] dark:text-stone-400 font-light">
-                    <span className="text-lg opacity-40">{skill.icon}</span>
+                  <li key={i} className="flex items-center gap-2 text-sm md:text-base text-stone-400 font-light">
+                    <span className="text-base md:text-lg opacity-40">{skill.icon}</span>
                     <span>{skill.name}</span>
                   </li>
                 ))}

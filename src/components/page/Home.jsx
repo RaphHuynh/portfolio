@@ -35,21 +35,21 @@ function Home() {
   ];
 
   return (
-    <main className="bg-white dark:bg-[#181a1b] px-20">
+    <main className="bg-[#181a1b] px-6 md:px-20">
       {/* FOND ÉTOILÉ */}
       <StarField starCount={150} />
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-between section-padding pt-24 pb-12" id="Home">
+      <section className="min-h-screen flex flex-col justify-between pt-20 md:pt-24 pb-12" id="Home">
         <div className="flex-1 flex flex-col items-center justify-center w-full">
-          <h1 className="text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-[#22304a] dark:text-stone-200 leading-none text-left w-full pb-10" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-stone-200 leading-none text-center md:text-left w-full pb-6 md:pb-10" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
             Raphaëlle
           </h1>
-          <h1 className="text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-[#22304a] dark:text-stone-200 leading-none text-right w-full" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-stone-200 leading-none text-center md:text-right w-full" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
             Huynh
           </h1>
         </div>
-        <div className="w-1/2 text-left">
-          <p className="text-lg lg:text-2xl text-[#22304a] dark:text-stone-400 font-light tracking-wide">
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <p className="text-base md:text-lg lg:text-2xl text-stone-400 font-light tracking-wide">
             Data Scientist, Engineer et Analyst et Développeuse Full-Stack avec 1 ans d'expérience en alternance et en freelance. Projètes de devenir doctorante.
           </p>
         </div>

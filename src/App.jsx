@@ -53,8 +53,8 @@ function App() {
       <Home/>
       <About />
       <Competence/>
-      <Formation/>
       <Experience />
+      <Formation/>
       <Work
         projet={projet}
         key={projet.id}

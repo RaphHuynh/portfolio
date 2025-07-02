@@ -49,35 +49,35 @@ const fadeInUp = {
 
 export default function Tarif() {
   return (
-    <section className="min-h-screen w-full bg-[#19191c] !bg-[#19191c] text-[#d1d1d6] px-6 md:px-28 py-20 font-satoshi" id="Tarifs">
+    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-4 sm:px-6 md:px-28 py-12 md:py-20 font-satoshi" id="Tarifs">
       <motion.h2 
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-8 md:mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
         Services & Tarifs
       </motion.h2>
-      <div className="border-b border-[#bfa76a]/30 mb-12 w-full" />
+      <div className="border-b border-[#bfa76a]/30 mb-8 md:mb-12 w-full" />
       {/* Grille des services */}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-12 md:mb-20"
       >
         {services.map((service, i) => (
-          <div key={i} className="flex flex-col gap-4">
-            <div className="flex items-center mb-2">
+          <div key={i} className="flex flex-col gap-2 md:gap-4 items-center md:items-start text-center md:text-left">
+            <div className="flex items-center mb-1 md:mb-2 justify-center md:justify-start w-full">
               {service.icon}
-              <h3 className="text-lg md:text-xl font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.10em' }}>{service.id}</h3>
+              <h3 className="text-base md:text-xl font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.10em' }}>{service.id}</h3>
             </div>
-            <div className="text-2xl font-black text-[#bfa76a] mb-2 tracking-wide">{service.price}</div>
-            <p className="text-base text-[#e5e5e7] font-light mb-2 max-w-xl">{service.description}</p>
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="text-xl md:text-2xl font-black text-[#bfa76a] mb-1 md:mb-2 tracking-wide">{service.price}</div>
+            <p className="text-xs md:text-base text-[#e5e5e7] font-light mb-1 md:mb-2 max-w-xs md:max-w-xl mx-auto md:mx-0">{service.description}</p>
+            <div className="flex flex-wrap gap-1 md:gap-2 mb-1 md:mb-2 justify-center md:justify-start">
               {service.features.map((f, idx) => (
-                <span key={idx} className="px-3 py-1 rounded-full bg-[#23232a]/70 text-[#bfa76a] border border-[#bfa76a]/20 text-xs font-medium uppercase tracking-wide">
+                <span key={idx} className="px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-[#23232a]/70 text-[#bfa76a] border border-[#bfa76a]/20 text-[10px] md:text-xs font-medium uppercase tracking-wide">
                   {f}
                 </span>
               ))}
@@ -91,15 +91,15 @@ export default function Tarif() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="flex flex-col items-center justify-center mt-8 mb-16"
+        className="flex flex-col items-center justify-center mt-8 mb-12 md:mb-16 text-center"
       >
-        <div className="flex items-center gap-3 mb-2">
-          <FaPause className="w-7 h-7 text-[#bfa76a]" />
-          <span className="text-lg font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>Indisponible actuellement</span>
+        <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
+          <FaPause className="w-6 h-6 md:w-7 md:h-7 text-[#bfa76a]" />
+          <span className="text-base md:text-lg font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>Indisponible actuellement</span>
         </div>
-        <p className="text-base text-[#e5e5e7] font-light text-center max-w-xl">
+        <p className="text-xs md:text-base text-[#e5e5e7] font-light text-center max-w-xs md:max-w-xl mx-auto">
           Je me concentre actuellement sur mes études en Master Informatique et mon alternance en Data Science. Je ne prends pas de nouvelles missions freelance pour le moment.<br />
-          <span className="inline-flex items-center gap-2 mt-2 text-[#bfa76a] font-semibold"><FaClock className="w-5 h-5" /> Reprise prévue en 2026</span>
+          <span className="inline-flex items-center gap-1 md:gap-2 mt-1 md:mt-2 text-[#bfa76a] font-semibold"><FaClock className="w-4 h-4 md:w-5 md:h-5" /> Reprise prévue en 2026</span>
         </p>
       </motion.div>
       {/* Contact */}
@@ -108,26 +108,26 @@ export default function Tarif() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="flex flex-col md:flex-row items-center justify-between gap-8 mt-8"
+        className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 mt-8"
       >
-        <div className="flex flex-wrap gap-8 items-center">
+        <div className="flex flex-wrap gap-4 md:gap-8 items-center justify-center md:justify-start w-full md:w-auto">
           {contactInfo.map((info, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <span className="w-10 h-10 flex items-center justify-center">
+            <div key={i} className="flex items-center gap-2 md:gap-3">
+              <span className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
                 {info.icon}
               </span>
               <div className="flex flex-col">
-                <span className="text-xs text-[#bfa76a] uppercase tracking-widest font-semibold">{info.label}</span>
+                <span className="text-[10px] md:text-xs text-[#bfa76a] uppercase tracking-widest font-semibold">{info.label}</span>
                 {info.link ? (
-                  <a href={info.link} className="text-base text-[#e5e5e7] hover:underline font-medium">{info.value}</a>
+                  <a href={info.link} className="text-xs md:text-base text-[#e5e5e7] hover:underline font-medium">{info.value}</a>
                 ) : (
-                  <span className="text-base text-[#e5e5e7] font-medium">{info.value}</span>
+                  <span className="text-xs md:text-base text-[#e5e5e7] font-medium">{info.value}</span>
                 )}
               </div>
             </div>
           ))}
         </div>
-        <div className="text-base text-[#bfa76a] font-light mt-4 md:mt-0 text-center md:text-right">
+        <div className="text-xs md:text-base text-[#bfa76a] font-light mt-4 md:mt-0 text-center md:text-right w-full md:w-auto">
           N'hésitez pas à me contacter pour échanger sur vos projets futurs ou pour discuter de collaborations potentielles.
         </div>
       </motion.div>

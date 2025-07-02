@@ -35,7 +35,7 @@ function Home() {
   ];
 
   return (
-    <main className="bg-[#181a1b] px-6 md:px-20">
+    <main className="bg-[#181a1b] px-6 md:px-24">
       {/* FOND ÉTOILÉ */}
       <StarField starCount={150} />
       {/* HERO */}

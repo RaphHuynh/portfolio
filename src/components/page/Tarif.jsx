@@ -47,6 +47,16 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
+const staggerContainer = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 export default function Tarif() {
   return (
     <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-4 sm:px-6 md:px-28 py-12 md:py-20 font-satoshi" id="Tarifs">
@@ -61,14 +71,18 @@ export default function Tarif() {
       <div className="border-b border-[#bfa76a]/30 mb-8 md:mb-12 w-full" />
       {/* Grille des services */}
       <motion.div
-        variants={fadeInUp}
+        variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-12 md:mb-20"
       >
         {services.map((service, i) => (
-          <div key={i} className="flex flex-col gap-2 md:gap-4 items-center md:items-start text-center md:text-left">
+          <motion.div
+            key={i}
+            variants={fadeInUp}
+            className="flex flex-col gap-2 md:gap-4 items-center md:items-start text-center md:text-left"
+          >
             <div className="flex items-center mb-1 md:mb-2 justify-center md:justify-start w-full">
               {service.icon}
               <h3 className="text-base md:text-xl font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.10em' }}>{service.id}</h3>
@@ -82,7 +96,7 @@ export default function Tarif() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </motion.div>
       {/* Bloc indisponible */}

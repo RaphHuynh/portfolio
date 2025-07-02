@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaHome, FaLaptop, FaBriefcase, FaProjectDiagram, FaMoneyBillWave, FaBars, FaTimes } from 'react-icons/fa';
-import ThemeToggle from './ThemeToggle';
 import '../../assets/fonts/Satoshi-Black.otf';
 
 export default function Nav() {
@@ -48,8 +47,6 @@ export default function Nav() {
             
             {/* Droite */}
             <div className="flex items-center gap-4 md:gap-8">
-                <ThemeToggle />
-                
                 {/* Menu desktop */}
                 <ul className="hidden md:flex items-center gap-8 font-medium uppercase tracking-widest text-[#bfa76a]">
                     <li><a href="#Formation" className="hover:underline">Formation</a></li>

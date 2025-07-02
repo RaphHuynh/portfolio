@@ -130,10 +130,11 @@ function truncate(str, n) {
 
 export default function Work() {
   return (
-    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-0 py-20 font-satoshi" id="Projet">
-      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-12 px-28 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-28 py-20 font-satoshi" id="Projet">
+      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#22304a] dark:text-[#bfa76a] mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
         Projets
       </h2>
+      <div className="border-b border-[#bfa76a]/30 mb-12 w-full" />
       <div className="flex flex-col gap-24">
         {projets.map((projet, i) => (
           <div
@@ -142,33 +143,29 @@ export default function Work() {
             style={{ minHeight: 340 }}
           >
             {/* Image immersive */}
-            <div className="w-full h-[340px] md:h-[420px] relative">
+            <div className="w-full h-[340px] md:h-[420px] relative ">
               <img
                 src={projet.img}
                 alt={projet.id}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07] group-hover:rotate-[-1deg]"
                 style={{ filter: 'brightness(0.85) contrast(1.08)' }}
               />
-              {/* Overlay glass/degradé */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/30 to-transparent group-hover:from-[#22304a]/80 group-hover:via-black/40 group-hover:to-transparent transition-all duration-500" />
-              {/* Overlay contenu */}
-              <div className="absolute inset-0 flex flex-col justify-between p-10 md:p-16">
-                {/* Titre + badge */}
-                <div>
-                  <h3 className="text-3xl md:text-5xl font-black uppercase tracking-widest text-[#bfa76a] drop-shadow-lg mb-4 transition-all duration-500 group-hover:tracking-[0.25em] group-hover:text-white" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.12em' }}>
-                    {projet.id}
-                  </h3>
-                  <span className="inline-block px-4 py-1 rounded-full text-xs font-semibold bg-[#23232a]/70 text-[#bfa76a] mb-4 uppercase tracking-wide">
-                    {projet.category}
-                  </span>
-                </div>
-                {/* Description + technos + liens */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                  <p className="text-lg md:text-xl font-light text-[#e5e5e7] max-w-2xl mb-2 md:mb-0" style={{ textShadow: '0 2px 8px #181a1b' }}>
-                    {truncate(projet.content, 180)}
-                  </p>
-                  <div className="flex flex-col md:items-end gap-2">
-                    <div className="flex flex-wrap gap-2 items-center">
+              {/* Dégradé vertical sombre en bas */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+              {/* Overlay glassmorphism dense, centré verticalement et aligné à gauche */}
+              <div className="absolute inset-0 flex flex-col justify-center items-start p-6 md:p-12 lg:p-16">
+                <div className="max-w-3xl w-full">
+                  <div className="backdrop-blur-md bg-black/55 rounded-2xl px-6 py-7 md:px-10 md:py-10 shadow-2xl group-hover:bg-black/70 transition-all duration-300">
+                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-widest text-[#bfa76a] drop-shadow-lg mb-4 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.12em', textShadow: '0 4px 24px #000, 0 1px 0 #bfa76a' }}>
+                      {projet.id}
+                    </h3>
+                    <span className="inline-block px-4 py-1 rounded-full text-xs font-semibold bg-[#23232a]/70 text-[#bfa76a] mb-4 uppercase tracking-wide">
+                      {projet.category}
+                    </span>
+                    <p className="text-lg md:text-xl font-light text-[#e5e5e7] max-w-2xl mb-2 md:mb-0 drop-shadow-lg" style={{ textShadow: '0 2px 8px #181a1b, 0 1px 0 #000' }}>
+                      {truncate(projet.content, 180)}
+                    </p>
+                    <div className="flex flex-wrap gap-2 items-center mt-4">
                       <FaCode className="w-5 h-5 text-[#bfa76a] mr-1" />
                       {projet.lang.map((tech, idx) => (
                         <span key={idx} className="text-xs px-2 py-1 rounded bg-[#23232a]/70 text-[#bfa76a] font-medium border border-[#bfa76a]/20">
@@ -176,7 +173,7 @@ export default function Work() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-4 mt-2 justify-end">
+                    <div className="flex gap-4 mt-4 justify-end">
                       {projet.github && (
                         <a href={projet.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#bfa76a] hover:text-white transition-colors duration-200 text-xl">
                           <FaGithub className="w-6 h-6" />

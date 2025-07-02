@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from "react";
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 import Nav from "./components/navigation/Nav"
 import Home from "./components/page/Home"

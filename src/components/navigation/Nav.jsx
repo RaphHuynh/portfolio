@@ -25,7 +25,7 @@ export default function Nav() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (sectionId) => {
+    const scrollToSection = (sectionId) => {image.png
         const element = document.querySelector(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });

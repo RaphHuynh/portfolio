@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Nav from "./components/navigation/Nav"
 import Home from "./components/page/Home"
+import About from "./components/page/About"
 import NavReseaux from './components/navigation/NavReseaux';
 import Competence from "./components/page/Competence"
 import Experience from "./components/page/Experience";
@@ -47,11 +48,8 @@ function App() {
   return (
     <div className='min-h-screen bg-white dark:bg-secondary-900 transition-colors duration-300'>
       <Nav/>
-      <NavReseaux
-        github={github}
-        linkedln={linkedln}
-      />
       <Home/>
+      <About />
       <Competence/>
       <Experience />
       <Work

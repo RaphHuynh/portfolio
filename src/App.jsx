@@ -5,9 +5,6 @@ import AOS from 'aos';
 import NavRouter from "./components/navigation/NavRouter"
 import HomePage from "./pages/HomePage"
 import AboutPage from "./pages/AboutPage"
-import CompetencePage from "./pages/CompetencePage"
-import ExperiencePage from "./pages/ExperiencePage"
-import FormationPage from "./pages/FormationPage"
 import WorkPage from "./pages/WorkPage"
 import TarifPage from "./pages/TarifPage"
 
@@ -23,9 +20,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/competences" element={<CompetencePage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/formation" element={<FormationPage />} />
           <Route path="/projets" element={<WorkPage />} />
           <Route path="/tarifs" element={<TarifPage />} />
         </Routes>

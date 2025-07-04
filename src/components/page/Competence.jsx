@@ -91,7 +91,7 @@ export default function Competence() {
     <section className="min-h-screen bg-[#181a1b] flex items-center w-full" id="Competence">
       <div className="px-6 md:px-28 w-full">
         {/* Titre et séparateur */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           Compétences
         </h2>
         <div className="border-b border-stone-700 mb-12 w-full" />
@@ -103,9 +103,9 @@ export default function Competence() {
           {skillCategories.map((category, idx) => (
             <div
               key={idx}
-              className="bg-[#181a1b] border border-stone-700 rounded-2xl p-6 md:p-8 flex flex-col gap-4 md:gap-6 transition-all duration-200 hover:scale-[1.02] hover:border-[#bfa76a]"
+              className="bg-[#181a1b] border border-stone-700 rounded-2xl p-6 md:p-8 flex flex-col gap-4 md:gap-6 transition-all duration-200 hover:scale-[1.02] hover:border-[var(--primary-color)]"
             >
-              <h3 className="text-lg md:text-xl font-semibold text-[#bfa76a] mb-2 uppercase tracking-wide" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+                              <h3 className="text-lg md:text-xl font-semibold text-[var(--primary-color)] mb-2 uppercase tracking-wide" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
                 {category.title}
               </h3>
               <ul className="flex flex-wrap gap-3 md:gap-4">

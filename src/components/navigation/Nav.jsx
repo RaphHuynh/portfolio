@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaHome, FaLaptop, FaBriefcase, FaProjectDiagram, FaMoneyBillWave, FaBars, FaTimes } from 'react-icons/fa';
 import '../../assets/fonts/Satoshi-Black.otf';
+import ThemeToggle from './ThemeToggle';
 
 export default function Nav() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -49,12 +50,15 @@ export default function Nav() {
             <div className="flex items-center gap-4 md:gap-8">
                 {/* Menu desktop */}
                 <ul className="hidden md:flex items-center gap-8 font-medium uppercase tracking-widest text-[#bfa76a]">
-                    <li><a href="#Formation" className="hover:underline">Formation</a></li>
                     <li><a href="#Competence" className="hover:underline">Compétences</a></li>
                     <li><a href="#Experience" className="hover:underline">Expérience</a></li>
+                    <li><a href="#Formation" className="hover:underline">Formation</a></li>
                     <li><a href="#Projet" className="hover:underline">Projets</a></li>
                     <li><a href="#Tarifs" className="hover:underline">Tarifs</a></li>
                 </ul>
+                
+                {/* Bouton de thème */}
+                <ThemeToggle />
                 
                 {/* Bouton hamburger mobile */}
                 <button 

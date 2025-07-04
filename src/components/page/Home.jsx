@@ -4,6 +4,9 @@ import resume from "../../assets/cv/CV_raphaelle_Huynh.pdf";
 import '../../assets/fonts/Satoshi-Black.otf';
 import About from './About';
 import StarField from '../effect/StarField';
+import Moon from '../effect/Moon';
+import forestBg from '../../assets/forest_bg.png';
+import { useState, useEffect } from 'react';
 
 export default Home;
 
@@ -27,30 +30,59 @@ const staggerContainer = {
 };
 
 function Home() {
-  const skills = [
-    { icon: <FaBrain className="w-6 h-6" />, title: "Machine Learning", description: "Modèles prédictifs et IA" },
-    { icon: <FaDatabase className="w-6 h-6" />, title: "Data Engineering", description: "ETL et pipelines de données" },
-    { icon: <FaChartLine className="w-6 h-6" />, title: "Data Analysis", description: "Analyse exploratoire et statistique" },
-    { icon: <FaCode className="w-6 h-6" />, title: "Développement", description: "Python, SQL, React" }
-  ];
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      setIsDark(isDarkMode);
+    };
+
+    checkTheme();
+    
+    // Observer les changements de classe sur document.documentElement
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
-    <main className="bg-[#181a1b] px-6 md:px-24">
-      {/* FOND ÉTOILÉ */}
-      <StarField starCount={150} />
+    <main className={`px-6 md:px-24 transition-colors duration-300 min-h-screen ${isDark ? 'bg-[#181a1b]' : 'bg-gradient-to-br from-blue-50 via-white to-gray-100'}`}>
+      {/* Overlay forêt bien noire */}
+      <img
+        src={forestBg}
+        alt="Forêt silhouette"
+        className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none select-none"
+        style={{ filter: 'brightness(0)', opacity: 0.7 }}
+        aria-hidden="true"
+      />
+      {/* Infos bas gauche */}
+      <div className="fixed bottom-6 left-6 z-20 flex flex-col gap-1 text-xs md:text-sm text-white/80 select-none ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
+        Basée à <br/> REIMS, FRANCE
+      </div>
+      {/* FOND UNI OU DÉGRADÉ EN LIGHT MODE, GALAXIE EN DARK MODE */}
+      {isDark ? (
+        <StarField starCount={150} />
+      ) : null}
+      {/* LUNE AU MILIEU */}
+      <Moon />
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-between pt-20 md:pt-24 pb-12" id="Home">
-        <div className="flex-1 flex flex-col items-center justify-center w-full">
-          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-stone-200 leading-none text-center md:text-left w-full pb-6 md:pb-10" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
-            Raphaëlle
+      <section className="min-h-screen flex flex-col justify-between pt-20 md:pt-24 pb-6 px-2" id="Home">
+        <div className="flex-1 flex flex-col pt-10 w-full z-10">
+          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,8rem)] uppercase tracking-tight leading-none text-center md:text-left w-full" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+            <span className="text-white">RA</span>
+            <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>PHAËlle</span>
           </h1>
-          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,12rem)] uppercase tracking-tight text-stone-200 leading-none text-center md:text-right w-full" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
-            Huynh
+          <h1 className="text-[clamp(2.5rem,12vw,8rem)] md:text-[clamp(3.5rem,16vw,8rem)] uppercase tracking-tight leading-none text-center md:text-left w-full z-20" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '2px white', color: 'transparent' }}>
+            HU
+            <span className="text-white">YNH</span>
           </h1>
         </div>
-        <div className="w-full md:w-1/2 text-center md:text-left px-2">
-          <p className="text-base md:text-lg lg:text-2xl text-stone-400 font-light tracking-wide">
-            Data Scientist, Engineer et Analyst et Développeuse Full-Stack avec 1 ans d'expérience en alternance et en freelance. Projètes de devenir doctorante.
+        <div className="w-full md:w-full text-center md:text-left px-2 z-10">
+          <p className={`text-base md:w-1/2 text-right mr-0 ml-auto md:text-lg lg:text-2xl font-light tracking-wide ${isDark ? 'text-stone-400' : 'text-gray-600'}`}>
+            Data Scientist, Manager et Développeuse Full-Stack
           </p>
         </div>
       </section>

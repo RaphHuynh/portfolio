@@ -7,38 +7,38 @@ const services = [
     id: "Site Portfolio",
     price: "300€",
     description: "Portfolio professionnel personnalisé avec design moderne et responsive.",
-    icon: <FaPalette className="w-7 h-7 text-[#bfa76a] mr-3" />,
+    icon: <FaPalette className="w-7 h-7 text-[var(--primary-color)] mr-3" />,
     features: ["Design personnalisé", "Responsive", "SEO optimisé", "Formulaire de contact"],
   },
   {
     id: "Site Vitrine",
     price: "500€",
     description: "Site vitrine pour entreprise avec gestion de contenu.",
-    icon: <FaGlobe className="w-7 h-7 text-[#bfa76a] mr-3" />,
+    icon: <FaGlobe className="w-7 h-7 text-[var(--primary-color)] mr-3" />,
     features: ["Design professionnel", "Gestion de contenu", "Optimisation SEO", "Support technique"],
   },
   {
     id: "Développement Web",
     price: "300€/jour",
     description: "Développement sur mesure d'applications web complexes.",
-    icon: <FaCode className="w-7 h-7 text-[#bfa76a] mr-3" />,
+    icon: <FaCode className="w-7 h-7 text-[var(--primary-color)] mr-3" />,
     features: ["Architecture sur mesure", "Base de données", "API REST", "Tests automatisés"],
   },
   {
     id: "Data Science",
     price: "Sur devis",
     description: "Solutions d'intelligence artificielle et d'analyse de données.",
-    icon: <FaCog className="w-7 h-7 text-[#bfa76a] mr-3" />,
+    icon: <FaCog className="w-7 h-7 text-[var(--primary-color)] mr-3" />,
     features: ["Machine Learning", "Analyse de données", "Visualisation", "Déploiement"],
   }
 ];
 
 const contactInfo = [
   {
-    icon: <FaEnvelope className="w-5 h-5 text-[#bfa76a]" />, label: "Email", value: "raphaelle.huynh@gmail.com", link: "mailto:raphaelle.huynh@gmail.com"
+    icon: <FaEnvelope className="w-5 h-5 text-[var(--primary-color)]" />, label: "Email", value: "raphaelle.huynh@gmail.com", link: "mailto:raphaelle.huynh@gmail.com"
   },
   {
-    icon: <FaMapMarkerAlt className="w-5 h-5 text-[#bfa76a]" />, label: "Localisation", value: "Reims, France", link: null
+    icon: <FaMapMarkerAlt className="w-5 h-5 text-[var(--primary-color)]" />, label: "Localisation", value: "Reims, France", link: null
   }
 ];
 
@@ -65,10 +65,10 @@ export default function Tarif() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-8 md:mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-8 md:mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
         Services & Tarifs
       </motion.h2>
-      <div className="border-b border-[#bfa76a]/30 mb-8 md:mb-12 w-full" />
+      <div className="border-b border-[var(--primary-color)]/30 mb-8 md:mb-12 w-full" />
       {/* Grille des services */}
       <motion.div
         variants={staggerContainer}
@@ -85,13 +85,13 @@ export default function Tarif() {
           >
             <div className="flex items-center mb-1 md:mb-2 justify-center md:justify-start w-full">
               {service.icon}
-              <h3 className="text-base md:text-xl font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.10em' }}>{service.id}</h3>
+              <h3 className="text-base md:text-xl font-bold uppercase tracking-widest text-[var(--primary-color)]" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.10em' }}>{service.id}</h3>
             </div>
-            <div className="text-xl md:text-2xl font-black text-[#bfa76a] mb-1 md:mb-2 tracking-wide">{service.price}</div>
+            <div className="text-xl md:text-2xl font-black text-[var(--primary-color)] mb-1 md:mb-2 tracking-wide">{service.price}</div>
             <p className="text-xs md:text-base text-[#e5e5e7] font-light mb-1 md:mb-2 max-w-xs md:max-w-xl mx-auto md:mx-0">{service.description}</p>
             <div className="flex flex-wrap gap-1 md:gap-2 mb-1 md:mb-2 justify-center md:justify-start">
               {service.features.map((f, idx) => (
-                <span key={idx} className="px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-[#23232a]/70 text-[#bfa76a] border border-[#bfa76a]/20 text-[10px] md:text-xs font-medium uppercase tracking-wide">
+                <span key={idx} className="px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-[#23232a]/70 text-[var(--primary-color)] border border-[var(--primary-color)]/20 text-[10px] md:text-xs font-medium uppercase tracking-wide">
                   {f}
                 </span>
               ))}
@@ -108,12 +108,12 @@ export default function Tarif() {
         className="flex flex-col items-center justify-center mt-8 mb-12 md:mb-16 text-center"
       >
         <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
-          <FaPause className="w-6 h-6 md:w-7 md:h-7 text-[#bfa76a]" />
-          <span className="text-base md:text-lg font-bold uppercase tracking-widest text-[#bfa76a]" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>Indisponible actuellement</span>
+          <FaPause className="w-6 h-6 md:w-7 md:h-7 text-[var(--primary-color)]" />
+          <span className="text-base md:text-lg font-bold uppercase tracking-widest text-[var(--primary-color)]" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>Indisponible actuellement</span>
         </div>
         <p className="text-xs md:text-base text-[#e5e5e7] font-light text-center max-w-xs md:max-w-xl mx-auto">
           Je me concentre actuellement sur mes études en Master Informatique et mon alternance en Data Science. Je ne prends pas de nouvelles missions freelance pour le moment.<br />
-          <span className="inline-flex items-center gap-1 md:gap-2 mt-1 md:mt-2 text-[#bfa76a] font-semibold"><FaClock className="w-4 h-4 md:w-5 md:h-5" /> Reprise prévue en 2026</span>
+          <span className="inline-flex items-center gap-1 md:gap-2 mt-1 md:mt-2 text-[var(--primary-color)] font-semibold"><FaClock className="w-4 h-4 md:w-5 md:h-5" /> Reprise prévue en 2026</span>
         </p>
       </motion.div>
       {/* Contact */}
@@ -131,7 +131,7 @@ export default function Tarif() {
                 {info.icon}
               </span>
               <div className="flex flex-col">
-                <span className="text-[10px] md:text-xs text-[#bfa76a] uppercase tracking-widest font-semibold">{info.label}</span>
+                <span className="text-[10px] md:text-xs text-[var(--primary-color)] uppercase tracking-widest font-semibold">{info.label}</span>
                 {info.link ? (
                   <a href={info.link} className="text-xs md:text-base text-[#e5e5e7] hover:underline font-medium">{info.value}</a>
                 ) : (
@@ -141,7 +141,7 @@ export default function Tarif() {
             </div>
           ))}
         </div>
-        <div className="text-xs md:text-base text-[#bfa76a] font-light mt-4 md:mt-0 text-center md:text-right w-full md:w-auto">
+        <div className="text-xs md:text-base text-[var(--primary-color)] font-light mt-4 md:mt-0 text-center md:text-right w-full md:w-auto">
           N'hésitez pas à me contacter pour échanger sur vos projets futurs ou pour discuter de collaborations potentielles.
         </div>
       </motion.div>

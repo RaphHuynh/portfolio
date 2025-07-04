@@ -56,7 +56,7 @@ const experiences = [
 export default function Experience() {
   return (
     <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-6 md:px-28 py-20 font-satoshi">
-      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }} id="Experience">
+      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }} id="Experience">
         Expérience
       </h2>
       <div className="border-b border-stone-700 mb-12 w-full" />
@@ -75,12 +75,12 @@ export default function Experience() {
               <div><span className="font-semibold text-[#d1d1d6]">Secteur</span> : {exp.secteur}</div>
               <div><span className="font-semibold text-[#d1d1d6]">Contrat</span> : {exp.contract}</div>
               {exp.site && (
-                <div><span className="font-semibold text-[#d1d1d6]">Site</span> : <a href={exp.site} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#bfa76a]">{exp.site}</a></div>
+                <div><span className="font-semibold text-[#d1d1d6]">Site</span> : <a href={exp.site} target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--primary-color)]">{exp.site}</a></div>
               )}
             </div>
             {/* Colonne description */}
             <div className="md:col-span-6 text-base leading-relaxed text-[#d1d1d6]">
-              <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-sm md:text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+              <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-sm md:text-base text-[#d1d1d6] italic border-l-4 border-[var(--primary-color)]">
                 {exp.description}
               </blockquote>
             </div>
@@ -89,7 +89,7 @@ export default function Experience() {
       </div>
       {/* Section Bilan Freelance */}
       <div className="mt-16 md:mt-24">
-        <h2 className="text-2xl lg:text-4xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="text-2xl lg:text-4xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           Freelance
         </h2>
         <div className="border-b border-stone-700 mb-8 w-full" />
@@ -98,35 +98,35 @@ export default function Experience() {
         </p>
         <div className="flex flex-wrap gap-8 md:gap-16 mb-10">
           <div className="flex flex-col">
-            <span className="text-4xl font-bold text-[#bfa76a]">5</span>
+            <span className="text-4xl font-bold text-[var(--primary-color)]">5</span>
             <span className="text-base text-stone-400">Clients accompagnés</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-4xl font-bold text-[#bfa76a]">4</span>
+            <span className="text-4xl font-bold text-[var(--primary-color)]">4</span>
             <span className="text-base text-stone-400">Projets freelance réalisés</span>
           </div>
         </div>
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-[#bfa76a] mb-4">Recommandations LinkedIn</h3>
+          <h3 className="text-xl font-semibold text-[var(--primary-color)] mb-4">Recommandations LinkedIn</h3>
           {/* Témoignages cachés sur mobile, visibles à partir de md */}
           <div className="hidden md:flex flex-col gap-6">
-            <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+            <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[var(--primary-color)]">
             J'ai eu l'opportunité de collaborer avec Raphaëlle en tant que développeuse web, et elle s'est distinguée par son autonomie et son engagement. Elle s'est approprié les projets avec une efficacité remarquable, notamment pour quelqu'un d'aussi jeune dans sa carrière.
             <br />
             Raphaëlle a un véritable sens du détail, que ce soit sur les aspects front-end ou back-end, et elle est toujours à l'écoute des besoins de l'équipe. Sa capacité à proposer des solutions adaptées et sa rigueur font d'elle un moteur précieux au sein de l'équipe ! 
             <br />
             Je la recommande vivement, c'est une vraie perle pour toute équipe technique !
               <br />
-              <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[#bfa76a] underline mt-2 inline-block">Voir sur LinkedIn</a>
+              <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary-color)] underline mt-2 inline-block">Voir sur LinkedIn</a>
             </blockquote>
-            <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+                          <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[var(--primary-color)]">
             En tant que CTO, j'ai eu le plaisir de superviser Raphaëlle Huynh durant notre collaboration sur une plateforme de jeu social. Elle a d'abord été intégrée en tant que développeuse JavaScript, où elle a travaillé à la fois sur le front-end, en développant l'éditeur graphique, et sur une partie du back-end. Son engagement, sa motivation et son efficacité lui ont rapidement permis de se démarquer par la qualité de son travail et sa capacité à résoudre des problèmes complexes. Cela nous a conduits à la promouvoir au poste de Lead Developer en cours de projet.
             <br />
             Je suis toujours impressionné par les femmes qui choisissent de s'investir dans le développement logiciel, un domaine exigeant, et Raphaëlle excelle dans ce métier avec une passion et un talent indéniables. C'est un véritable plaisir de travailler à ses côtés, et je la recommande vivement pour toute collaboration future.
             <br />
             Raphaëlle a également démontré un leadership remarquable en gérant son équipe tout en continuant à livrer un code de qualité. En parallèle, elle partage ses compétences à travers des streams de code sur Twitch, témoignant ainsi de son engagement envers la communauté et de sa passion pour le développement.
               <br />
-              <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[#bfa76a] underline mt-2 inline-block">Voir sur LinkedIn</a>
+              <a href="https://www.linkedin.com/in/raphaëlle-huynh-46192919b/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary-color)] underline mt-2 inline-block">Voir sur LinkedIn</a>
             </blockquote>
           </div>
           {/* Lien seul sur mobile ET bouton sur desktop */}
@@ -141,8 +141,8 @@ export default function Experience() {
                 w-full
                 md:w-auto
                 px-6 py-3
-                border border-[#bfa76a]
-                text-[#bfa76a]
+                border border-[var(--primary-color)]
+                text-[var(--primary-color)]
                 rounded-2xl
                 font-semibold
                 uppercase
@@ -152,7 +152,7 @@ export default function Experience() {
                 transition-all duration-200
                 shadow-none
                 md:mx-auto
-                md:hover:bg-[#bfa76a] md:hover:text-[#181a1b] md:hover:shadow-lg
+                md:hover:bg-[var(--primary-color)] md:hover:text-[#181a1b] md:hover:shadow-lg
                 md:shadow-[0_2px_16px_0_rgba(191,167,106,0.10)]
                 md:text-base
                 md:font-bold

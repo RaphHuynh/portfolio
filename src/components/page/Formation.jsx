@@ -31,7 +31,7 @@ const formations = [
 export default function Formation() {
   return (
     <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-6 md:px-28 py-20 font-satoshi" id="Formation">
-      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+      <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
         Formation
       </h2>
       <div className="border-b border-stone-700 mb-12 w-full" />
@@ -49,7 +49,7 @@ export default function Formation() {
             </div>
             {/* Colonne description */}
             <div className="md:col-span-6 text-base leading-relaxed text-[#d1d1d6]">
-              <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[#bfa76a]">
+              <blockquote className="bg-[#23232a] rounded-lg p-4 md:p-6 text-base text-[#d1d1d6] italic border-l-4 border-[var(--primary-color)]">
                 {f.description}
               </blockquote>
             </div>

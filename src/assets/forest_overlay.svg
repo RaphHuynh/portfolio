@@ -1,0 +1,25 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.22">
+    <!-- Pins à gauche -->
+    <path d="M120 1080 Q140 900 110 800 Q130 820 120 700 Q150 750 140 600 Q170 700 160 500 Q200 600 200 400 Q220 500 230 300 Q250 400 260 200 Q270 350 300 100 Q320 300 340 0" stroke="#181a1b" stroke-width="40" fill="none"/>
+    <!-- Feuillus à droite -->
+    <ellipse cx="1800" cy="900" rx="120" ry="60" fill="#181a1b"/>
+    <ellipse cx="1700" cy="950" rx="90" ry="40" fill="#181a1b"/>
+    <ellipse cx="1850" cy="1000" rx="70" ry="30" fill="#181a1b"/>
+    <ellipse cx="1600" cy="1000" rx="60" ry="25" fill="#181a1b"/>
+    <!-- Feuillage haut gauche -->
+    <ellipse cx="200" cy="100" rx="180" ry="60" fill="#181a1b"/>
+    <ellipse cx="400" cy="80" rx="120" ry="40" fill="#181a1b"/>
+    <!-- Feuillage haut droit -->
+    <ellipse cx="1720" cy="120" rx="160" ry="50" fill="#181a1b"/>
+    <ellipse cx="1500" cy="60" rx="100" ry="30" fill="#181a1b"/>
+    <!-- Branches fines -->
+    <path d="M300 1080 Q350 900 400 1000 Q420 950 440 1080" stroke="#23232a" stroke-width="18" fill="none"/>
+    <path d="M1600 1080 Q1580 900 1550 1000 Q1530 950 1500 1080" stroke="#23232a" stroke-width="18" fill="none"/>
+    <!-- Feuillage bas centre -->
+    <ellipse cx="960" cy="1080" rx="400" ry="80" fill="#181a1b"/>
+    <!-- Quelques branches centrales -->
+    <path d="M900 1080 Q950 900 980 1080" stroke="#23232a" stroke-width="12" fill="none"/>
+    <path d="M1020 1080 Q1050 950 1100 1080" stroke="#23232a" stroke-width="10" fill="none"/>
+  </g>
+</svg> 

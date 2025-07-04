@@ -5,7 +5,7 @@ export default function About() {
     <section className="min-h-screen bg-[#181a1b] flex items-center" id="About">
       <div className="w-full px-6 md:px-28">
         {/* Titre et séparateur */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[#bfa76a] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           À propos
         </h2>
         <div className="border-b border-stone-700 mb-12 w-full" />

@@ -45,22 +45,22 @@ export default function NavRouter() {
                 {/* Menu desktop */}
                 <ul className="hidden md:flex items-center gap-8 font-medium uppercase tracking-widest text-[var(--primary-color)]">
                     <li>
-                        <Link to="/" className="hover:underline">
+                        <Link to="/" className="hand-drawn-highlight hover:no-underline">
                             Accueil
                         </Link>
                     </li>
                     <li>
-                        <Link to="/about" className="hover:underline">
+                        <Link to="/about" className="hand-drawn-highlight hover:no-underline">
                             À propos
                         </Link>
                     </li>
                     <li>
-                        <Link to="/projets" className="hover:underline">
+                        <Link to="/projets" className="hand-drawn-highlight hover:no-underline">
                             Projets
                         </Link>
                     </li>
                     <li>
-                        <Link to="/art" className="hover:underline">
+                        <Link to="/art" className="hand-drawn-highlight hover:no-underline">
                             Art
                         </Link>
                     </li>

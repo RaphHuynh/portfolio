@@ -106,7 +106,7 @@ export default function About() {
     <section className="min-h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-28" id="About">
       <div className="w-full px-6 md:px-28">
         {/* Titre et séparateur */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-yellow" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           À propos
         </h2>
         <div className="border-b border-stone-700 mb-12 w-full" />
@@ -150,7 +150,7 @@ export default function About() {
         <div className="flex flex-col md:flex-row gap-12 md:gap-24">
           {/* Timeline Expérience */}
           <div className="flex-1">
-          <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Expérience</h2>
+          <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-blue" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Expérience</h2>
           <div className="border-b border-stone-700 mb-10 w-full" />
             <ol className="relative border-l-2 border-stone-700 pl-6">
               {experiences.map((exp, i) => (
@@ -166,7 +166,7 @@ export default function About() {
           </div>
           {/* Timeline Formation */}
           <div className="flex-1">
-            <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Formation</h2>
+            <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-green" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Formation</h2>
             <div className="border-b border-stone-700 mb-10 w-full" />
             <ol className="relative border-l-2 border-stone-700 pl-6">
               {formations.map((f, i) => (
@@ -182,7 +182,7 @@ export default function About() {
           </div>
         </div>
         {/* Section Compétences */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Compétences</h2>
+        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-red" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Compétences</h2>
         <div className="border-b border-stone-700 mb-10 w-full" />
         {/* Section Compétences */}
         <div className="flex flex-col gap-8 mb-16">
@@ -191,7 +191,7 @@ export default function About() {
               <div className="text-base md:text-lg font-bold text-[var(--primary-color)] mb-2" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.06em' }}>{cat.title}</div>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {cat.skills.map((s, j) => (
-                  <span key={j} className="flex items-center gap-1 px-3 py-1 rounded-full bg-[#23232a]/70 text-stone-100 border border-stone-700 text-xs md:text-sm font-medium uppercase tracking-wide" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+                  <span key={j} className="flex items-center gap-1 px-3 py-1 rounded-full bg-[#23232a]/70 text-stone-100 border border-stone-700 text-xs md:text-sm font-medium uppercase tracking-wide" style={{ fontFamilely: 'Satoshi-Black, sans-serif' }}>
                     <span className="w-4 h-4 flex items-center justify-center">{s.icon}</span>
                     {s.name}
                   </span>

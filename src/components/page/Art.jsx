@@ -53,41 +53,94 @@ export default function Art() {
   const scrollContainerRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Détection mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
 
     const handleWheel = (e) => {
-      if (container) {
-        e.preventDefault(); // Bloque le scroll vertical
-        container.scrollLeft += e.deltaY; // Redirige vers scroll horizontal
+      if (container && !isMobile) {
+        e.preventDefault(); // Bloque le scroll vertical seulement sur desktop
+        
+        // Amélioration de la sensibilité et de la fluidité
+        const scrollSpeed = 2; // Vitesse de défilement augmentée
+        const scrollAmount = e.deltaY * scrollSpeed;
+        
+        container.scrollLeft += scrollAmount;
+        
+        // Gérer la boucle infinie
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (container.scrollLeft >= maxScroll) {
+          // Retour au début quand on arrive à la fin
+          container.scrollLeft = 0;
+        } else if (container.scrollLeft <= 0) {
+          // Aller à la fin quand on revient en arrière depuis le début
+          container.scrollLeft = maxScroll;
+        }
       }
     };
 
-    container.addEventListener('wheel', handleWheel, { passive: false });
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
 
     return () => {
-      container.removeEventListener('wheel', handleWheel);
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
     };
-  }, []);
+  }, [isMobile]);
 
   // Gérer les touches clavier pour la navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (!isModalOpen) return;
-      
-      if (e.key === 'Escape') {
-        setIsModalOpen(false);
-      } else if (e.key === 'ArrowRight') {
-        setCurrentModalIndex(prev => (prev + 1) % drawings.length);
-      } else if (e.key === 'ArrowLeft') {
-        setCurrentModalIndex(prev => (prev - 1 + drawings.length) % drawings.length);
+      if (!isModalOpen) {
+        // Navigation dans le carrousel avec les flèches
+        const container = scrollContainerRef.current;
+        if (container) {
+          const scrollAmount = isMobile ? 300 : 600; // Ajustement pour mobile
+          
+          if (e.key === 'ArrowRight') {
+            container.scrollLeft += scrollAmount;
+          } else if (e.key === 'ArrowLeft') {
+            container.scrollLeft -= scrollAmount;
+          }
+          
+          // Gérer la boucle infinie pour les flèches aussi
+          const maxScroll = container.scrollWidth - container.clientWidth;
+          if (container.scrollLeft >= maxScroll) {
+            container.scrollLeft = 0;
+          } else if (container.scrollLeft <= 0) {
+            container.scrollLeft = maxScroll;
+          }
+        }
+      } else {
+        // Navigation dans le modal
+        if (e.key === 'Escape') {
+          setIsModalOpen(false);
+        } else if (e.key === 'ArrowRight') {
+          setCurrentModalIndex(prev => (prev + 1) % drawings.length);
+        } else if (e.key === 'ArrowLeft') {
+          setCurrentModalIndex(prev => (prev - 1 + drawings.length) % drawings.length);
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isModalOpen]);
+  }, [isModalOpen, isMobile]);
 
   const openModal = (index) => {
     setCurrentModalIndex(index);
@@ -112,34 +165,64 @@ export default function Art() {
     }
   };
 
+  // Créer un tableau infini en dupliquant les images
+  const infiniteDrawings = [...drawings, ...drawings, ...drawings, ...drawings, ...drawings];
+
   return (
-    <section className="min-h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-28" id="Art">
-      <div className="w-full px-6 md:px-28">
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+    <section className="min-h-screen bg-[#181a1b] flex flex-col items-center justify-center pt-16 md:pt-20" id="Art">
+      <div className="w-full px-4 md:px-8 lg:px-16 xl:px-28">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-green w-fit" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
           Art
         </h2>
-        <div className="border-b border-stone-700 mb-12 w-full" />
+        <div className="border-b border-stone-700 mb-8 md:mb-12 w-full" />
 
         {/* Carrousel horizontal avec molette verticale */}
         <div 
           ref={scrollContainerRef}
-          className="relative w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap scrollbar-hide"
+          className="relative w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap scrollbar-hide touch-pan-x"
           style={{
             scrollbarWidth: 'none', /* Firefox */
-            msOverflowStyle: 'none'  /* Internet Explorer 10+ */
+            msOverflowStyle: 'none',  /* Internet Explorer 10+ */
+            // Hauteurs responsive optimisées
+            height: isMobile ? 'calc(100vh - 200px)' : 'calc(100vh - 180px)',
+            minHeight: isMobile ? '300px' : '400px',
+            maxHeight: isMobile ? '500px' : '800px',
+            display: 'flex',
+            alignItems: 'center',
           }}
         >
-          <div className="flex w-max">
-            {drawings.map((drawing, index) => (
-              <div key={drawing.id} className="flex w-[500px] items-center justify-center px-4 inline-block">
+          <div className="flex w-max items-center" style={{height: '100%'}}>
+            {infiniteDrawings.map((drawing, index) => (
+              <div 
+                key={`${drawing.id}-${index}`} 
+                className={`flex items-center justify-center inline-block h-full ${
+                  isMobile 
+                    ? 'px-2' 
+                    : 'px-4'
+                }`}
+                style={{
+                  width: 'auto',
+                  flexShrink: 0
+                }}
+              >
                 <div 
-                  className="group relative overflow-hidden cursor-pointer"
-                  onClick={() => openModal(index)}
+                  className="group relative overflow-hidden cursor-pointer flex items-center justify-center h-full"
+                  onClick={() => openModal(index % drawings.length)}
+                  style={{height: '100%'}}
                 >
                   <img
                     src={drawing.img}
                     alt={drawing.title}
-                    className="w-full h-auto object-contain transition-transform duration-300 hover:scale-105"
+                    className={`object-contain transition-transform duration-300 hover:scale-105 ${
+                      isMobile 
+                        ? 'h-full w-auto max-w-[80vw]' 
+                        : 'h-full w-auto max-w-[60vw]'
+                    }`}
+                    style={{
+                      maxHeight: '100%',
+                      height: '100%',
+                      width: 'auto'
+                    }}
                   />
                 </div>
               </div>
@@ -150,15 +233,17 @@ export default function Art() {
         {/* Modal pour afficher l'image en grand */}
         {isModalOpen && (
           <div 
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
             onClick={handleModalClick}
+            style={{cursor: 'pointer'}}
           >
-            <div className="relative max-w-full max-h-[calc(100vh-50px)]">
+            <div className="relative w-full max-w-full max-h-[90vh] flex items-center justify-center" style={{pointerEvents: 'none'}}>
               <img
                 src={drawings[currentModalIndex].img}
                 alt={drawings[currentModalIndex].title}
-                className="max-w-full max-h-[calc(100vh-50px)] object-contain"
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
                 onClick={nextImage}
+                style={{pointerEvents: 'auto', cursor: 'pointer'}}
               />
             </div>
           </div>

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaLaptop, FaBriefcase, FaProjectDiagram, FaMoneyBillWave, FaBars, FaTimes } from 'react-icons/fa';
 import '../../assets/fonts/Satoshi-Black.otf';
-import ThemeToggle from './ThemeToggle';
 
 export default function NavRouter() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -26,6 +25,10 @@ export default function NavRouter() {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        document.documentElement.classList.add('dark');
     }, []);
 
     const closeMobileMenu = () => {
@@ -66,9 +69,6 @@ export default function NavRouter() {
                     </li>
                 </ul>
                 
-                {/* Bouton de thème */}
-                <ThemeToggle />
-                
                 {/* Bouton hamburger mobile */}
                 <button 
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -88,33 +88,18 @@ export default function NavRouter() {
                 >
                     <ul className="flex flex-col py-4">
                         <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
+                            <Link to="/" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
+                                Accueil
+                            </Link>
+                        </li>
+                        <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
                             <Link to="/about" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
                                 À propos
                             </Link>
                         </li>
                         <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
-                            <Link to="/formation" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
-                                Formation
-                            </Link>
-                        </li>
-                        <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
-                            <Link to="/competences" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
-                                Compétences
-                            </Link>
-                        </li>
-                        <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
-                            <Link to="/experience" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
-                                Expérience
-                            </Link>
-                        </li>
-                        <li className="px-6 py-3 border-b border-[var(--primary-color)]/10">
                             <Link to="/projets" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
                                 Projets
-                            </Link>
-                        </li>
-                        <li className="px-6 py-3">
-                            <Link to="/tarifs" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
-                                Tarifs
                             </Link>
                         </li>
                         <li className="px-6 py-3">

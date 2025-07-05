@@ -54,7 +54,7 @@ function Home() {
         aria-hidden="true"
       />
       {/* Infos bas gauche */}
-      <div className="fixed bottom-2 left-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none ml-0 sm:ml-6 md:ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
+      <div className="fixed bottom-6 left-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none ml-0 sm:ml-6 md:ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
         Basée à <br/> REIMS, FRANCE
       </div>
       {/* FOND UNI OU DÉGRADÉ EN LIGHT MODE, GALAXIE EN DARK MODE */}

@@ -60,8 +60,8 @@ export default function NavRouter() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/tarifs" className="hover:underline">
-                            Tarifs
+                        <Link to="/art" className="hover:underline">
+                            Art
                         </Link>
                     </li>
                 </ul>
@@ -115,6 +115,11 @@ export default function NavRouter() {
                         <li className="px-6 py-3">
                             <Link to="/tarifs" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
                                 Tarifs
+                            </Link>
+                        </li>
+                        <li className="px-6 py-3">
+                            <Link to="/art" className="block text-[var(--primary-color)] font-medium uppercase tracking-widest hover:underline" onClick={closeMobileMenu}>
+                                Art
                             </Link>
                         </li>
                     </ul>

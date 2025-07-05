@@ -36,6 +36,7 @@ const skill = [
     {
       title: "Machine Learning & IA",
       skills: [
+        { name: "NumPy", icon: <SiNumpy /> },
         { name: "TensorFlow", icon: <SiTensorflow /> },
         { name: "PyTorch", icon: <SiPytorch /> },
         { name: "Scikit-learn", icon: <SiScikitlearn /> },
@@ -50,11 +51,9 @@ const skill = [
       title: "Data Analysis",
       skills: [
         { name: "Pandas", icon: <SiPandas /> },
-        { name: "NumPy", icon: <SiNumpy /> },
         { name: "Matplotlib", icon: <FaChartLine /> },
         { name: "Seaborn", icon: <FaChartLine /> },
         { name: "Plotly", icon: <FaChartLine /> },
-        { name: "Shiny", icon: <FaChartLine /> },
         { name: "ggplot2", icon: <FaChartLine /> },
         { name: "Wordcloud", icon: <FaChartLine /> },
         { name: "ggplot", icon: <FaChartLine /> },
@@ -97,6 +96,7 @@ const skill = [
         { name: "Linux", icon: <FaTools /> },
         { name: "Bash", icon: <FaTools /> },
         { name: "Anaconda", icon: <FaTools />},
+        { name: "Mlflow", icon: <FaTools />},
       ]
     }
   ];
@@ -147,12 +147,11 @@ export default function About() {
           </div>
         </div>
         {/* Timeline Parcours */}
-        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Parcours</h2>
-        <div className="border-b border-stone-700 mb-10 w-full" />
         <div className="flex flex-col md:flex-row gap-12 md:gap-24">
           {/* Timeline Expérience */}
           <div className="flex-1">
-            <h4 className="text-xl font-semibold text-stone-200 mb-4 uppercase tracking-wide">Expérience</h4>
+          <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Expérience</h2>
+          <div className="border-b border-stone-700 mb-10 w-full" />
             <ol className="relative border-l-2 border-stone-700 pl-6">
               {experiences.map((exp, i) => (
                 <li key={i} className="mb-8">
@@ -167,7 +166,8 @@ export default function About() {
           </div>
           {/* Timeline Formation */}
           <div className="flex-1">
-            <h4 className="text-xl font-semibold text-stone-200 mb-4 uppercase tracking-wide">Formation</h4>
+            <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Formation</h2>
+            <div className="border-b border-stone-700 mb-10 w-full" />
             <ol className="relative border-l-2 border-stone-700 pl-6">
               {formations.map((f, i) => (
                 <li key={i} className="mb-8">

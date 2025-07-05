@@ -124,73 +124,89 @@ const projets = [
   }
 ];
 
-function truncate(str, n) {
-  return str.length > n ? str.slice(0, n - 1) + '…' : str;
-}
-
 export default function Work() {
   return (
-    <section className="min-h-screen w-full bg-[#19191c] text-[#d1d1d6] px-4 sm:px-6 md:px-16 lg:px-28 py-12 md:py-20 font-satoshi" id="Projet">
-      <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-8 md:mb-12 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
-        Projets
-      </h2>
-      <div className="border-b border-[var(--primary-color)]/30 mb-8 md:mb-12 w-full" />
-      <div className="flex flex-col gap-16 md:gap-24">
-        {projets.map((projet, i) => (
-          <div
-            key={i}
-            className="relative w-full group overflow-hidden"
-            style={{ minHeight: 220 }}
-          >
-            {/* Image immersive */}
-            <div className="w-full h-[200px] xs:h-[260px] sm:h-[320px] md:h-[340px] lg:h-[420px] relative ">
-              <img
-                src={projet.img}
-                alt={projet.id}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07] group-hover:rotate-[-1deg]"
-                style={{ filter: 'brightness(0.85) contrast(1.08)' }}
-              />
-              {/* Dégradé vertical sombre en bas */}
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
-              {/* Overlay glassmorphism dense, centré verticalement et aligné à gauche */}
-              <div className="absolute inset-0 flex flex-col justify-center items-start w-full h-full p-2 xs:p-3 sm:p-4 md:p-12 lg:p-16">
-                <div className="w-full max-w-xs sm:max-w-2xl md:max-w-3xl">
-                  <div className="backdrop-blur-sm sm:backdrop-blur-md bg-black/40 sm:bg-black/55 rounded-lg sm:rounded-2xl px-2 py-3 xs:px-3 xs:py-4 sm:px-6 sm:py-7 md:px-10 md:py-10 shadow-xl group-hover:bg-black/70 transition-all duration-300 overflow-hidden">
-                    <h3 className="text-xs xs:text-sm sm:text-2xl md:text-4xl font-black uppercase tracking-widest text-[var(--primary-color)] drop-shadow-lg mb-1 xs:mb-2 sm:mb-4 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl break-words" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.12em', textShadow: '0 4px 24px #000, 0 1px 0 var(--primary-color)' }}>
-                      {projet.id}
-                    </h3>
-                    <span className="inline-block px-1.5 py-0.5 rounded-full text-[9px] xs:text-xs font-semibold bg-[#23232a]/70 text-[var(--primary-color)] mb-1 xs:mb-2 sm:mb-4 uppercase tracking-wide">
-                      {projet.category}
-                    </span>
-                    <p className="text-[10px] xs:text-xs sm:text-base md:text-lg font-light text-[#e5e5e7] max-w-full sm:max-w-2xl mb-1 xs:mb-2 md:mb-0 drop-shadow-lg line-clamp-4 xs:line-clamp-5" style={{ textShadow: '0 2px 8px #181a1b, 0 1px 0 #000' }}>
-                      {truncate(projet.content, 180)}
-                    </p>
-                    <div className="flex flex-wrap gap-0.5 xs:gap-1 items-center mt-1 xs:mt-2 sm:mt-4 w-full">
-                      <FaCode className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-[var(--primary-color)] mr-1" />
-                      {projet.lang.map((tech, idx) => (
-                        <span key={idx} className="text-[9px] xs:text-xs px-1 py-0 rounded bg-[#23232a]/70 text-[var(--primary-color)] font-medium border border-[var(--primary-color)]/20 mb-0.5">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-1 sm:gap-4 mt-1 xs:mt-2 sm:mt-4 justify-end w-full">
-                      {projet.github && (
-                        <a href={projet.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[var(--primary-color)] hover:text-white transition-colors duration-200 text-base sm:text-xl">
-                          <FaGithub className="w-4 h-4 sm:w-6 sm:h-6" />
-                        </a>
-                      )}
-                      {projet.live && (
-                        <a href={projet.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[var(--primary-color)] hover:text-white transition-colors duration-200 text-base sm:text-xl">
-                          <FaExternalLinkAlt className="w-4 h-4 sm:w-6 sm:h-6" />
-                        </a>
-                      )}
-                    </div>
+    <section className="min-h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-28 pb-10" id="Projet">
+      <div className="w-full px-6 md:px-28">
+        {/* Titre et séparateur */}
+        <h2 className="text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+          Projets
+        </h2>
+        <div className="border-b border-stone-700 mb-12 w-full" />
+        
+        {/* Grille de projets */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projets.map((projet, i) => (
+            <div key={i} className="group">
+              {/* Image du projet */}
+              <div className="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src={projet.img}
+                  alt={projet.id}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                {/* Overlay subtil au hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+              </div>
+              
+              {/* Contenu du projet */}
+              <div className="space-y-3">
+                {/* Catégorie */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[var(--primary-color)] uppercase tracking-wide">
+                    {projet.category}
+                  </span>
+                  {/* Liens */}
+                  <div className="flex gap-2">
+                    {projet.github && (
+                      <a 
+                        href={projet.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-stone-400 hover:text-[var(--primary-color)] transition-colors duration-200"
+                      >
+                        <FaGithub className="w-4 h-4" />
+                      </a>
+                    )}
+                    {projet.live && (
+                      <a 
+                        href={projet.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-stone-400 hover:text-[var(--primary-color)] transition-colors duration-200"
+                      >
+                        <FaExternalLinkAlt className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
+                </div>
+                
+                {/* Titre */}
+                <h3 className="text-lg font-bold text-white group-hover:text-[var(--primary-color)] transition-colors duration-200" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+                  {projet.id}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-sm text-stone-300 leading-relaxed">
+                  {projet.content}
+                </p>
+                
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <FaCode className="w-3 h-3 text-[var(--primary-color)] mt-1" />
+                  {projet.lang.map((tech, idx) => (
+                    <span 
+                      key={idx} 
+                      className="text-xs px-2 py-1 rounded-full bg-[#23232a] text-stone-300 border border-stone-700 font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

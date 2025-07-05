@@ -6,7 +6,7 @@ import NavRouter from "./components/navigation/NavRouter"
 import HomePage from "./pages/HomePage"
 import AboutPage from "./pages/AboutPage"
 import WorkPage from "./pages/WorkPage"
-import TarifPage from "./pages/TarifPage"
+import ArtPage from "./pages/ArtPage"
 
 AOS.init({
   once: true,
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projets" element={<WorkPage />} />
-          <Route path="/tarifs" element={<TarifPage />} />
+          <Route path="/art" element={<ArtPage />} />
         </Routes>
       </div>
     </Router>

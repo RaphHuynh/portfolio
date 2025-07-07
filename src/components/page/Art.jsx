@@ -183,10 +183,10 @@ export default function Art() {
           style={{
             scrollbarWidth: 'none', /* Firefox */
             msOverflowStyle: 'none',  /* Internet Explorer 10+ */
-            // Hauteurs responsive optimisées
-            height: isMobile ? 'calc(100vh - 200px)' : 'calc(100vh - 180px)',
-            minHeight: isMobile ? '300px' : '400px',
-            maxHeight: isMobile ? '500px' : '800px',
+            // Hauteurs responsive optimisées avec plus de marge
+            height: isMobile ? 'calc(100vh - 250px)' : 'calc(100vh - 220px)',
+            minHeight: isMobile ? '280px' : '380px',
+            maxHeight: isMobile ? '450px' : '700px',
             display: 'flex',
             alignItems: 'center',
           }}
@@ -215,12 +215,12 @@ export default function Art() {
                     alt={drawing.title}
                     className={`object-contain transition-transform duration-300 hover:scale-105 ${
                       isMobile 
-                        ? 'h-full w-auto max-w-[80vw]' 
-                        : 'h-full w-auto max-w-[60vw]'
+                        ? 'h-full w-auto max-w-[75vw]' 
+                        : 'h-full w-auto max-w-[55vw]'
                     }`}
                     style={{
-                      maxHeight: '100%',
-                      height: '100%',
+                      maxHeight: '90%', // Réduction de 100% à 90%
+                      height: '90%',    // Réduction de 100% à 90%
                       width: 'auto'
                     }}
                   />

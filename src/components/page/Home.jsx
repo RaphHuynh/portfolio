@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaDownload, FaChartLine, FaBrain, FaDatabase, FaCode, FaUser, FaBriefcase, FaPalette } from 'react-icons/fa';
@@ -42,23 +42,21 @@ const menuItemVariants = {
 const menuItems = [
   {
     path: "/about",
-    title: "À Propos",
-    color: "from-purple-500 to-pink-500"
+    title: "À Propos"
   },
   {
     path: "/projets", 
-    title: "Projets",
-    color: "from-blue-500 to-cyan-500"
+    title: "Projets"
   },
   {
     path: "/art",
-    title: "Art",
-    color: "from-orange-500 to-red-500"
+    title: "Art"
   }
 ];
 
 function Home() {
   const [isDark, setIsDark] = useState(true);
+  const moonRef = useRef(null);
 
   useEffect(() => {
     const checkTheme = () => {
@@ -70,6 +68,16 @@ function Home() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
   }, []);
+
+  const handleMenuHover = (isHovering) => {
+    if (moonRef.current) {
+      if (isHovering) {
+        moonRef.current.style.filter = 'brightness(1.2) drop-shadow(0 0 20px rgba(255,255,255,0.4))';
+      } else {
+        moonRef.current.style.filter = 'brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))';
+      }
+    }
+  };
 
   return (
     <main className={`px-2 sm:px-4 md:px-8 lg:px-24 transition-colors duration-300 min-h-screen w-full overflow-x-hidden ${isDark ? 'bg-[#181a1b]' : 'bg-gradient-to-br from-blue-50 via-white to-gray-100'}`}>
@@ -90,7 +98,7 @@ function Home() {
         <StarField starCount={150} />
       ) : null}
       {/* LUNE AU MILIEU */}
-      <Moon />
+      <Moon ref={moonRef} />
       {/* HERO */}
       <section className="min-h-screen flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6 px-1 sm:px-2" id="Home">
         <div className="flex-1 flex flex-col pt-6 sm:pt-10 w-full z-10">
@@ -111,6 +119,8 @@ function Home() {
               animate="visible"
               variants={staggerContainer}
               className="flex flex-col gap-4 md:gap-12 mt-8 md:mt-6"
+              onMouseEnter={() => handleMenuHover(true)}
+              onMouseLeave={() => handleMenuHover(false)}
             >
               {menuItems.map((item, index) => (
                 <motion.div
@@ -122,14 +132,16 @@ function Home() {
                     to={item.path}
                     className="group block"
                   >
-                    {/* Titre simple avec effet */}
+                    {/* Titre simple sans effet */}
                     <h3 className={`
-                      text-transparent text-3xl md:text-5xl font-bold group-hover:text-white transition-all duration-300 cursor-pointer text-right
-                    `} style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '2px white' }}>
+                      text-transparent text-3xl md:text-5xl font-bold 
+                      cursor-pointer text-right hover:text-white transition-colors duration-50
+                    `} style={{ 
+                      fontFamily: 'Satoshi-Black, sans-serif',
+                      WebkitTextStroke: '2px white'
+                    }}>
                       {item.title}
                     </h3>
-
-                    
                   </Link>
                 </motion.div>
               ))}

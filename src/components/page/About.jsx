@@ -147,7 +147,7 @@ export default function About() {
           </div>
         </div>
         {/* Timeline Parcours */}
-        <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-24 mt-4 md:mt-8 lg:mt-12">
           {/* Timeline Expérience */}
           <div className="flex-1">
           <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-blue" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Expérience</h2>
@@ -182,7 +182,7 @@ export default function About() {
           </div>
         </div>
         {/* Section Compétences */}
-        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-red" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Compétences</h2>
+        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mt-10 mb-6 text-left highlight-red mt-4 md:mt-8 lg:mt-12" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>Compétences</h2>
         <div className="border-b border-stone-700 mb-10 w-full" />
         {/* Section Compétences */}
         <div className="flex flex-col gap-8 mb-16">

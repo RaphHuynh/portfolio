@@ -90,7 +90,7 @@ function Home() {
         aria-hidden="true"
       />
       {/* Infos bas gauche */}
-      <div className="fixed bottom-6 left-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none ml-0 sm:ml-6 md:ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
+      <div className="fixed bottom-4 left-6 sm:bottom-6 sm:left-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none ml-0 sm:ml-6 md:ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
         Basée à <br/> REIMS, FRANCE
       </div>
       {/* FOND UNI OU DÉGRADÉ EN LIGHT MODE, GALAXIE EN DARK MODE */}
@@ -105,13 +105,13 @@ function Home() {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 translate-y-44 z-20"
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 translate-y-32 sm:translate-y-40 md:translate-y-44 z-20"
         onMouseEnter={() => handleMenuHover(true)}
         onMouseLeave={() => handleMenuHover(false)}
       >
         <motion.div
           variants={menuItemVariants}
-          className="flex items-center justify-center "
+          className="flex items-center justify-center"
         >
           {menuItems.map((item, index) => (
             <div key={item.path} className="flex items-center">
@@ -120,17 +120,17 @@ function Home() {
                 className="group"
               >
                 <h3 className={`
-                  text-transparent text-2xl md:text-6xl font-bold 
+                  text-transparent text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-6xl font-bold 
                   cursor-pointer hover:text-white transition-colors duration-200
                 `} style={{ 
                   fontFamily: 'Satoshi-Black, sans-serif',
-                  WebkitTextStroke: '2px white'
+                  WebkitTextStroke: '1px white'
                 }}>
                   {item.title}
                 </h3>
               </Link>
               {index < menuItems.length - 1 && (
-                <span className="text-white text-6xl md:text-4xl mx-6">|</span>
+                <span className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-6xl mx-2 sm:mx-4 md:mx-6">|</span>
               )}
             </div>
           ))}
@@ -152,8 +152,8 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-full text-center md:text-left px-1 sm:px-2 z-10 mt-4">
-          <p className={`text-base sm:text-lg md:w-2/3 lg:w-1/2 text-center md:text-right mr-0 ml-auto font-light tracking-wide ${isDark ? 'text-stone-400' : 'text-gray-600'}`}>
+        <div className="w-full md:w-full text-right md:text-left px-1 sm:px-2 z-10 mt-4">
+          <p className={`text-xs sm:text-lg md:w-2/3 lg:w-1/2 md:text-right mr-0 ml-auto font-light w-1/2 tracking-wide ${isDark ? 'text-stone-400' : 'text-gray-600'}`}>
             Data Scientist, Engineer et Développeuse Full-Stack
           </p>
         </div>

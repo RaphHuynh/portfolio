@@ -4,11 +4,11 @@ import { SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiNumpy, SiMysql, SiR
 import '../../assets/fonts/Satoshi-Black.otf';
 
 const experiences = [
-  { poste: "Data Scientist / Data Manager", entreprise: "CHU - Institut d'Intelligence Artificielle en Santé", lieu: "Reims", date: "2024 — Aujourd'hui" },
+  { poste: "Data Scientist / Data Engineer", entreprise: "CHU - Institut d'Intelligence Artificielle en Santé : Alternance", lieu: "Reims", date: "2024 — Aujourd'hui" },
   { poste: "Chef de projet web / Developpeuse Full-Stack", entreprise: "Freaks United : Freelance", lieu: "Reims", date: "2024 - 2025" },
-  { poste: "Assistante de recherche IA", entreprise: "Université de Reims Champagne-Ardenne", lieu: "Reims", date: "2024" },
-  { poste: "Développeuse WordPress (Stage)", entreprise: "Cabinet Lacour", lieu: "Paris", date: "2023" },
-  { poste: "Développeuse Web (Stage)", entreprise: "LeBidibul", lieu: "Troyes", date: "2021" },
+  { poste: "Assistante de recherche IA", entreprise: "Université de Reims Champagne-Ardenne : Stage", lieu: "Reims", date: "2024" },
+  { poste: "Développeuse WordPress", entreprise: "Cabinet Lacour : Stage", lieu: "Paris", date: "2023" },
+  { poste: "Développeuse Web", entreprise: "LeBidibul : Stage", lieu: "Troyes", date: "2021" },
 ];
 
 const formations = [
@@ -34,7 +34,7 @@ const skill = [
       ]
     },
     {
-      title: "Machine Learning & IA",
+      title: "Intelligence artificielle",
       skills: [
         { name: "NumPy", icon: <SiNumpy /> },
         { name: "TensorFlow", icon: <SiTensorflow /> },
@@ -48,7 +48,7 @@ const skill = [
       ]
     },
     {
-      title: "Data Analysis",
+      title: "Data Analyse",
       skills: [
         { name: "Pandas", icon: <SiPandas /> },
         { name: "Matplotlib", icon: <FaChartLine /> },
@@ -121,7 +121,7 @@ export default function About() {
               </p>
             </div>
             <div className="flex flex-wrap gap-8 md:gap-16 mt-6 md:mt-8 text-sm md:text-base text-stone-400 font-light">
-              <span>Data Sciencist <br />Data Manager</span>
+              <span>Data Sciencist <br />Data Engineer</span>
               <span>Freelance <br /> Developpeuse Web</span>
               <span className=''>
                 Me contacter : <br />

@@ -85,7 +85,7 @@ function Home() {
       <img
         src={forestBg}
         alt="Forêt silhouette"
-        className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none select-none"
+        className="fixed inset-0 w-full h-full object-cover z-10 pointer-events-none select-none"
         style={{ filter: 'brightness(0)', opacity: 0.7 }}
         aria-hidden="true"
       />
@@ -99,10 +99,48 @@ function Home() {
       ) : null}
       {/* LUNE AU MILIEU */}
       <Moon ref={moonRef} />
+      
+      {/* MENU CENTRÉ SOUS LA LUNE */}
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 translate-y-44 z-20"
+        onMouseEnter={() => handleMenuHover(true)}
+        onMouseLeave={() => handleMenuHover(false)}
+      >
+        <motion.div
+          variants={menuItemVariants}
+          className="flex items-center justify-center "
+        >
+          {menuItems.map((item, index) => (
+            <div key={item.path} className="flex items-center">
+              <Link 
+                to={item.path}
+                className="group"
+              >
+                <h3 className={`
+                  text-transparent text-2xl md:text-6xl font-bold 
+                  cursor-pointer hover:text-white transition-colors duration-200
+                `} style={{ 
+                  fontFamily: 'Satoshi-Black, sans-serif',
+                  WebkitTextStroke: '2px white'
+                }}>
+                  {item.title}
+                </h3>
+              </Link>
+              {index < menuItems.length - 1 && (
+                <span className="text-white text-6xl md:text-4xl mx-6">|</span>
+              )}
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
       {/* HERO */}
       <section className="min-h-screen flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6 px-1 sm:px-2" id="Home">
         <div className="flex-1 flex flex-col pt-6 sm:pt-10 w-full z-10">
-          <div className="flex flex-col md:flex-row  md:justify-between w-full">
+          <div className="flex flex-col md:flex-row md:justify-between w-full">
             {/* Nom et prénom à gauche */}
             <div className="flex flex-col">
               <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,8rem)] uppercase tracking-tight leading-none text-center md:text-left w-full break-words text-white">
@@ -112,45 +150,11 @@ function Home() {
                 HUYNH
               </h1>
             </div>
-
-            {/* MENU ARTISTIQUE À DROITE */}
-            <motion.div 
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="flex flex-col gap-4 md:gap-12 mt-8 md:mt-6"
-              onMouseEnter={() => handleMenuHover(true)}
-              onMouseLeave={() => handleMenuHover(false)}
-            >
-              {menuItems.map((item, index) => (
-                <motion.div
-                  key={item.path}
-                  variants={menuItemVariants}
-                  className="group"
-                >
-                  <Link 
-                    to={item.path}
-                    className="group block"
-                  >
-                    {/* Titre simple sans effet */}
-                    <h3 className={`
-                      text-transparent text-3xl md:text-5xl font-bold 
-                      cursor-pointer text-right hover:text-white transition-colors duration-50
-                    `} style={{ 
-                      fontFamily: 'Satoshi-Black, sans-serif',
-                      WebkitTextStroke: '2px white'
-                    }}>
-                      {item.title}
-                    </h3>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </div>
         <div className="w-full md:w-full text-center md:text-left px-1 sm:px-2 z-10 mt-4">
           <p className={`text-base sm:text-lg md:w-2/3 lg:w-1/2 text-center md:text-right mr-0 ml-auto font-light tracking-wide ${isDark ? 'text-stone-400' : 'text-gray-600'}`}>
-            Data Scientist, Manager et Développeuse Full-Stack
+            Data Scientist, Engineer et Développeuse Full-Stack
           </p>
         </div>
       </section>

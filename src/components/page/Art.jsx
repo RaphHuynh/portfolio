@@ -74,20 +74,24 @@ export default function Art() {
       if (container && !isMobile) {
         e.preventDefault(); // Bloque le scroll vertical seulement sur desktop
         
-        // Amélioration de la sensibilité et de la fluidité
-        const scrollSpeed = 2; // Vitesse de défilement augmentée
+        // Vitesse de défilement plus douce
+        const scrollSpeed = 1.5;
         const scrollAmount = e.deltaY * scrollSpeed;
         
-        container.scrollLeft += scrollAmount;
-        
-        // Gérer la boucle infinie
+        // Calculer la nouvelle position
+        const newScrollLeft = container.scrollLeft + scrollAmount;
         const maxScroll = container.scrollWidth - container.clientWidth;
-        if (container.scrollLeft >= maxScroll) {
-          // Retour au début quand on arrive à la fin
-          container.scrollLeft = 0;
-        } else if (container.scrollLeft <= 0) {
-          // Aller à la fin quand on revient en arrière depuis le début
-          container.scrollLeft = maxScroll;
+        
+        // Gérer la boucle infinie de manière plus fluide
+        if (newScrollLeft >= maxScroll) {
+          // Si on dépasse la fin, revenir au début progressivement
+          container.scrollLeft = newScrollLeft - maxScroll;
+        } else if (newScrollLeft <= 0) {
+          // Si on va en arrière depuis le début, aller à la fin progressivement
+          container.scrollLeft = maxScroll + newScrollLeft;
+        } else {
+          // Scroll normal
+          container.scrollLeft = newScrollLeft;
         }
       }
     };
@@ -110,20 +114,26 @@ export default function Art() {
         // Navigation dans le carrousel avec les flèches
         const container = scrollContainerRef.current;
         if (container) {
-          const scrollAmount = isMobile ? 300 : 600; // Ajustement pour mobile
+          const scrollAmount = isMobile ? 300 : 600;
           
           if (e.key === 'ArrowRight') {
-            container.scrollLeft += scrollAmount;
+            const newScrollLeft = container.scrollLeft + scrollAmount;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            
+            if (newScrollLeft >= maxScroll) {
+              container.scrollLeft = newScrollLeft - maxScroll;
+            } else {
+              container.scrollLeft = newScrollLeft;
+            }
           } else if (e.key === 'ArrowLeft') {
-            container.scrollLeft -= scrollAmount;
-          }
-          
-          // Gérer la boucle infinie pour les flèches aussi
-          const maxScroll = container.scrollWidth - container.clientWidth;
-          if (container.scrollLeft >= maxScroll) {
-            container.scrollLeft = 0;
-          } else if (container.scrollLeft <= 0) {
-            container.scrollLeft = maxScroll;
+            const newScrollLeft = container.scrollLeft - scrollAmount;
+            
+            if (newScrollLeft <= 0) {
+              const maxScroll = container.scrollWidth - container.clientWidth;
+              container.scrollLeft = maxScroll + newScrollLeft;
+            } else {
+              container.scrollLeft = newScrollLeft;
+            }
           }
         }
       } else {

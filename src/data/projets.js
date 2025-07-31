@@ -47,7 +47,7 @@ export const projets = [
     lang: ["ReactJS", "JavaScript", "TailwindCSS"],
     category: "Freelance",
     github: null,
-    live: null
+    live: "https://portfolio-raphael-demets.vercel.app/"
   },
   {
     title : "Fr des devs",

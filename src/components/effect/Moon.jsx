@@ -25,7 +25,7 @@ const Moon = forwardRef((props, ref) => {
       0.1,
       1000
     );
-    camera.position.z = 7; // Reculer la caméra
+    camera.position.z = 8; // Reculer la caméra
 
     // Créer le renderer
     const renderer = new THREE.WebGLRenderer({ 
@@ -62,11 +62,11 @@ const Moon = forwardRef((props, ref) => {
     const moonMaterial = new THREE.MeshPhongMaterial({
       map: moonTexture,
       displacementMap: displacementMap,
-      displacementScale: 0.05, // Réduire l'intensité du relief
+      displacementScale: 0.005, // Réduire l'intensité du relief
       displacementBias: -0.025,
       bumpMap: displacementMap,
-      bumpScale: 0.02, // Réduire l'intensité du bump
-      shininess: 5, // Réduire la brillance
+      bumpScale: 3, // Réduire l'intensité du bump
+      shininess: 10, // Réduire la brillance
       transparent: false,
       opacity: 1
     });
@@ -79,20 +79,17 @@ const Moon = forwardRef((props, ref) => {
     scene.add(moon);
 
     // Ajouter des lumières avec une meilleure configuration
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
     directionalLight.position.set(5, 3, 5);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 1024;
     directionalLight.shadow.mapSize.height = 1024;
     scene.add(directionalLight);
 
-    // Ajouter une lumière ponctuelle pour l'effet de brillance
-    const pointLight = new THREE.PointLight(0xffffff, 0.3, 50);
-    pointLight.position.set(-3, 2, 3);
-    scene.add(pointLight);
+
 
     // Ajouter le renderer au DOM
     mountRef.current.appendChild(renderer.domElement);
@@ -143,6 +140,9 @@ const Moon = forwardRef((props, ref) => {
           transition: 'filter 0.5s ease'
         }}
       />
+
+
+
     </div>
   );
 });

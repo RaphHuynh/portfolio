@@ -71,10 +71,13 @@ function Home() {
 
   const handleMenuHover = (isHovering) => {
     if (moonRef.current) {
-      if (isHovering) {
-        moonRef.current.style.filter = 'brightness(1.2) drop-shadow(0 0 20px rgba(255,255,255,0.4))';
-      } else {
-        moonRef.current.style.filter = 'brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))';
+      const canvas = moonRef.current.querySelector('canvas');
+      if (canvas) {
+        if (isHovering) {
+          canvas.style.filter = 'brightness(1.2) drop-shadow(0 0 40px rgba(255,255,255,0.8))';
+        } else {
+          canvas.style.filter = 'drop-shadow(0 0 30px rgba(255,255,255,0.4))';
+        }
       }
     }
   };
@@ -93,69 +96,105 @@ function Home() {
       <div className="fixed bottom-4 left-6 sm:bottom-6 sm:left-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none ml-0 sm:ml-6 md:ml-24" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
         Basée à <br/> REIMS, FRANCE
       </div>
+      {/* Infos bas droite */}
+      <div className="fixed bottom-4 right-6 sm:bottom-6 sm:right-2 z-20 flex flex-col gap-1 text-[10px] sm:text-xs md:text-sm text-white/80 select-none mr-0 sm:mr-6 md:mr-24 text-right" style={{fontFamily: 'Satoshi-Black, sans-serif'}}>
+        Data Scientist, Engineer <br/> et Développeuse Full-Stack
+      </div>
       {/* FOND UNI OU DÉGRADÉ EN LIGHT MODE, GALAXIE EN DARK MODE */}
       {isDark ? (
         <StarField starCount={150} />
       ) : null}
-      {/* LUNE AU MILIEU */}
+      {/* LUNE AU CENTRE */}
       <Moon ref={moonRef} />
       
-      {/* MENU CENTRÉ SOUS LA LUNE */}
+      {/* À PROPOS AU-DESSUS DE LA LUNE */}
       <motion.div 
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 translate-y-32 sm:translate-y-40 md:translate-y-44 z-20"
+        className="fixed top-1/2 left-1/2 transform -translate-y-32 sm:-translate-y-40 md:-translate-y-48 lg:-translate-y-64 -translate-x-1/2 z-20"
         onMouseEnter={() => handleMenuHover(true)}
         onMouseLeave={() => handleMenuHover(false)}
       >
-        <motion.div
-          variants={menuItemVariants}
-          className="flex items-center justify-center"
-        >
-          {menuItems.map((item, index) => (
-            <div key={item.path} className="flex items-center">
-              <Link 
-                to={item.path}
-                className="group"
-              >
-                <h3 className={`
-                  text-transparent text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-6xl font-bold 
-                  cursor-pointer hover:text-white transition-colors duration-200
-                `} style={{ 
-                  fontFamily: 'Satoshi-Black, sans-serif',
-                  WebkitTextStroke: '1px white'
-                }}>
-                  {item.title}
-                </h3>
-              </Link>
-              {index < menuItems.length - 1 && (
-                <span className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-6xl mx-2 sm:mx-4 md:mx-6">|</span>
-              )}
-            </div>
-          ))}
+        <motion.div variants={menuItemVariants}>
+          <Link to="/about" className="group">
+            <h3 className={`
+              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
+              cursor-pointer hover:text-white transition-colors duration-200
+            `} style={{ 
+              fontFamily: 'Satoshi-Black, sans-serif',
+              WebkitTextStroke: '1px white'
+            }}>
+              À Propos
+            </h3>
+          </Link>
         </motion.div>
       </motion.div>
 
+      {/* PROJETS À DROITE DE LA LUNE */}
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="fixed top-1/2 left-1/2 transform translate-x-32 sm:translate-x-40 md:translate-x-48 lg:translate-x-56 -translate-y-1/2 z-20"
+        onMouseEnter={() => handleMenuHover(true)}
+        onMouseLeave={() => handleMenuHover(false)}
+      >
+        <motion.div variants={menuItemVariants}>
+          <Link to="/projets" className="group">
+            <h3 className={`
+              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
+              cursor-pointer hover:text-white transition-colors duration-200
+            `} style={{ 
+              fontFamily: 'Satoshi-Black, sans-serif',
+              WebkitTextStroke: '1px white'
+            }}>
+              Projets
+            </h3>
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* ART EN DESSOUS DE LA LUNE */}
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="fixed top-1/2 left-1/2 transform translate-y-32 sm:translate-y-40 md:translate-y-48 lg:translate-y-60 -translate-x-1/2 z-20"
+        onMouseEnter={() => handleMenuHover(true)}
+        onMouseLeave={() => handleMenuHover(false)}
+      >
+        <motion.div variants={menuItemVariants}>
+          <Link to="/art" className="group">
+            <h3 className={`
+              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
+              cursor-pointer hover:text-white transition-colors duration-200
+            `} style={{ 
+              fontFamily: 'Satoshi-Black, sans-serif',
+              WebkitTextStroke: '1px white'
+            }}>
+              Art
+            </h3>
+          </Link>
+        </motion.div>
+      </motion.div>
+      
+
+
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6 px-1 sm:px-2" id="Home">
-        <div className="flex-1 flex flex-col pt-6 sm:pt-10 w-full z-10">
-          <div className="flex flex-col md:flex-row md:justify-between w-full">
-            {/* Nom et prénom à gauche */}
-            <div className="flex flex-col">
-              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,8rem)] uppercase tracking-tight leading-none text-center md:text-left w-full break-words text-white">
+      <section className="h-screen flex items-center justify-center px-1 sm:px-2" id="Home">
+        <div className="flex flex-col items-center md:items-start w-full z-10">
+                      {/* Nom et prénom centrés */}
+            <div className="flex flex-col items-center md:items-start">
+              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center md:text-left w-full break-words text-white mb-2">
                 Raphaëlle
               </h1>
-              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,8rem)] uppercase tracking-tight leading-none text-center md:text-left w-full z-20 break-words text-white">
+              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center md:text-right w-full z-20 break-words text-white mb-2">
                 HUYNH
               </h1>
             </div>
-          </div>
-        </div>
-        <div className="w-full md:w-full text-right md:text-left px-1 sm:px-2 z-10 mt-4">
-          <p className={`text-xs sm:text-lg md:w-2/3 lg:w-1/2 md:text-right mr-0 ml-auto font-light w-1/2 tracking-wide ${isDark ? 'text-stone-400' : 'text-gray-600'}`}>
-            Data Scientist, Engineer et Développeuse Full-Stack
-          </p>
+          
+
         </div>
       </section>
     </main>

@@ -586,7 +586,7 @@ export default function Art() {
       {/* Modal pour afficher l'image en grand */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
+          className="fixed inset-0 bg-black/55 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) setIsModalOpen(false);
           }}

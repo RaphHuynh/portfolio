@@ -10,9 +10,8 @@ const Moon = forwardRef((props, ref) => {
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Configuration des URLs de texture
-    const textureURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/lroc_color_poles_1k.jpg";
-    const displacementURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/ldem_3_8bit.jpg";
+    const textureURL = import.meta.env.BASE_URL + "lroc_color_poles_1k.jpg";
+    const displacementURL = import.meta.env.BASE_URL + "ldem_3_8bit.jpg";
 
     // Créer la scène
     const scene = new THREE.Scene();
@@ -25,7 +24,7 @@ const Moon = forwardRef((props, ref) => {
       0.1,
       1000
     );
-    camera.position.z = 8; // Reculer la caméra
+    camera.position.z = 8;
 
     // Créer le renderer
     const renderer = new THREE.WebGLRenderer({ 
@@ -56,17 +55,17 @@ const Moon = forwardRef((props, ref) => {
     });
 
     // Créer la géométrie de la lune avec une taille plus petite
-    const moonGeometry = new THREE.SphereGeometry(1.5, 128, 128); // Taille réduite et plus de segments
+    const moonGeometry = new THREE.SphereGeometry(1.5, 128, 128);
 
     // Créer le matériau de la lune avec des paramètres améliorés
     const moonMaterial = new THREE.MeshPhongMaterial({
       map: moonTexture,
       displacementMap: displacementMap,
-      displacementScale: 0.005, // Réduire l'intensité du relief
+      displacementScale: 0.005,
       displacementBias: -0.025,
       bumpMap: displacementMap,
-      bumpScale: 3, // Réduire l'intensité du bump
-      shininess: 10, // Réduire la brillance
+      bumpScale: 3,
+      shininess: 10,
       transparent: false,
       opacity: 1
     });
@@ -89,8 +88,6 @@ const Moon = forwardRef((props, ref) => {
     directionalLight.shadow.mapSize.height = 1024;
     scene.add(directionalLight);
 
-
-
     // Ajouter le renderer au DOM
     mountRef.current.appendChild(renderer.domElement);
 
@@ -100,7 +97,7 @@ const Moon = forwardRef((props, ref) => {
 
       // Faire tourner la lune sur elle-même très lentement
       if (moonRef.current) {
-        moonRef.current.rotation.y += 0.002; // Vitesse très lente
+        moonRef.current.rotation.y += 0.002;
       }
 
       renderer.render(scene, camera);
@@ -140,9 +137,6 @@ const Moon = forwardRef((props, ref) => {
           transition: 'filter 0.5s ease'
         }}
       />
-
-
-
     </div>
   );
 });

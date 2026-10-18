@@ -168,14 +168,27 @@ const BACKDROP_ROWS = 9;
 
 // Le texte du dessin répété en rangées qui défilent dans des sens opposés, sur tout le fond
 function BackdropPattern({ text, direction, reduceMotion }) {
+  const rootRef = useRef(null);
   const word = text.toUpperCase();
   // Chaque moitié de rangée doit dépasser la largeur de l'écran pour boucler sans trou, sans aller beaucoup plus loin
   const fontPx = Math.max(48, window.innerHeight * 0.105);
   const wordPx = fontPx * 0.5 * (word.length + 0.5);
   const repeats = Math.max(2, Math.ceil(window.innerWidth / wordPx) + 1);
 
+  // Relancer le défilement après le layout : sinon le -50% part d'une largeur nulle et reste figé jusqu'au prochain rendu
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root || reduceMotion) return;
+    root.querySelectorAll('.art-marquee').forEach((el) => {
+      el.style.animationName = 'none';
+      void el.offsetWidth;
+      el.style.animationName = '';
+    });
+  }, [text, reduceMotion]);
+
   return (
     <motion.div
+      ref={rootRef}
       className="absolute inset-0 flex flex-col justify-between overflow-hidden pointer-events-none select-none"
       aria-hidden="true"
       initial={{ opacity: 0 }}
@@ -211,16 +224,16 @@ function BackdropPattern({ text, direction, reduceMotion }) {
             animate={{ y: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : row * 0.04, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div
-              className="flex w-max whitespace-nowrap leading-none"
-              style={{ fontSize: fontPx }}
-              initial={{ x: reverse ? '-50%' : '0%' }}
-              animate={reduceMotion ? undefined : { x: reverse ? '0%' : '-50%' }}
-              transition={{ duration: 50 + row * 6, ease: 'linear', repeat: Infinity }}
+            <div
+              className={`flex w-max whitespace-nowrap leading-none${reduceMotion ? '' : ` art-marquee${reverse ? ' art-marquee-reverse' : ''}`}`}
+              style={{
+                fontSize: fontPx,
+                animationDuration: `${50 + row * 6}s`,
+              }}
             >
               {half}
               {half}
-            </motion.div>
+            </div>
           </motion.div>
         );
       })}
@@ -528,7 +541,7 @@ export default function Art() {
           </motion.div>
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-[#181a1b] via-transparent to-[#181a1b]" />
-        <AnimatePresence initial={false}>
+        <AnimatePresence>
           <BackdropPattern
             key={activeDrawing.id}
             text={activeDrawing.title.trim()}

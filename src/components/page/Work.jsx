@@ -17,18 +17,18 @@ const projetsList = [
 const Work = () => {
   return (
     <section
-      className="min-h-screen md:h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-28 pb-6 md:pb-12"
+      className="min-h-screen md:h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-24 pb-6 md:pb-12"
       id="Projet"
       style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}
     >
-      <div className="w-full h-full flex flex-col px-6 md:px-14">
+      <div className="w-full h-full flex flex-col px-6 md:px-28">
         <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-blue">
           Projets
         </h2>
         <div className="border-b border-stone-700 mb-6 w-full" />
 
-        <div className="flex gap-0 md:gap-16 flex-1 overflow-hidden">
-          <article className="hidden md:flex w-1/2 h-full flex-col gap-4 overflow-hidden">
+        <div className="flex gap-0 md:gap-10 lg:gap-16 flex-1 min-h-0 overflow-hidden">
+          <article className="hidden md:flex w-1/2 min-w-0 h-full flex-col gap-4 overflow-hidden">
             <img
               src={ImgPortJonathan}
               alt="Jonathan Steuer"
@@ -41,7 +41,7 @@ const Work = () => {
             />
           </article>
 
-          <aside className="flex flex-col w-full md:w-1/2 h-full overflow-y-auto">
+          <aside className="flex flex-col w-full md:w-1/2 min-w-0 h-full overflow-y-auto">
             <h3
               className="text-2xl md:text-4xl font-bold text-white mb-4 text-center md:text-right md:mr-0 md:ml-auto"
               style={{ fontFamily: 'Satoshi-Black, sans-serif' }}
@@ -57,10 +57,10 @@ const Work = () => {
                 <li key={projet.to} className="mt-4 md:mt-6 first:mt-0">
                   <Link
                     to={projet.to}
-                    className="flex text-xl md:text-3xl text-[var(--primary-color)] mb-3 md:mb-4 hover:text-white uppercase"
+                    className="flex items-baseline gap-4 text-xl md:text-2xl xl:text-3xl text-[var(--primary-color)] mb-3 md:mb-4 hover:text-white uppercase"
                   >
                     {projet.title}
-                    <span className="mr-0 ml-auto">{projet.year}</span>
+                    <span className="mr-0 ml-auto shrink-0">{projet.year}</span>
                   </Link>
                   <div className="border-b border-[var(--primary-color)] w-full" />
                 </li>
@@ -70,7 +70,7 @@ const Work = () => {
                   href="https://github.com/RaphHuynh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex text-xl md:text-3xl text-[var(--primary-color)] mb-3 md:mb-4 hover:text-white uppercase"
+                  className="flex items-center gap-4 text-xl md:text-2xl xl:text-3xl text-[var(--primary-color)] mb-3 md:mb-4 hover:text-white uppercase"
                 >
                   Github
                   <FaGithub className="inline mb-1 mr-0 ml-auto" />

@@ -108,6 +108,26 @@
     @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-500;
   }
   
+  @keyframes art-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .art-marquee {
+    animation: art-marquee linear infinite;
+    will-change: transform;
+  }
+
+  .art-marquee-reverse {
+    animation-direction: reverse;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .art-marquee {
+      animation: none;
+    }
+  }
+
   /* Coup de pinceau derrière les titres de page */
   .highlight-yellow,
   .highlight-blue,

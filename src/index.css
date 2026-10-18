@@ -108,23 +108,50 @@
     @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-500;
   }
   
-  /* Effet de surlignement coloré */
-  .highlight-yellow {
-    background: linear-gradient(to top, rgba(255, 255, 0, 0.3) 0%, rgba(255, 255, 0, 0.3) 40%, transparent 40.01%) no-repeat left bottom / 100% 100%;
-  }
-  
-  .highlight-blue {
-    background: linear-gradient(to top, rgba(173, 216, 230, 0.4) 0%, rgba(173, 216, 230, 0.4) 40%, transparent 40.01%) no-repeat left bottom / 100% 100%;
-  }
-  
-  .highlight-green {
-    background: linear-gradient(to top, rgba(144, 238, 144, 0.4) 0%, rgba(144, 238, 144, 0.4) 40%, transparent 40.01%) no-repeat left bottom / 100% 100%;
-  }
-  
+  /* Coup de pinceau derrière les titres de page */
+  .highlight-yellow,
+  .highlight-blue,
+  .highlight-green,
   .highlight-red {
-    background: linear-gradient(to top, rgba(255, 182, 193, 0.4) 0%, rgba(255, 182, 193, 0.4) 40%, transparent 40.01%) no-repeat left bottom / 100% 100%;
+    position: relative;
+    isolation: isolate;
+    background: none;
   }
-  
+
+  .highlight-yellow::before,
+  .highlight-blue::before,
+  .highlight-green::before,
+  .highlight-red::before {
+    content: '';
+    position: absolute;
+    left: -0.4em;
+    right: -0.85em;
+    top: 0.18em;
+    height: 0.7em;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.9;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .highlight-blue::before {
+    background-image: url('./assets/brush-stroke.webp');
+  }
+
+  .highlight-yellow::before {
+    background-image: url('./assets/brush-stroke-yellow.webp');
+  }
+
+  .highlight-green::before {
+    background-image: url('./assets/brush-stroke-green.webp');
+  }
+
+  .highlight-red::before {
+    background-image: url('./assets/brush-stroke-red.webp');
+  }
+
   /* Effet de surlignement fait à la main */
   .hand-drawn-highlight {
     position: relative;

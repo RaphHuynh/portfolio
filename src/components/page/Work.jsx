@@ -22,10 +22,10 @@ const Work = () => {
       style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}
     >
       <div className="w-full h-full flex flex-col px-6 md:px-28">
-        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-blue">
+        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-blue" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
           Projets
         </h2>
-        <div className="border-b border-stone-700 mb-6 w-full" />
+        <div className="border-b border-stone-700 mb-12 w-full" />
 
         <div className="flex gap-0 md:gap-10 lg:gap-16 flex-1 min-h-0 overflow-hidden">
           <article className="hidden md:flex w-1/2 min-w-0 h-full flex-col gap-4 overflow-hidden">

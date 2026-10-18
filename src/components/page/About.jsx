@@ -106,7 +106,7 @@ export default function About() {
     <section className="min-h-screen bg-[#181a1b] flex flex-col items-center pt-20 md:pt-28" id="About">
       <div className="w-full px-6 md:px-28">
         {/* Titre et séparateur */}
-        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-yellow" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="w-fit text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-yellow" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
           À propos
         </h2>
         <div className="border-b border-stone-700 mb-12 w-full" />

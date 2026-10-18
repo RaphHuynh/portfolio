@@ -115,7 +115,7 @@ export default function ProjectDetail({
       id={sectionId}
       style={{ fontFamily: 'Satoshi-Black, sans-serif' }}
     >
-      <div className="flex flex-col md:flex-row w-full h-full gap-6 md:gap-16 px-6 md:px-14">
+      <div className="flex flex-col md:flex-row w-full h-full gap-6 md:gap-16 px-6 md:px-28">
         <article className="flex flex-col w-full md:w-2/5 justify-between gap-6 md:gap-0">
           <div>
             <h1 className="text-4xl md:text-7xl">{title}</h1>

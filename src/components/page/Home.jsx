@@ -107,95 +107,75 @@ function Home() {
       {/* LUNE AU CENTRE */}
       <Moon ref={moonRef} />
       
-      {/* À PROPOS AU-DESSUS DE LA LUNE */}
-      <motion.div 
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-        className="fixed top-1/2 left-1/2 transform -translate-y-32 sm:-translate-y-40 md:-translate-y-48 lg:-translate-y-64 -translate-x-1/2 z-20"
-        onMouseEnter={() => handleMenuHover(true)}
-        onMouseLeave={() => handleMenuHover(false)}
-      >
-        <motion.div variants={menuItemVariants}>
-          <Link to="/about" className="group">
-            <h3 className={`
-              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
-              cursor-pointer hover:text-white transition-colors duration-200
-            `} style={{ 
-              fontFamily: 'Satoshi-Black, sans-serif',
-              WebkitTextStroke: '1px white'
-            }}>
-              À Propos
-            </h3>
-          </Link>
+      {/* Grand écran : autour de la lune. Mobile : une colonne centrée */}
+      {[
+        { title: 'À Propos', to: '/about', place: 'hidden md:block fixed top-1/2 left-1/2 -translate-x-1/2 md:-translate-y-48 lg:-translate-y-64 z-20' },
+        { title: 'Projets', to: '/projets', place: 'hidden md:block fixed top-1/2 left-1/2 md:translate-x-48 lg:translate-x-56 -translate-y-1/2 z-20' },
+        { title: 'Art', to: '/art', place: 'hidden md:block fixed top-1/2 left-1/2 -translate-x-1/2 md:translate-y-48 lg:translate-y-60 z-20' },
+      ].map((item) => (
+        <motion.div
+          key={item.title}
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          className={item.place}
+          onMouseEnter={() => handleMenuHover(true)}
+          onMouseLeave={() => handleMenuHover(false)}
+        >
+          <motion.div variants={menuItemVariants}>
+            <Link to={item.to}>
+              <h3
+                className="text-transparent font-bold whitespace-nowrap cursor-pointer hover:text-white transition-colors duration-200 leading-none text-2xl sm:text-3xl md:text-5xl lg:text-[clamp(3rem,16vw,4.5rem)] lg:leading-7"
+                style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}
+              >
+                {item.title}
+              </h3>
+            </Link>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      ))}
 
-      {/* PROJETS À DROITE DE LA LUNE */}
-      <motion.div 
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-        className="fixed top-1/2 left-1/2 transform translate-x-32 sm:translate-x-40 md:translate-x-48 lg:translate-x-56 -translate-y-1/2 z-20"
-        onMouseEnter={() => handleMenuHover(true)}
-        onMouseLeave={() => handleMenuHover(false)}
-      >
-        <motion.div variants={menuItemVariants}>
-          <Link to="/projets" className="group">
-            <h3 className={`
-              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
-              cursor-pointer hover:text-white transition-colors duration-200
-            `} style={{ 
-              fontFamily: 'Satoshi-Black, sans-serif',
-              WebkitTextStroke: '1px white'
-            }}>
-              Projets
-            </h3>
-          </Link>
-        </motion.div>
-      </motion.div>
-
-      {/* ART EN DESSOUS DE LA LUNE */}
-      <motion.div 
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-        className="fixed top-1/2 left-1/2 transform translate-y-32 sm:translate-y-40 md:translate-y-48 lg:translate-y-60 -translate-x-1/2 z-20"
-        onMouseEnter={() => handleMenuHover(true)}
-        onMouseLeave={() => handleMenuHover(false)}
-      >
-        <motion.div variants={menuItemVariants}>
-          <Link to="/art" className="group">
-            <h3 className={`
-              text-transparent text-lg sm:text-xl md:text-[clamp(3rem,16vw,4.5rem)] font-bold 
-              cursor-pointer hover:text-white transition-colors duration-200
-            `} style={{ 
-              fontFamily: 'Satoshi-Black, sans-serif',
-              WebkitTextStroke: '1px white'
-            }}>
-              Art
-            </h3>
-          </Link>
-        </motion.div>
-      </motion.div>
-      
-
-
-      {/* HERO */}
-      <section className="h-screen flex items-center justify-center px-1 sm:px-2" id="Home">
-        <div className="flex flex-col items-center md:items-start w-full z-10">
-                      {/* Nom et prénom centrés */}
-            <div className="flex flex-col items-center md:items-start">
-              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center md:text-left w-full break-words text-white mb-2">
-                Raphaëlle
-              </h1>
-              <h1 className="text-[clamp(2.2rem,10vw,7rem)] md:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center md:text-right w-full z-20 break-words text-white mb-2">
-                HUYNH
-              </h1>
-            </div>
-          
-
+      <section className="h-screen flex flex-col items-center justify-center gap-8 px-6 md:gap-0 md:px-2" id="Home">
+        <Link
+          to="/about"
+          className="md:hidden z-20"
+          onMouseEnter={() => handleMenuHover(true)}
+          onMouseLeave={() => handleMenuHover(false)}
+        >
+          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
+            À Propos
+          </h3>
+        </Link>
+        <div className="flex flex-col items-center lg:items-start w-full z-10">
+          <div className="flex flex-col items-center lg:items-start">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-left w-full text-white mb-2">
+              Raphaëlle
+            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-right w-full z-20 text-white mb-2">
+              HUYNH
+            </h1>
+          </div>
         </div>
+        <Link
+          to="/projets"
+          className="md:hidden z-20"
+          onMouseEnter={() => handleMenuHover(true)}
+          onMouseLeave={() => handleMenuHover(false)}
+        >
+          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
+            Projets
+          </h3>
+        </Link>
+        <Link
+          to="/art"
+          className="md:hidden z-20"
+          onMouseEnter={() => handleMenuHover(true)}
+          onMouseLeave={() => handleMenuHover(false)}
+        >
+          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
+            Art
+          </h3>
+        </Link>
       </section>
     </main>
   );

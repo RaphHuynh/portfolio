@@ -1,9 +1,11 @@
 import './App.css';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import AOS from 'aos';
 
 import NavRouter from "./components/navigation/NavRouter"
+import PageCurtain, { curtainMeta } from "./components/effect/PageCurtain"
 import HomePage from "./pages/HomePage"
 import AboutPage from "./pages/AboutPage"
 import WorkPage from "./pages/WorkPage"
@@ -20,13 +22,35 @@ AOS.init({
   once: true,
 });
 
-function App() {
+function AnimatedRoutes() {
+  const location = useLocation();
+  const reduceMotion = useReducedMotion();
+  const [current, setCurrent] = useState(location);
+  const [curtain, setCurtain] = useState(null);
+  const pending = useRef(location);
+  const currentPath = useRef(location.pathname);
+  currentPath.current = current.pathname;
+
+  useEffect(() => {
+    if (location.pathname === currentPath.current) return;
+    pending.current = location;
+
+    if (reduceMotion) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      setCurrent(location);
+      setCurtain(null);
+      return;
+    }
+
+    const meta = curtainMeta(currentPath.current, location.pathname);
+    setCurtain({ id: `${location.pathname}-${Date.now()}`, ...meta });
+  }, [location, reduceMotion]);
+
   return (
-    <Router>
-      <div className='min-h-screen bg-white dark:bg-secondary-900 transition-colors duration-300'>
-        <NavRouter />
+    <>
+      <div className="min-h-screen">
         <Suspense fallback={<div className="min-h-screen bg-[#181a1b]" />}>
-          <Routes>
+          <Routes location={current}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projets" element={<WorkPage />} />
@@ -39,6 +63,29 @@ function App() {
             <Route path="/projets/dashboard-nlp" element={<DashboardNLP />} />
           </Routes>
         </Suspense>
+      </div>
+      {curtain && (
+        <PageCurtain
+          key={curtain.id}
+          title={curtain.title}
+          direction={curtain.direction}
+          onCovered={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            setCurrent(pending.current);
+          }}
+          onDone={() => setCurtain(null)}
+        />
+      )}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#181a1b]">
+        <NavRouter />
+        <AnimatedRoutes />
       </div>
     </Router>
   );

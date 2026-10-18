@@ -71,10 +71,8 @@ drawings.forEach((drawing) => {
 });
 
 const TOTAL = drawings.length;
-const MIN_GESTURE = 0.02;
 const SNAP_DURATION = 0.38;
 const SNAP_EASING = (t) => 1 - (1 - t) ** 3;
-const resist = (moved) => Math.tanh(moved);
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const wrap = (index, length) => ((index % length) + length) % length;
@@ -287,7 +285,7 @@ function CarouselCard({ drawing, index, position, spacing, active, maxHeight, ma
 export default function Art() {
   const stageRef = useRef(null);
   const didPanRef = useRef(false);
-  const panStartRef = useRef(0);
+  const pointerRef = useRef(null);
   const scrollerRef = useRef(null);
   const lenisRef = useRef(null);
   const pendingRef = useRef(null);
@@ -351,12 +349,6 @@ export default function Art() {
     });
   }, []);
 
-  const settle = useCallback((start, moved) => {
-    if (moved > MIN_GESTURE) snapTo(start + 1);
-    else if (moved < -MIN_GESTURE) snapTo(start - 1);
-    else snapTo(start);
-  }, [snapTo]);
-
   const go = useCallback((step) => {
     if (step === 0) return;
     snapTo(currentIndex() + step);
@@ -419,11 +411,88 @@ export default function Art() {
       idleTimer = setTimeout(() => { gestureLive = false; }, 80);
     };
 
+    // Le doigt pilote le carrousel : un balayage = un dessin, sans revenir au point de départ
+    const stopTracking = () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
+    };
+
+    const onPointerDown = (event) => {
+      if (modalOpenRef.current) return;
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      stopTracking();
+      didPanRef.current = false;
+      pointerRef.current = {
+        id: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        t: performance.now(),
+        start: currentIndex(),
+        dragging: false,
+      };
+      window.addEventListener('pointermove', onPointerMove, { passive: false });
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+    };
+
+    const onPointerMove = (event) => {
+      const gesture = pointerRef.current;
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const dx = event.clientX - gesture.x;
+      const dy = event.clientY - gesture.y;
+
+      if (!gesture.dragging) {
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+        // Un doigt part souvent un peu en diagonale : dès qu'il avance sur le côté, on suit
+        if (Math.abs(dx) < 10) {
+          pointerRef.current = null;
+          stopTracking();
+          return;
+        }
+        gesture.dragging = true;
+        didPanRef.current = true;
+        pendingRef.current = null;
+        snapTo(gesture.start, true);
+      }
+
+      if (event.cancelable) event.preventDefault();
+      const limited = clamp(-dx / spacingRef.current, -1, 1);
+      snapTo(gesture.start + limited, true);
+    };
+
+    const onPointerUp = (event) => {
+      const gesture = pointerRef.current;
+      if (!gesture || event.pointerId !== gesture.id) return;
+      pointerRef.current = null;
+      stopTracking();
+      if (!gesture.dragging) return;
+
+      const dx = event.clientX - gesture.x;
+      const elapsed = Math.max(16, performance.now() - gesture.t);
+      const velocity = dx / elapsed;
+      const moved = -dx / spacingRef.current;
+      const passed = Math.abs(moved) > 0.12 || Math.abs(velocity) > 0.35;
+      if (passed && moved > 0) snapTo(gesture.start + 1);
+      else if (passed && moved < 0) snapTo(gesture.start - 1);
+      else snapTo(gesture.start);
+    };
+
+    // Empêche Safari de voler le geste horizontal une fois qu'il est engagé
+    const onTouchMove = (event) => {
+      if (pointerRef.current?.dragging && event.cancelable) event.preventDefault();
+    };
+
     stage.addEventListener('wheel', onWheel, { passive: false });
+    stage.addEventListener('pointerdown', onPointerDown);
+    stage.addEventListener('touchmove', onTouchMove, { passive: false });
 
     return () => {
       clearTimeout(idleTimer);
+      stopTracking();
       stage.removeEventListener('wheel', onWheel);
+      stage.removeEventListener('pointerdown', onPointerDown);
+      stage.removeEventListener('touchmove', onTouchMove);
       lenis.destroy();
       lenisRef.current = null;
     };
@@ -477,23 +546,6 @@ export default function Art() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isModalOpen, go]);
 
-  const handlePanStart = () => {
-    didPanRef.current = true;
-    panStartRef.current = currentIndex();
-    pendingRef.current = null;
-    snapTo(panStartRef.current, true);
-  };
-
-  const handlePan = (_, info) => {
-    const target = panStartRef.current + resist(-info.offset.x / spacing);
-    snapTo(target, true);
-  };
-
-  const handlePanEnd = (_, info) => {
-    const moved = (-info.offset.x - info.velocity.x * 0.2) / spacing;
-    settle(panStartRef.current, moved);
-  };
-
   const handleCardClick = (index) => {
     if (didPanRef.current) return;
     const offset = getOffset(index, current, TOTAL);
@@ -509,7 +561,7 @@ export default function Art() {
 
   return (
     <section
-      className="relative h-screen supports-[height:100svh]:h-[100svh] min-h-[520px] bg-[#181a1b] flex flex-col pt-20 md:pt-24 overflow-hidden"
+      className="relative h-screen supports-[height:100svh]:h-[100svh] min-h-[520px] bg-[#181a1b] flex flex-col pt-20 md:pt-24 overflow-hidden overscroll-none"
       id="Art"
     >
       {/* Fond d'ambiance : le dessin actif, très flouté */}
@@ -552,7 +604,7 @@ export default function Art() {
       </div>
 
       <div className="relative z-10 w-full flex-1 min-h-0 flex flex-col px-6 md:px-28">
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-green w-fit shrink-0" style={{ fontFamily: 'Satoshi-Black, sans-serif', letterSpacing: '0.08em' }}>
+        <h2 className="w-fit shrink-0 text-3xl lg:text-5xl font-bold uppercase tracking-widest text-[var(--primary-color)] mb-4 text-left highlight-green" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
           Art
         </h2>
         <div className="border-b border-stone-700 w-full shrink-0" />
@@ -563,12 +615,9 @@ export default function Art() {
           className="relative w-full flex-1 min-h-0 my-4 md:my-6 flex items-center justify-center select-none cursor-grab active:cursor-grabbing"
           style={{
             perspective: 1200,
-            touchAction: 'pan-y',
+            touchAction: 'none',
+            overscrollBehavior: 'none',
           }}
-          onPointerDown={() => { didPanRef.current = false; }}
-          onPanStart={handlePanStart}
-          onPan={handlePan}
-          onPanEnd={handlePanEnd}
         >
           {/* Zone de défilement invisible pilotée par Lenis : sa position horizontale = position du carrousel */}
           <div

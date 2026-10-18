@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import Lenis from 'lenis';
 import {
   motion,
   AnimatePresence,
-  animate,
   useMotionValue,
   useMotionValueEvent,
   useSpring,
@@ -71,24 +71,10 @@ drawings.forEach((drawing) => {
 });
 
 const TOTAL = drawings.length;
-// Échelle de résistance du geste : plus c'est petit, plus le carrousel suit vite le doigt
-const WHEEL_PX_PER_DRAWING = 220;
-const WHEEL_MAX_DELTA = 120;
-// Sans nouvel événement molette pendant ce délai, on considère le geste terminé (inertie comprise)
-const WHEEL_IDLE_MS = 120;
-// Un mouvement plus petit que ça (en fraction de dessin) est considéré comme accidentel
 const MIN_GESTURE = 0.02;
-
-// Pendant un geste, le carrousel suit mais ne dépasse jamais un dessin d'écart
+const SNAP_DURATION = 0.38;
+const SNAP_EASING = (t) => 1 - (1 - t) ** 3;
 const resist = (moved) => Math.tanh(moved);
-
-// Firefox peut envoyer deltaMode en lignes (1) ou en pages (2) au lieu de pixels
-const normalizeWheelDelta = (e) => {
-  const raw = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-  if (e.deltaMode === 1) return raw * 16;
-  if (e.deltaMode === 2) return raw * window.innerHeight;
-  return raw;
-};
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const wrap = (index, length) => ((index % length) + length) % length;
@@ -289,10 +275,11 @@ export default function Art() {
   const stageRef = useRef(null);
   const didPanRef = useRef(false);
   const panStartRef = useRef(0);
-  const animationRef = useRef(null);
-  const targetRef = useRef(null);
+  const scrollerRef = useRef(null);
+  const lenisRef = useRef(null);
+  const pendingRef = useRef(null);
   const roundedRef = useRef(0);
-  const wheelGestureRef = useRef({ active: false, start: 0, moved: 0, timer: null });
+  const modalOpenRef = useRef(false);
   const reduceMotion = useReducedMotion();
 
   // Position continue du carrousel (2.4 = entre le 3e et le 4e dessin), non bornée pour la boucle
@@ -303,6 +290,7 @@ export default function Art() {
   const [direction, setDirection] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stageSize, setStageSize] = useState({ width: 1000, height: 500 });
+  modalOpenRef.current = isModalOpen;
   useEffect(loadBackdropFonts, []);
 
   // Tout est proportionnel à la scène, pour rester centré quelle que soit la taille d'écran
@@ -311,30 +299,45 @@ export default function Art() {
   const cardMaxHeight = stageSize.height * 0.78;
   const cardMaxWidth = stageSize.width * (isMobile ? 0.84 : 0.42);
 
-  useEffect(() => {
-    spacingValue.set(spacing);
-  }, [spacing, spacingValue]);
+  const spacingRef = useRef(spacing);
+  spacingRef.current = spacing;
 
   // Le dessin "actif" (compteur, fond, couleur) suit la position arrondie
   useMotionValueEvent(position, 'change', (p) => {
     const rounded = Math.round(p);
     if (rounded === roundedRef.current) return;
-    setDirection(Math.sign(rounded - roundedRef.current));
+    // En boucle infinie Lenis peut sauter d'un tour complet : on garde le plus court chemin
+    const step = continuousOffset(rounded, roundedRef.current, TOTAL);
     roundedRef.current = rounded;
+    if (step === 0) return;
+    setDirection(Math.sign(step));
     setCurrent(wrap(rounded, TOTAL));
   });
 
-  const snapTo = useCallback((target) => {
-    animationRef.current?.stop();
-    targetRef.current = target;
-    animationRef.current = animate(
-      position,
-      target,
-      reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 220, damping: 30, mass: 0.9 }
-    );
-  }, [position, reduceMotion]);
+  const currentIndex = useCallback(() => {
+    if (pendingRef.current !== null) return pendingRef.current;
+    const lenis = lenisRef.current;
+    if (!lenis) return 0;
+    return wrap(Math.round(lenis.animatedScroll / spacingRef.current), TOTAL);
+  }, []);
 
-  // Fin de geste : un geste = un dessin, même petit, jamais plus
+  const snapTo = useCallback((index, immediate = false) => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+    const target = wrap(index, TOTAL);
+    pendingRef.current = target;
+    lenis.scrollTo(target * spacingRef.current, {
+      immediate,
+      duration: immediate ? undefined : SNAP_DURATION,
+      easing: SNAP_EASING,
+      force: true,
+      programmatic: true,
+      onComplete: () => {
+        if (pendingRef.current === target) pendingRef.current = null;
+      },
+    });
+  }, []);
+
   const settle = useCallback((start, moved) => {
     if (moved > MIN_GESTURE) snapTo(start + 1);
     else if (moved < -MIN_GESTURE) snapTo(start - 1);
@@ -343,14 +346,86 @@ export default function Art() {
 
   const go = useCallback((step) => {
     if (step === 0) return;
-    const base = Math.round(targetRef.current ?? position.get());
-    snapTo(base + step);
-  }, [position, snapTo]);
+    snapTo(currentIndex() + step);
+  }, [currentIndex, snapTo]);
 
-  const stopMomentum = () => {
-    animationRef.current?.stop();
-    targetRef.current = null;
-  };
+  // Lenis n'anime que le cran ; la molette est gérée ici pour ne pas bloquer le geste suivant
+  useEffect(() => {
+    const stage = stageRef.current;
+    const scroller = scrollerRef.current;
+    if (!stage || !scroller) return;
+
+    let gestureLive = false;
+    let lastSnapAt = 0;
+    let idleTimer = null;
+
+    const lenis = new Lenis({
+      wrapper: scroller,
+      content: scroller.firstElementChild,
+      eventsTarget: scroller,
+      orientation: 'horizontal',
+      infinite: true,
+      autoRaf: true,
+      autoResize: false,
+      lerp: 0.18,
+    });
+
+    lenis.on('scroll', ({ animatedScroll }) => {
+      position.set(animatedScroll / spacingRef.current);
+    });
+    lenisRef.current = lenis;
+
+    const onWheel = (event) => {
+      event.preventDefault();
+      if (modalOpenRef.current) return;
+
+      const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+      const abs = Math.abs(delta);
+      if (abs < 1) return;
+
+      const now = performance.now();
+
+      // Molette à crans : un cran = une image, enchaînable
+      if (event.deltaMode !== 0) {
+        if (now - lastSnapAt < 55) return;
+        lastSnapAt = now;
+        snapTo(currentIndex() + Math.sign(delta));
+        return;
+      }
+
+      // Trackpad : un balayage = une image. L'inertie faible ne prolonge pas le geste.
+      if (abs < 10) return;
+
+      if (!gestureLive) {
+        gestureLive = true;
+        lastSnapAt = now;
+        snapTo(currentIndex() + Math.sign(delta));
+      }
+
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => { gestureLive = false; }, 80);
+    };
+
+    stage.addEventListener('wheel', onWheel, { passive: false });
+
+    return () => {
+      clearTimeout(idleTimer);
+      stage.removeEventListener('wheel', onWheel);
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, [position, currentIndex, snapTo]);
+
+  // Quand l'écart change (redimensionnement), on garde le même dessin au centre
+  useLayoutEffect(() => {
+    spacingValue.set(spacing);
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+    lenis.resize();
+    const index = wrap(roundedRef.current, TOTAL);
+    pendingRef.current = null;
+    lenis.scrollTo(index * spacing, { immediate: true, force: true });
+  }, [spacing, spacingValue]);
 
   // Mesure de la scène pour dimensionner les dessins
   useEffect(() => {
@@ -358,7 +433,9 @@ export default function Art() {
     if (!stage) return;
 
     const measure = () => {
-      setStageSize({ width: stage.clientWidth, height: stage.clientHeight });
+      const width = stage.clientWidth;
+      const height = stage.clientHeight;
+      setStageSize((prev) => (prev.width === width && prev.height === height ? prev : { width, height }));
     };
     measure();
 
@@ -367,41 +444,14 @@ export default function Art() {
     return () => observer.disconnect();
   }, []);
 
-  // Molette / trackpad : le carrousel suit le geste puis se cale sur le dessin voisin
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    const gesture = wheelGestureRef.current;
-
-    const handleWheel = (e) => {
-      e.preventDefault();
-      const delta = clamp(normalizeWheelDelta(e), -WHEEL_MAX_DELTA, WHEEL_MAX_DELTA);
-
-      if (!gesture.active) {
-        gesture.active = true;
-        gesture.start = Math.round(targetRef.current ?? position.get());
-        gesture.moved = 0;
-        stopMomentum();
-      }
-
-      gesture.moved += delta / WHEEL_PX_PER_DRAWING;
-      position.set(gesture.start + resist(gesture.moved));
-
-      clearTimeout(gesture.timer);
-      gesture.timer = setTimeout(() => {
-        gesture.active = false;
-        settle(gesture.start, gesture.moved);
-      }, WHEEL_IDLE_MS);
-    };
-
-    stage.addEventListener('wheel', handleWheel, { passive: false });
-    return () => {
-      stage.removeEventListener('wheel', handleWheel);
-      clearTimeout(gesture.timer);
-    };
-  }, [position, settle]);
-
   // Clavier
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+    if (isModalOpen) lenis.stop();
+    else lenis.start();
+  }, [isModalOpen]);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') go(1);
@@ -416,12 +466,14 @@ export default function Art() {
 
   const handlePanStart = () => {
     didPanRef.current = true;
-    panStartRef.current = Math.round(targetRef.current ?? position.get());
-    stopMomentum();
+    panStartRef.current = currentIndex();
+    pendingRef.current = null;
+    snapTo(panStartRef.current, true);
   };
 
   const handlePan = (_, info) => {
-    position.set(panStartRef.current + resist(-info.offset.x / spacing));
+    const target = panStartRef.current + resist(-info.offset.x / spacing);
+    snapTo(target, true);
   };
 
   const handlePanEnd = (_, info) => {
@@ -505,6 +557,15 @@ export default function Art() {
           onPan={handlePan}
           onPanEnd={handlePanEnd}
         >
+          {/* Zone de défilement invisible pilotée par Lenis : sa position horizontale = position du carrousel */}
+          <div
+            ref={scrollerRef}
+            className="absolute inset-0 overflow-x-scroll overflow-y-hidden opacity-0 pointer-events-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-hidden="true"
+          >
+            <div style={{ width: stageSize.width + TOTAL * spacing, height: 1 }} />
+          </div>
+
           {drawings.map((drawing, index) => (
             <CarouselCard
               key={drawing.id}

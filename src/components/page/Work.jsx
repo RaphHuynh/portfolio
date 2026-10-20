@@ -28,27 +28,14 @@ const Work = () => {
         <div className="border-b border-stone-700 mb-12 w-full" />
 
         <div className="flex gap-0 md:gap-10 lg:gap-16 flex-1 min-h-0 overflow-hidden">
-          <article className="hidden md:flex w-1/2 min-w-0 h-full flex-col gap-4 overflow-hidden">
-            <img
-              src={ImgPortJonathan}
-              alt="Jonathan Steuer"
-              className="w-full h-1/2 object-cover rounded-lg shadow-lg grayscale"
-            />
-            <img
-              src={ImgFRDesDev}
-              alt="Françaises des dev"
-              className="w-full h-1/2 object-cover rounded-lg shadow-lg grayscale"
-            />
-          </article>
-
           <aside className="flex flex-col w-full md:w-1/2 min-w-0 h-full overflow-y-auto">
             <h3
-              className="text-2xl md:text-4xl font-bold text-white mb-4 text-center md:text-right md:mr-0 md:ml-auto"
+              className="text-2xl md:text-4xl font-bold text-white mb-4 text-center md:text-left"
               style={{ fontFamily: 'Satoshi-Black, sans-serif' }}
             >
               Sélections de projets
             </h3>
-            <p className="text-base md:text-xl text-stone-300 mb-6 md:mb-4 leading-relaxed w-full md:w-2/3 text-center md:text-right md:mr-0 md:ml-auto">
+            <p className="text-base md:text-xl text-stone-300 mb-6 md:mb-4 leading-relaxed w-full md:w-2/3 text-center md:text-left">
               Voici quelques projets personnels et des projets réalisés en freelance.
             </p>
 
@@ -79,6 +66,19 @@ const Work = () => {
               </li>
             </ul>
           </aside>
+
+          <article className="hidden md:flex w-1/2 min-w-0 h-full flex-col gap-4 overflow-hidden">
+            <img
+              src={ImgPortJonathan}
+              alt="Jonathan Steuer"
+              className="w-full h-1/2 object-cover rounded-lg shadow-lg grayscale"
+            />
+            <img
+              src={ImgFRDesDev}
+              alt="Françaises des dev"
+              className="w-full h-1/2 object-cover rounded-lg shadow-lg grayscale"
+            />
+          </article>
         </div>
       </div>
     </section>

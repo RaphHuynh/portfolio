@@ -165,7 +165,7 @@ const loadBackdropFonts = () => {
 const BACKDROP_ROWS = 9;
 
 // Le texte du dessin répété en rangées qui défilent dans des sens opposés, sur tout le fond
-function BackdropPattern({ text, direction, reduceMotion }) {
+function BackdropPattern({ text, reduceMotion }) {
   const rootRef = useRef(null);
   const word = text.toUpperCase();
   // Chaque moitié de rangée doit dépasser la largeur de l'écran pour boucler sans trou, sans aller beaucoup plus loin
@@ -206,8 +206,8 @@ function BackdropPattern({ text, direction, reduceMotion }) {
               className="px-[0.25em]"
               style={{
                 fontFamily: `${font.family}, sans-serif`,
-                color: outlined ? 'transparent' : `rgba(255,255,255,${hairline ? 0.12 : 0.05})`,
-                WebkitTextStroke: outlined ? '1px rgba(255,255,255,0.09)' : undefined,
+                color: outlined ? 'transparent' : `rgba(255,255,255,${hairline ? 0.045 : 0.02})`,
+                WebkitTextStroke: outlined ? '1px rgba(255,255,255,0.035)' : undefined,
               }}
             >
               {word}
@@ -216,12 +216,7 @@ function BackdropPattern({ text, direction, reduceMotion }) {
         });
 
         return (
-          <motion.div
-            key={row}
-            initial={{ y: reduceMotion ? 0 : direction > 0 ? 30 : -30 }}
-            animate={{ y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : row * 0.04, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <div key={row}>
             <div
               className={`flex w-max whitespace-nowrap leading-none${reduceMotion ? '' : ` art-marquee${reverse ? ' art-marquee-reverse' : ''}`}`}
               style={{
@@ -232,7 +227,7 @@ function BackdropPattern({ text, direction, reduceMotion }) {
               {half}
               {half}
             </div>
-          </motion.div>
+          </div>
         );
       })}
     </motion.div>
@@ -597,7 +592,6 @@ export default function Art() {
           <BackdropPattern
             key={activeDrawing.id}
             text={activeDrawing.title.trim()}
-            direction={direction}
             reduceMotion={reduceMotion}
           />
         </AnimatePresence>

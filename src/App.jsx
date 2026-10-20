@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import NavRouter from "./components/navigation/NavRouter"
 import PageCurtain, { curtainMeta } from "./components/effect/PageCurtain"
@@ -20,6 +21,10 @@ const DashboardNLP = lazy(() => import("./pages/projets/DashboardNLP"));
 
 AOS.init({
   once: true,
+  duration: 1000,
+  easing: 'ease-out-cubic',
+  offset: 60,
+  delay: 0,
 });
 
 function AnimatedRoutes() {

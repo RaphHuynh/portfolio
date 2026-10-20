@@ -98,8 +98,8 @@ function CurtainField({ word }) {
                 className="px-[0.28em]"
                 style={{
                   fontFamily: `${font.family}, sans-serif`,
-                  color: outlined ? 'transparent' : `rgba(255,255,255,${hairline ? 0.2 : 0.1})`,
-                  WebkitTextStroke: outlined ? '1px rgba(255,255,255,0.16)' : undefined,
+                  color: outlined ? 'transparent' : `rgba(255,255,255,${hairline ? 0.07 : 0.04})`,
+                  WebkitTextStroke: outlined ? '1px rgba(255,255,255,0.06)' : undefined,
                 }}
               >
                 {word}

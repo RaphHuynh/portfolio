@@ -36,7 +36,7 @@ export default function NavRouter() {
     };
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-transparent px-6 md:px-28 py-4 md:py-5 flex items-center justify-between transition-all duration-300" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
+        <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/95 backdrop-blur md:bg-transparent md:backdrop-blur-none px-6 md:px-28 py-4 md:py-5 flex items-center justify-between transition-all duration-300" style={{ fontFamily: 'Satoshi-Black, sans-serif' }}>
             {/* Gauche - Logo RAYNH */}
             <div className="flex items-center text-2xl md:text-3xl font-black uppercase tracking-normal select-none" style={{ letterSpacing: '0.07em' }}>
                 <span className="text-white">RA</span>

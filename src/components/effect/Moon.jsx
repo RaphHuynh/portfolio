@@ -91,11 +91,11 @@ const Moon = forwardRef((props, ref) => {
     // Ajouter le renderer au DOM
     mountRef.current.appendChild(renderer.domElement);
 
-    // Fonction d'animation
+    let frameId = 0;
     const animate = () => {
-      requestAnimationFrame(animate);
+      frameId = requestAnimationFrame(animate);
+      if (document.hidden) return;
 
-      // Faire tourner la lune sur elle-même très lentement
       if (moonRef.current) {
         moonRef.current.rotation.y += 0.002;
       }
@@ -117,6 +117,7 @@ const Moon = forwardRef((props, ref) => {
 
     // Cleanup
     return () => {
+      cancelAnimationFrame(frameId);
       window.removeEventListener('resize', handleResize);
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
@@ -128,8 +129,8 @@ const Moon = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <div className="fixed left-0 w-full h-screen flex justify-center items-center pt-0 pointer-events-none z-5">
-      <div 
+    <div ref={ref} className="fixed left-0 w-full h-screen flex justify-center items-center pt-0 pointer-events-none z-5">
+      <div
         ref={mountRef}
         className="w-full h-full"
         style={{

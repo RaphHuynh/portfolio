@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaDownload, FaChartLine, FaBrain, FaDatabase, FaCode, FaUser, FaBriefcase, FaPalette } from 'react-icons/fa';
@@ -56,7 +56,6 @@ const menuItems = [
 
 function Home() {
   const [isDark, setIsDark] = useState(true);
-  const moonRef = useRef(null);
 
   useEffect(() => {
     const checkTheme = () => {
@@ -68,19 +67,6 @@ function Home() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
   }, []);
-
-  const handleMenuHover = (isHovering) => {
-    if (moonRef.current) {
-      const canvas = moonRef.current.querySelector('canvas');
-      if (canvas) {
-        if (isHovering) {
-          canvas.style.filter = 'brightness(1.2) drop-shadow(0 0 40px rgba(255,255,255,0.8))';
-        } else {
-          canvas.style.filter = 'drop-shadow(0 0 30px rgba(255,255,255,0.4))';
-        }
-      }
-    }
-  };
 
   return (
     <main className={`px-2 sm:px-4 md:px-8 lg:px-24 transition-colors duration-300 min-h-screen w-full overflow-x-hidden ${isDark ? 'bg-[#181a1b]' : 'bg-gradient-to-br from-blue-50 via-white to-gray-100'}`}>
@@ -105,13 +91,13 @@ function Home() {
         <StarField starCount={150} />
       ) : null}
       {/* LUNE AU CENTRE */}
-      <Moon ref={moonRef} />
+      <Moon />
       
-      {/* Grand écran : autour de la lune. Mobile : une colonne centrée */}
+      {/* Grand écran : autour de la lune, taille inchangée à partir de 1280px */}
       {[
-        { title: 'À Propos', to: '/about', place: 'hidden md:block fixed top-1/2 left-1/2 -translate-x-1/2 md:-translate-y-48 lg:-translate-y-64 z-20' },
-        { title: 'Projets', to: '/projets', place: 'hidden md:block fixed top-1/2 left-1/2 md:translate-x-48 lg:translate-x-56 -translate-y-1/2 z-20' },
-        { title: 'Art', to: '/art', place: 'hidden md:block fixed top-1/2 left-1/2 -translate-x-1/2 md:translate-y-48 lg:translate-y-60 z-20' },
+        { title: 'À Propos', to: '/about', place: 'hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 md:-translate-y-48 lg:-translate-y-64 z-20' },
+        { title: 'Projets', to: '/projets', place: 'hidden lg:block fixed top-1/2 left-1/2 md:translate-x-48 lg:translate-x-56 -translate-y-1/2 z-20' },
+        { title: 'Art', to: '/art', place: 'hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 md:translate-y-48 lg:translate-y-60 z-20' },
       ].map((item) => (
         <motion.div
           key={item.title}
@@ -119,13 +105,11 @@ function Home() {
           animate="visible"
           variants={staggerContainer}
           className={item.place}
-          onMouseEnter={() => handleMenuHover(true)}
-          onMouseLeave={() => handleMenuHover(false)}
         >
           <motion.div variants={menuItemVariants}>
             <Link to={item.to}>
               <h3
-                className="text-transparent font-bold whitespace-nowrap cursor-pointer hover:text-white transition-colors duration-200 leading-none text-2xl sm:text-3xl md:text-5xl lg:text-[clamp(3rem,16vw,4.5rem)] lg:leading-7"
+                className="text-transparent font-bold whitespace-nowrap cursor-pointer hover:text-white transition-colors duration-200 leading-none lg:text-[clamp(1.5rem,5.65vw,4.5rem)] lg:leading-7"
                 style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}
               >
                 {item.title}
@@ -135,47 +119,42 @@ function Home() {
         </motion.div>
       ))}
 
-      <section className="h-screen flex flex-col items-center justify-center gap-8 px-6 md:gap-0 md:px-2" id="Home">
-        <Link
-          to="/about"
-          className="md:hidden z-20"
-          onMouseEnter={() => handleMenuHover(true)}
-          onMouseLeave={() => handleMenuHover(false)}
-        >
-          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
-            À Propos
-          </h3>
-        </Link>
+      {/* Téléphone : nom au-dessus de la lune, liens en dessous */}
+      <div className="lg:hidden fixed inset-0 z-20 flex flex-col pointer-events-none">
+        <div className="flex h-[34%] flex-col items-center justify-end px-6 pb-3 pt-16">
+          <h1 className="text-center uppercase tracking-tight leading-none text-white text-[clamp(1.7rem,8vw,3.5rem)]">
+            Raphaëlle
+          </h1>
+          <h1 className="mt-1 text-center uppercase tracking-tight leading-none text-white text-[clamp(1.7rem,8vw,3.5rem)]">
+            HUYNH
+          </h1>
+        </div>
+        <div className="flex-1" aria-hidden="true" />
+        <div className="flex h-[30%] flex-col items-center justify-start gap-[clamp(0.55rem,2.2vh,1.15rem)] px-6 pt-3 pb-16 pointer-events-auto">
+          {menuItems.map((item) => (
+            <Link key={item.path} to={item.path}>
+              <h3
+                className="text-transparent font-bold whitespace-nowrap leading-none text-[clamp(1.15rem,4.6vw,2.25rem)] hover:text-white transition-colors duration-200"
+                style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}
+              >
+                {item.title}
+              </h3>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <section className="hidden lg:flex h-screen flex-col items-center justify-center md:px-2" id="Home">
         <div className="flex flex-col items-center lg:items-start w-full z-10">
           <div className="flex flex-col items-center lg:items-start">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-left w-full text-white mb-2">
+            <h1 className="text-[clamp(2rem,6.9vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-left w-full text-white mb-2">
               Raphaëlle
             </h1>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[clamp(3rem,16vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-right w-full z-20 text-white mb-2">
+            <h1 className="text-[clamp(2rem,6.9vw,5.5rem)] uppercase tracking-tight leading-none text-center lg:text-right w-full z-20 text-white mb-2">
               HUYNH
             </h1>
           </div>
         </div>
-        <Link
-          to="/projets"
-          className="md:hidden z-20"
-          onMouseEnter={() => handleMenuHover(true)}
-          onMouseLeave={() => handleMenuHover(false)}
-        >
-          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
-            Projets
-          </h3>
-        </Link>
-        <Link
-          to="/art"
-          className="md:hidden z-20"
-          onMouseEnter={() => handleMenuHover(true)}
-          onMouseLeave={() => handleMenuHover(false)}
-        >
-          <h3 className="text-transparent text-2xl sm:text-3xl leading-none font-bold whitespace-nowrap" style={{ fontFamily: 'Satoshi-Black, sans-serif', WebkitTextStroke: '1px white' }}>
-            Art
-          </h3>
-        </Link>
       </section>
     </main>
   );

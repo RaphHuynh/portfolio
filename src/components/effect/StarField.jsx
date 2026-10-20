@@ -83,11 +83,37 @@ export default function StarField({ starCount = 140 }) {
       ctx.restore();
     }
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const meteors = [];
+    let nextMeteor = Date.now() / 1000 + random(0.8, 2.2);
+
+    function spawnMeteor(time) {
+      const angle = 0.68;
+      const dirX = Math.cos(angle);
+      const dirY = Math.sin(angle);
+      const distance = Math.hypot(width, height) * 1.2;
+      const speed = random(distance / 1.7, distance / 1.2);
+      meteors.push({
+        x: -36,
+        y: random(-height * 0.08, height * 0.72),
+        vx: dirX * speed,
+        vy: dirY * speed,
+        born: time,
+        life: distance / speed,
+        length: random(100, 170),
+      });
+    }
+
     let animationId;
+    let lastTick = 0;
     function animate() {
+      animationId = window.requestAnimationFrame(animate);
+      if (document.hidden) return;
       ctx.clearRect(0, 0, width, height);
       drawGalaxyHalo();
       const now = Date.now() / 1000;
+      const step = lastTick ? Math.min(0.05, now - lastTick) : 1 / 60;
+      lastTick = now;
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
         // Mouvement spatial doux (oscillation sur x et y)
@@ -100,17 +126,46 @@ export default function StarField({ starCount = 140 }) {
         ctx.beginPath();
         ctx.arc(x, y, star.r, 0, 2 * Math.PI);
         ctx.fillStyle = star.color;
-        if (!mobile) {
-          ctx.shadowColor = star.color;
-          ctx.shadowBlur = 8 * star.r;
-        } else {
-          ctx.shadowBlur = 0;
-        }
         ctx.fill();
       }
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
-      animationId = window.requestAnimationFrame(animate);
+
+      if (!reduceMotion && now >= nextMeteor && meteors.length < 2) {
+        spawnMeteor(now);
+        nextMeteor = now + random(4.5, 9);
+      }
+
+      for (let i = meteors.length - 1; i >= 0; i -= 1) {
+        const meteor = meteors[i];
+        const age = (now - meteor.born) / meteor.life;
+        if (age >= 1) {
+          meteors.splice(i, 1);
+          continue;
+        }
+        const fade = age < 0.12 ? age / 0.12 : 1 - ((age - 0.12) / 0.88);
+        const speed = Math.hypot(meteor.vx, meteor.vy) || 1;
+        const tailX = meteor.x - (meteor.vx / speed) * meteor.length;
+        const tailY = meteor.y - (meteor.vy / speed) * meteor.length;
+        const trail = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+        trail.addColorStop(0, 'rgba(255,255,255,0)');
+        trail.addColorStop(0.7, `rgba(244,231,200,${0.35 * fade})`);
+        trail.addColorStop(1, `rgba(255,255,255,${0.95 * fade})`);
+        ctx.strokeStyle = trail;
+        ctx.lineWidth = 1.35;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(meteor.x, meteor.y);
+        ctx.stroke();
+        ctx.globalAlpha = fade;
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(meteor.x, meteor.y, 1.35, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        meteor.x += meteor.vx * step;
+        meteor.y += meteor.vy * step;
+      }
     }
     animate();
 
